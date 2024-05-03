@@ -3,6 +3,8 @@ import {
   Button,
   Card,
   Container,
+  Flex,
+  Grid,
   Group,
   Image,
   SimpleGrid,
@@ -160,54 +162,68 @@ const HomePage = () => {
       <Space h={"120"} />
 
       <Box>
-        <SimpleGrid cols={{ base: 1, md: 2 }}>
-          <Image src={Porsche02} className="hidden md:block" />
+        <Grid align="center">
+          <Grid.Col span={{ base: 12, md: 6 }}>
+            <Image src={Porsche02} className="hidden md:block" />
+          </Grid.Col>
 
-          <Stack align="start">
-            <Text className="text-center text-xl font-medium text-secondary">
-              Services
-            </Text>
+          <Grid.Col span={{ base: 12, md: 6 }}>
+            <Stack align="start" gap={30}>
+              <Text className="text-center text-xl font-medium text-secondary">
+                Services
+              </Text>
 
-            <Text className="text-center text-2xl font-medium ">
-              Shine your car with ours luxury services
-            </Text>
+              <Text className=" text-2xl font-medium ">
+                Shine your car with <br /> ours luxury services
+              </Text>
 
-            <SimpleGrid cols={2}>
-              {serviceData.map((service) => {
-                return (
-                  <Card
-                    bg={"white"}
-                    shadow="sm"
-                    radius={"lg"}
-                    withBorder
-                    classNames={{
-                      root: `py-10 px-2.5 md:px-5 w-fit`,
-                    }}
-                  >
-                    <Group
-                      align="start"
-                      className="h-fit w-fit rounded-lg border border-solid border-gray-300 bg-white p-2.5"
+              <Flex
+                classNames={{
+                  root: `flex-col md:flex-row gap-5`,
+                }}
+              >
+                {serviceData.map((service) => {
+                  return (
+                    <Card
+                      bg={"white"}
+                      shadow="sm"
+                      radius={"lg"}
+                      withBorder
+                      classNames={{
+                        root: `py-10 px-5 w-fit`,
+                      }}
                     >
-                      {service.icon}
-                    </Group>
+                      <Group
+                        align="start"
+                        className="h-fit w-fit rounded-lg  border border-solid border-gray-300 bg-white p-2.5"
+                      >
+                        {service.icon}
+                      </Group>
 
-                    <Space h={"lg"} />
+                      <Space h={"lg"} />
 
-                    <Stack align="start" gap={10}>
-                      <Text className="text-sm font-medium md:text-xl ">
-                        {service.title}
-                      </Text>
-                      <Text className="text-text_gray  text-xs md:text-base ">
-                        {service.description}
-                      </Text>
-                    </Stack>
-                  </Card>
-                );
-              })}
-            </SimpleGrid>
-          </Stack>
-        </SimpleGrid>
+                      <Stack align="start" gap={10}>
+                        <Text className="text-lg font-medium md:text-xl ">
+                          {service.title}
+                        </Text>
+                        <Text className="text-text_gray  text-sm md:text-base ">
+                          {service.description}
+                        </Text>
+                      </Stack>
+                    </Card>
+                  );
+                })}
+              </Flex>
+            </Stack>
+          </Grid.Col>
+        </Grid>
       </Box>
+
+      <Space h={"120"} />
+
+      <Box></Box>
+
+      <Space h={"120"} />
     </Container>
   );
 };

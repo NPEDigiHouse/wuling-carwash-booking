@@ -11,6 +11,7 @@ export default {
         secondary: "#3BAF5B",
         black: "#000000",
         light_gray: "#FAFAFA",
+        text_gray: "#808080",
         white: "#FFFFFF",
         danger: "#FF6161",
       },

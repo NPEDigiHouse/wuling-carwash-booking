@@ -1,4 +1,5 @@
 import {
+  BackgroundImage,
   Box,
   Button,
   Card,
@@ -7,13 +8,20 @@ import {
   Grid,
   Group,
   Image,
+  Paper,
   SimpleGrid,
   Space,
   Stack,
   Text,
 } from "@mantine/core";
 import Navbar from "../../shared/components/Navbar/Navbar";
-import { Porsche01, Porsche02 } from "shared/constant/Images";
+import {
+  ContactCard,
+  HeroImage,
+  Porsche01,
+  Porsche02,
+  WulingAlmaz,
+} from "shared/constant/Images";
 import { IoIosWater } from "react-icons/io";
 import { IoCarSport, IoTimerOutline } from "react-icons/io5";
 import {
@@ -23,6 +31,7 @@ import {
   MdFileOpen,
   MdOutlineWbSunny,
 } from "react-icons/md";
+import { COLORS } from "shared/constant/Colors";
 
 const bookingStepData = [
   {
@@ -68,16 +77,23 @@ const serviceData = [
 const HomePage = () => {
   return (
     <Container size={"xl"} className="font-poppins">
+      {/* <BackgroundImage src={HeroImage}> */}
+
+      <Image
+        src={HeroImage}
+        className="absolute left-0 top-0 -z-20 h-[610px] w-screen "
+      />
       <Navbar />
 
       <Space h={"100"} />
 
       <Box className="relative flex justify-center ">
-        <Text className="absolute -top-7 -z-10 text-nowrap text-left text-[60px] font-bold uppercase leading-tight text-[#E3E3E3] opacity-80 lg:-top-16 lg:text-[180px] lg:tracking-wide">
+        <Text className="absolute -top-7 z-10 text-nowrap text-left text-[60px] font-bold uppercase leading-tight text-[#E3E3E3] opacity-20  lg:-top-16 lg:text-[180px] lg:tracking-wide">
           Make Your <br /> Car Shine
         </Text>
-        <Image src={Porsche01} className="w-[800px]" />
+        <Image src={Porsche01} className="z-20 w-[800px]" />
       </Box>
+      {/* </BackgroundImage> */}
 
       <Space h={"50"} />
 
@@ -221,7 +237,40 @@ const HomePage = () => {
 
       <Space h={"120"} />
 
-      <Box></Box>
+      <Box bg={COLORS.primary}></Box>
+
+      <Box className="flex w-fit justify-center  md:px-10">
+        <BackgroundImage
+          src={ContactCard}
+          radius={"xl"}
+          className="w-full md:w-10/12"
+        >
+          <Paper bg={"transparent"} className="md:px-16 md:py-10">
+            <Flex
+              direction={{ base: "column", sm: "column", md: "row" }}
+              align={"center"}
+            >
+              <Stack gap={40}>
+                <Stack gap={30}>
+                  <Text className="text-nowrap text-5xl font-semibold text-white">
+                    Booking Sekarang
+                  </Text>
+                  <Text className="text-white">
+                    Booking hari & jam agar menghemat waktu anda untuk mencuci
+                    mobile dengan pelayanan terbaik dari kami
+                  </Text>
+                </Stack>
+
+                <Button className=" bg-yellow h-12 w-fit rounded-full px-7 text-base font-medium text-neutral-700 drop-shadow-2xl">
+                  Book Now
+                </Button>
+              </Stack>
+
+              <Image src={WulingAlmaz} className="w-7/12" />
+            </Flex>
+          </Paper>
+        </BackgroundImage>
+      </Box>
 
       <Space h={"120"} />
     </Container>

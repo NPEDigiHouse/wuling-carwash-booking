@@ -1,6 +1,5 @@
 import {
   BackgroundImage,
-  Box,
   Button,
   Card,
   Container,
@@ -76,28 +75,30 @@ const serviceData = [
 
 const HomePage = () => {
   return (
-    <Container size={"xl"} className="font-poppins">
+    <Container fluid className="font-poppins">
       {/* <BackgroundImage src={HeroImage}> */}
 
       <Image
         src={HeroImage}
         className="absolute left-0 top-0 -z-20 h-[610px] w-screen "
       />
-      <Navbar />
+      <Container size={"xl"}>
+        <Navbar />
+      </Container>
 
       <Space h={"100"} />
 
-      <Box className="relative flex justify-center ">
+      <Container className="relative flex justify-center ">
         <Text className="absolute -top-7 z-10 text-nowrap text-left text-[60px] font-bold uppercase leading-tight text-[#E3E3E3] opacity-20  lg:-top-16 lg:text-[180px] lg:tracking-wide">
           Make Your <br /> Car Shine
         </Text>
         <Image src={Porsche01} className="z-20 w-[800px]" />
-      </Box>
+      </Container>
       {/* </BackgroundImage> */}
 
       <Space h={"50"} />
 
-      <Box className="flex justify-center">
+      <Container className="flex justify-center">
         <Group
           className="h-fit w-[800px] rounded-xl border border-solid border-[#CFCFCF] bg-white px-4 py-5 drop-shadow-lg"
           justify="space-around"
@@ -127,11 +128,11 @@ const HomePage = () => {
             Book Now
           </Button>
         </Group>
-      </Box>
+      </Container>
 
       <Space h={"120"} />
 
-      <Box>
+      <Container size={"xl"}>
         <Text className="text-center text-xl font-medium text-secondary">
           How to book?
         </Text>
@@ -173,11 +174,11 @@ const HomePage = () => {
             );
           })}
         </SimpleGrid>
-      </Box>
+      </Container>
 
       <Space h={"120"} />
 
-      <Box>
+      <Container size={"xl"} px={0}>
         <Grid align="center">
           <Grid.Col span={{ base: 12, md: 6 }}>
             <Image src={Porsche02} className="hidden md:block" />
@@ -233,13 +234,26 @@ const HomePage = () => {
             </Stack>
           </Grid.Col>
         </Grid>
-      </Box>
+      </Container>
 
       <Space h={"120"} />
 
-      <Box bg={COLORS.primary}></Box>
+      <Container size={"100%"} bg={COLORS.primary} mx={0} className="relative">
+        <Stack gap={30}>
+          <Text className="text-xl font-semibold text-primary">About us</Text>
+          <Stack gap={10}>
+            <Text className="text-3xl font-medium">
+              We do the best for your car
+            </Text>
+            <Text>
+              Monitoring sejauh mana progress Project anda melalui Task,
+              Milestone, Teams, dan fitur-fitur keren lainnya.
+            </Text>
+          </Stack>
+        </Stack>
+      </Container>
 
-      <Box className="flex w-fit justify-center  md:px-10">
+      <Container className="flex w-fit justify-center  " size={"xl"}>
         <BackgroundImage
           src={ContactCard}
           radius={"xl"}
@@ -270,7 +284,7 @@ const HomePage = () => {
             </Flex>
           </Paper>
         </BackgroundImage>
-      </Box>
+      </Container>
 
       <Space h={"120"} />
     </Container>

@@ -2,8 +2,8 @@ import { Text } from "@mantine/core";
 
 const NavLogo = () => {
   return (
-    <Text className="text-3xl font-bold text-primary">
-      <span className="text-black">We</span>Wash
+    <Text className="text-3xl font-bold text-white">
+      <span className="text-third">We</span>Wash
     </Text>
   );
 };

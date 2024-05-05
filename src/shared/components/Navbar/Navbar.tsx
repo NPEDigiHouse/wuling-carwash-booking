@@ -1,6 +1,7 @@
-import { Button, Group, Text } from "@mantine/core";
+import { Button, Group } from "@mantine/core";
 import NavbarItem from "./NavbarItem";
 import { Link, useNavigate } from "react-router-dom";
+import NavLogo from "./NavLogo";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -10,11 +11,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="mt-8 ">
+    <nav className="mt-8 text-white">
       <Group justify="space-between" align="center">
-        <Text className="text-3xl font-bold text-primary">
-          <span className="text-black">We</span>Wash
-        </Text>
+        <NavLogo />
         <NavbarItem />
         <Group>
           <Link to={"/login"}>Sign In</Link>

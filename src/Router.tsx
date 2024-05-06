@@ -1,3 +1,4 @@
+import BookingPage from "pages/Booking/Booking";
 import HomePage from "pages/Home/Home";
 import Login from "pages/Login/Login";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -9,7 +10,7 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path={LOGIN} element={<Login />} />
-        <Route path={BOOKING} />
+        <Route path={BOOKING} element={<BookingPage />} />
         <Route path={ORDER} />
       </Routes>
     </BrowserRouter>

@@ -33,6 +33,7 @@ import {
   MdOutlineArrowRightAlt,
 } from "react-icons/md";
 import { COLORS } from "shared/constant/Colors";
+import { useNavigate } from "react-router-dom";
 
 const bookingStepData = [
   {
@@ -76,6 +77,12 @@ const serviceData = [
 ];
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
+  const handleNavigateBookingPage = () => {
+    navigate("/booking");
+  };
+
   return (
     <Container fluid className="font-poppins" px={0}>
       {/* <BackgroundImage src={HeroImage}> */}
@@ -130,6 +137,7 @@ const HomePage = () => {
             rightSection={
               <MdOutlineArrowRightAlt className="text-xl md:text-2xl" />
             }
+            onClick={handleNavigateBookingPage}
             className=" h-12 w-fit rounded-full bg-primary px-7 text-base font-medium drop-shadow-2xl"
           >
             Book Now

@@ -15,6 +15,7 @@ import {
 } from "@mantine/core";
 import Navbar from "../../shared/components/Navbar/Navbar";
 import {
+  AboutHeroImage,
   ContactCard,
   HeroImage,
   Porsche01,
@@ -29,29 +30,30 @@ import {
   MdChecklist,
   MdFileOpen,
   MdOutlineWbSunny,
+  MdOutlineArrowRightAlt,
 } from "react-icons/md";
 import { COLORS } from "shared/constant/Colors";
 
 const bookingStepData = [
   {
-    icon: <MdChecklist className="text-3xl text-primary" />,
+    icon: <MdChecklist className="text-2xl text-primary md:text-3xl" />,
     title: "Daftar Akun",
     description:
       "Masukkan data anda seperti nama anda, mobil, email, no.telp, dan lain-lain",
   },
   {
-    icon: <MdDateRange className="text-3xl text-primary" />,
+    icon: <MdDateRange className="text-2xl text-primary md:text-3xl" />,
     title: "Hari & Jam",
     description:
       "Pilih dan sesuaikan waktu, hari dan tanggal yang anda inginkan",
   },
   {
-    icon: <MdSendTimeExtension className="text-3xl text-primary" />,
+    icon: <MdSendTimeExtension className="text-2xl text-primary md:text-3xl" />,
     title: "Selesaikan Booking",
     description: "Tekan tombol selesai untuk menyelesaikan pesanan anda",
   },
   {
-    icon: <MdFileOpen className="text-3xl text-primary" />,
+    icon: <MdFileOpen className="text-2xl text-primary md:text-3xl" />,
     title: "Booking Detail",
     description:
       "Lihat Detail booking melalui email, whatsapp  atau halaman order detail",
@@ -75,7 +77,7 @@ const serviceData = [
 
 const HomePage = () => {
   return (
-    <Container fluid className="font-poppins">
+    <Container fluid className="font-poppins" px={0}>
       {/* <BackgroundImage src={HeroImage}> */}
 
       <Image
@@ -124,13 +126,18 @@ const HomePage = () => {
 
           <div className="h-[50px] w-0.5 bg-gray-300"></div>
 
-          <Button className=" h-12 w-fit rounded-full bg-primary px-7 text-base font-medium drop-shadow-2xl">
+          <Button
+            rightSection={
+              <MdOutlineArrowRightAlt className="text-xl md:text-2xl" />
+            }
+            className=" h-12 w-fit rounded-full bg-primary px-7 text-base font-medium drop-shadow-2xl"
+          >
             Book Now
           </Button>
         </Group>
       </Container>
 
-      <Space h={"120"} />
+      <Space h={"150"} />
 
       <Container size={"xl"}>
         <Text className="text-center text-xl font-medium text-secondary">
@@ -151,7 +158,7 @@ const HomePage = () => {
                 radius={"lg"}
                 withBorder
                 classNames={{
-                  root: `py-10 px-2.5 md:px-5 w-fit`,
+                  root: `py-10 px-2 md:px-5 w-fit`,
                 }}
               >
                 <Card.Section>
@@ -163,7 +170,7 @@ const HomePage = () => {
                 <Space h={"lg"} />
 
                 <Stack align="center" gap={10}>
-                  <Text className="text-sm font-medium md:text-xl ">
+                  <Text className="text-center text-sm font-medium md:text-xl ">
                     {booking.title}
                   </Text>
                   <Text className="text-text_gray text-center text-xs md:text-base">
@@ -176,9 +183,9 @@ const HomePage = () => {
         </SimpleGrid>
       </Container>
 
-      <Space h={"120"} />
+      <Space h={"150"} />
 
-      <Container size={"xl"} px={0}>
+      <Container size={"xl"} px={16}>
         <Grid align="center">
           <Grid.Col span={{ base: 12, md: 6 }}>
             <Image src={Porsche02} className="hidden md:block" />
@@ -236,40 +243,51 @@ const HomePage = () => {
         </Grid>
       </Container>
 
-      <Space h={"120"} />
+      <Space h={"150"} />
 
-      <Container size={"100%"} bg={COLORS.primary} mx={0} className="relative">
-        <Stack gap={30}>
-          <Text className="text-xl font-semibold text-primary">About us</Text>
-          <Stack gap={10}>
-            <Text className="text-3xl font-medium">
-              We do the best for your car
-            </Text>
-            <Text>
-              Monitoring sejauh mana progress Project anda melalui Task,
-              Milestone, Teams, dan fitur-fitur keren lainnya.
-            </Text>
+      <Container fluid bg={COLORS.primary} className="relative">
+        <Container size={"xl"} className="flex items-center py-12 md:py-32">
+          <Stack gap={30} className="text-white">
+            <Text className="text-xl ">About us</Text>
+            <Stack gap={10}>
+              <Text className="text-2xl font-medium md:text-3xl">
+                We do the best for your car
+              </Text>
+              <Text className="text-justify font-light md:w-2/4">
+                Monitoring sejauh mana progress Project anda melalui Task,
+                Milestone, Teams, dan fitur-fitur keren lainnya.
+              </Text>
+            </Stack>
           </Stack>
-        </Stack>
+
+          <div className="right-0 hidden w-fit md:absolute md:block ">
+            <Image
+              src={AboutHeroImage}
+              className="h-[500px] w-full rounded-bl-3xl rounded-tl-3xl drop-shadow-xl"
+            />
+          </div>
+        </Container>
       </Container>
 
-      <Container className="flex w-fit justify-center  " size={"xl"}>
+      <Space h={"150"} />
+
+      <Container className="flex w-fit justify-center" size={"xl"}>
         <BackgroundImage
           src={ContactCard}
           radius={"xl"}
           className="w-full md:w-10/12"
         >
-          <Paper bg={"transparent"} className="md:px-16 md:py-10">
+          <Paper bg={"transparent"} className="px-5 py-10 md:px-10 lg:px-16 ">
             <Flex
-              direction={{ base: "column", sm: "column", md: "row" }}
+              direction={{ base: "column", sm: "row", md: "row" }}
               align={"center"}
             >
-              <Stack gap={40}>
+              <Stack gap={40} className="items-center md:items-start">
                 <Stack gap={30}>
-                  <Text className="text-nowrap text-5xl font-semibold text-white">
+                  <Text className="text-nowrap text-2xl font-semibold text-white md:text-3xl lg:text-4xl xl:text-5xl">
                     Booking Sekarang
                   </Text>
-                  <Text className="text-white">
+                  <Text className="text-justify text-white">
                     Booking hari & jam agar menghemat waktu anda untuk mencuci
                     mobile dengan pelayanan terbaik dari kami
                   </Text>
@@ -280,13 +298,17 @@ const HomePage = () => {
                 </Button>
               </Stack>
 
-              <Image src={WulingAlmaz} className="w-7/12" />
+              <Image
+                src={WulingAlmaz}
+                className="order-first w-full md:order-last md:w-7/12
+              "
+              />
             </Flex>
           </Paper>
         </BackgroundImage>
       </Container>
 
-      <Space h={"120"} />
+      <Space h={"150"} />
     </Container>
   );
 };

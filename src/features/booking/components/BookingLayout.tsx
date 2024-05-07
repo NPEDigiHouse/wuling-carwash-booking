@@ -1,10 +1,9 @@
 import { Box, Group, Image, Stack } from "@mantine/core";
-import { PorscheWash } from "shared/constant/Images";
 import { IBookingLayout } from "../interfaces/BookingLayout";
 import { useLocation } from "react-router-dom";
 import CustomBreadcrumbs from "shared/components/Breadcrumbs/CustomBreadcrumbs";
 
-const BookingLayout = ({ children }: IBookingLayout) => {
+const BookingLayout = ({ children, thumbnail }: IBookingLayout) => {
   const { pathname } = useLocation();
 
   return (
@@ -20,7 +19,7 @@ const BookingLayout = ({ children }: IBookingLayout) => {
       </Group>
 
       <Box className="  w-fit   lg:w-[800px]">
-        <Image src={PorscheWash} />
+        <Image src={thumbnail} />
       </Box>
       {children}
     </Stack>

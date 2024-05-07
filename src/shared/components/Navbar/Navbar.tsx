@@ -1,4 +1,4 @@
-import { Button, Group } from "@mantine/core";
+import { Button, Flex, Group } from "@mantine/core";
 import NavbarItem from "./NavbarItem";
 import { Link, useNavigate } from "react-router-dom";
 import NavLogo from "./NavLogo";
@@ -12,11 +12,19 @@ const Navbar = () => {
 
   return (
     <nav className="mt-8 text-white">
-      <Group justify="space-between" align="center">
+      <Flex
+        direction={"row"}
+        justify="space-between"
+        align={"center"}
+        className="w-full"
+        wrap={"nowrap"}
+      >
         <NavLogo />
         <NavbarItem />
-        <Group>
-          <Link to={"/login"}>Sign In</Link>
+        <Group className="w-fit text-nowrap ">
+          <Link to={"/login"} className="">
+            Sign In
+          </Link>
           <Button
             classNames={{
               root: `bg-primary h-12 w-fit px-7 rounded-full text-base font-medium`,
@@ -27,7 +35,7 @@ const Navbar = () => {
             Sign Up
           </Button>
         </Group>
-      </Group>
+      </Flex>
     </nav>
   );
 };

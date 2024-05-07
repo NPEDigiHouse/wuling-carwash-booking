@@ -19,9 +19,9 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import CustomSelectInput from "shared/components/Input/CustomSelectInput";
 import CustomTextInput from "shared/components/Input/CustomTextInput";
 import Navbar from "shared/components/Navbar/Navbar";
-import { HeroImage, Porsche03, PorscheWash } from "shared/constant/Images";
+import { HeroImage, Porsche03, PorscheService } from "shared/constant/Images";
 
-const BookingCarwashPage = () => {
+const BookingCarservicePage = () => {
   return (
     <Container fluid mx={0} px={0} className="font-poppins">
       <Image
@@ -36,7 +36,7 @@ const BookingCarwashPage = () => {
       <Space h={50} />
 
       <Container size={"xl"} classNames={{ root: `px-0` }}>
-        <BookingLayout thumbnail={PorscheWash} title="Carwash">
+        <BookingLayout thumbnail={PorscheService} title="Car Service">
           <SimpleGrid
             cols={{ base: 1, md: 2 }}
             spacing={{ base: 30 }}
@@ -168,7 +168,7 @@ const BookingCarwashPage = () => {
                 className="h-fit w-full border  border-solid border-gray-200  bg-white px-5 py-7 shadow-md md:rounded-3xl md:px-10"
               >
                 <Text className="text-xl font-medium">
-                  Rincian Booking Carwash
+                  Rincian Booking Service
                 </Text>
 
                 <Divider size={"sm"} />
@@ -235,4 +235,4 @@ const BookingCarwashPage = () => {
   );
 };
 
-export default BookingCarwashPage;
+export default BookingCarservicePage;

@@ -1,3 +1,4 @@
+import BookingCarservicePage from "pages/BookingCarservice/BookingCarservice";
 import BookingCarwashPage from "pages/BookingCarwash/BookingCarwash";
 import HomePage from "pages/Home/Home";
 import Login from "pages/Login/Login";
@@ -16,7 +17,7 @@ const Router = () => {
         <Route path="/" element={<HomePage />} />
         <Route path={LOGIN} element={<Login />} />
         <Route path={BOOKING_CARWASH} element={<BookingCarwashPage />} />
-        <Route path={BOOKING_CARSERVICE} element={<BookingCarwashPage />} />
+        <Route path={BOOKING_CARSERVICE} element={<BookingCarservicePage />} />
         <Route path={ORDER} />
       </Routes>
     </BrowserRouter>

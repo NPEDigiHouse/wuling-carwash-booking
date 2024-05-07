@@ -1,5 +1,6 @@
 import {
   BackgroundImage,
+  Box,
   Button,
   Card,
   Container,
@@ -20,6 +21,8 @@ import {
   HeroImage,
   Porsche01,
   Porsche02,
+  PorscheService,
+  PorscheWash,
   WulingAlmaz,
 } from "shared/constant/Images";
 import { IoIosWater } from "react-icons/io";
@@ -31,6 +34,7 @@ import {
   MdFileOpen,
   MdOutlineWbSunny,
   MdOutlineArrowRightAlt,
+  MdStar,
 } from "react-icons/md";
 import { COLORS } from "shared/constant/Colors";
 import { useNavigate } from "react-router-dom";
@@ -79,8 +83,12 @@ const serviceData = [
 const HomePage = () => {
   const navigate = useNavigate();
 
-  const handleNavigateBookingPage = () => {
-    navigate("/booking");
+  const handleNavigateBookingCarwashPage = () => {
+    navigate("/booking-carwash");
+  };
+
+  const handleNavigateBookingCarservicePage = () => {
+    navigate("/booking-carservice");
   };
 
   return (
@@ -115,8 +123,8 @@ const HomePage = () => {
           <Group>
             <IoCarSport className="text-3xl text-primary" />
             <Stack gap={0}>
-              <Text className="text-lg font-medium">Working Day</Text>
-              <Text className="text-neutral-600">Senin - Minggu</Text>
+              <Text className="text-lg font-medium">Service Car</Text>
+              <Text className="text-neutral-600">Book to service your car</Text>
             </Stack>
           </Group>
 
@@ -126,8 +134,8 @@ const HomePage = () => {
             <IoIosWater className="text-3xl text-primary" />
 
             <Stack gap={0}>
-              <Text className="text-lg font-medium">Wash Time</Text>
-              <Text className="text-neutral-600">08:00 AM - 17:00 PM</Text>
+              <Text className="text-lg font-medium">Carwash</Text>
+              <Text className="text-neutral-600">Book to wash your car</Text>
             </Stack>
           </Group>
 
@@ -137,7 +145,7 @@ const HomePage = () => {
             rightSection={
               <MdOutlineArrowRightAlt className="text-xl md:text-2xl" />
             }
-            onClick={handleNavigateBookingPage}
+            onClick={handleNavigateBookingCarwashPage}
             className=" h-12 w-fit rounded-full bg-primary px-7 text-base font-medium drop-shadow-2xl"
           >
             Book Now
@@ -145,7 +153,7 @@ const HomePage = () => {
         </Group>
       </Container>
 
-      <Space h={"150"} />
+      <Space h={"120"} />
 
       <Container size={"xl"}>
         <Text className="text-center text-xl font-medium text-secondary">
@@ -191,7 +199,7 @@ const HomePage = () => {
         </SimpleGrid>
       </Container>
 
-      <Space h={"150"} />
+      <Space h={"120"} />
 
       <Container size={"xl"} px={16}>
         <Grid align="center">
@@ -249,6 +257,124 @@ const HomePage = () => {
             </Stack>
           </Grid.Col>
         </Grid>
+      </Container>
+
+      <Space h={"120"} />
+
+      <Container size={"xl"}>
+        <Stack gap={20}>
+          <Text className="text-center text-xl font-medium text-secondary">
+            Booking
+          </Text>
+
+          <Text className="text-text_gray text-center text-base font-light">
+            Booking untuk mendapatkan pelayanan berkualitas yang kami sediakan
+          </Text>
+        </Stack>
+
+        <Space h={30} />
+
+        <Box className="flex flex-col justify-center gap-20 md:w-full  md:flex-row">
+          <Card
+            shadow="lg"
+            classNames={{
+              root: `px-7 py-7  md:w-[350px] h-[350px] md:h-[400px] relative`,
+            }}
+            radius={"xl"}
+            bg={"#0055FE"}
+          >
+            <Group justify="end">
+              <Box className="rounded-lg border border-solid border-gray-300 bg-blue-400 p-1.5">
+                <MdStar className="text-blue-700 " />
+              </Box>
+            </Group>
+
+            <Space h={16} />
+
+            <Image src={PorscheWash} className=" w-full" />
+
+            <Stack
+              gap={12}
+              align="start"
+              justify="center"
+              className="h-full  text-white"
+            >
+              <Text className="text-2xl font-semibold md:text-4xl">
+                Wash Car
+              </Text>
+
+              <Text className="text-justify text-sm tracking-tight  text-neutral-200  md:text-base ">
+                Booking carwash dan dapatkan tempat untuk mencuci mobil anda
+              </Text>
+
+              <Text className="text-xl   font-semibold  text-white md:text-2xl">
+                IDR 60K
+              </Text>
+            </Stack>
+
+            <Button
+              rightSection={
+                <MdOutlineArrowRightAlt className="text-xl md:text-2xl" />
+              }
+              onClick={handleNavigateBookingCarwashPage}
+              className=" absolute bottom-0 right-0 h-14  w-1/2  rounded-t-none rounded-bl-none rounded-tl-3xl bg-white px-7 text-sm font-medium text-black drop-shadow-2xl"
+            >
+              Book Now
+            </Button>
+          </Card>
+
+          <Card
+            shadow="lg"
+            classNames={{
+              root: `px-7 py-7  md:w-[350px] h-[350px] md:h-[400px] relative`,
+            }}
+            radius={"xl"}
+            bg={"#9D9D9D"}
+          >
+            <Group justify="end">
+              <Box className="rounded-lg border border-solid border-gray-300 bg-gray-400  p-1.5">
+                <MdStar className="text-gray-500 " />
+              </Box>
+            </Group>
+
+            <Space h={16} />
+
+            <Image src={PorscheService} className=" w-full" />
+
+            {/* <Space h={16} /> */}
+
+            <Stack
+              gap={12}
+              align="start"
+              justify="center"
+              className="h-full  text-white"
+            >
+              <Text className="text-2xl font-semibold md:text-4xl">
+                Service Car
+              </Text>
+
+              <Text className=" text-justify text-sm tracking-tight  text-neutral-200  md:text-base ">
+                Booking service dan dapatkan tempat untuk service mobil anda
+              </Text>
+
+              <Text className="text-xl   font-semibold  text-white md:text-2xl">
+                IDR 150K
+              </Text>
+            </Stack>
+
+            <Button
+              rightSection={
+                <MdOutlineArrowRightAlt className="text-xl md:text-2xl" />
+              }
+              onClick={handleNavigateBookingCarservicePage}
+              className=" absolute bottom-0 right-0 h-14  w-1/2  rounded-t-none rounded-bl-none rounded-tl-3xl bg-white px-7 text-sm font-medium text-black drop-shadow-2xl"
+            >
+              Book Now
+            </Button>
+          </Card>
+        </Box>
+
+        <Space h={"xl"} />
       </Container>
 
       <Space h={"150"} />

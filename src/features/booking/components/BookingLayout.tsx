@@ -1,4 +1,4 @@
-import { Box, Group, Image, Stack, Text } from "@mantine/core";
+import { Box, Group, Image, SimpleGrid, Stack, Text } from "@mantine/core";
 import { IBookingLayout } from "../interfaces/BookingLayout";
 import { useLocation } from "react-router-dom";
 import CustomBreadcrumbs from "shared/components/Breadcrumbs/CustomBreadcrumbs";
@@ -25,7 +25,14 @@ const BookingLayout = ({ children, thumbnail, title }: IBookingLayout) => {
           {title}
         </Text>
       </Box>
-      {children}
+
+      <SimpleGrid
+        cols={{ base: 1, md: 2 }}
+        spacing={{ base: 30 }}
+        className="w-full"
+      >
+        {children}
+      </SimpleGrid>
     </Stack>
   );
 };

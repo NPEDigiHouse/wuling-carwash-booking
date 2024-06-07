@@ -38,6 +38,7 @@ import {
 } from "react-icons/md";
 import { COLORS } from "shared/constant/Colors";
 import { useNavigate } from "react-router-dom";
+import CardProduct from "shared/components/Card/CardProduct";
 
 const bookingStepData = [
   {
@@ -189,7 +190,7 @@ const HomePage = () => {
                   <Text className="text-center text-sm font-medium md:text-xl ">
                     {booking.title}
                   </Text>
-                  <Text className="text-text_gray text-center text-xs md:text-base">
+                  <Text className="text-center text-xs text-text_gray md:text-base">
                     {booking.description}
                   </Text>
                 </Stack>
@@ -246,7 +247,7 @@ const HomePage = () => {
                         <Text className="text-lg font-medium md:text-xl ">
                           {service.title}
                         </Text>
-                        <Text className="text-text_gray  text-sm md:text-base ">
+                        <Text className="text-sm  text-text_gray md:text-base ">
                           {service.description}
                         </Text>
                       </Stack>
@@ -267,7 +268,7 @@ const HomePage = () => {
             Booking
           </Text>
 
-          <Text className="text-text_gray text-center text-base font-light">
+          <Text className="text-center text-base font-light text-text_gray">
             Booking untuk mendapatkan pelayanan berkualitas yang kami sediakan
           </Text>
         </Stack>
@@ -275,103 +276,25 @@ const HomePage = () => {
         <Space h={30} />
 
         <Box className="flex flex-col justify-center gap-20 md:w-full  md:flex-row">
-          <Card
-            shadow="lg"
-            classNames={{
-              root: `px-7 py-7  md:w-[350px] h-[350px] md:h-[400px] relative`,
-            }}
-            radius={"xl"}
+          <CardProduct
+            title="Wash Car"
+            description="Booking carwash dan dapatkan tempat untuk mencuci mobil anda"
+            productPrice={60000}
+            btnControl={handleNavigateBookingCarwashPage}
             bg={"#0055FE"}
-          >
-            <Group justify="end">
-              <Box className="rounded-lg border border-solid border-gray-300 bg-blue-400 p-1.5">
-                <MdStar className="text-blue-700 " />
-              </Box>
-            </Group>
+            headerIcon={<MdStar className="text-blue-700 " />}
+            thumbnail={PorscheWash}
+          />
 
-            <Space h={16} />
-
-            <Image src={PorscheWash} className=" w-full" />
-
-            <Stack
-              gap={12}
-              align="start"
-              justify="center"
-              className="h-full  text-white"
-            >
-              <Text className="text-2xl font-semibold md:text-4xl">
-                Wash Car
-              </Text>
-
-              <Text className="text-justify text-sm tracking-tight  text-neutral-200  md:text-base ">
-                Booking carwash dan dapatkan tempat untuk mencuci mobil anda
-              </Text>
-
-              <Text className="text-xl   font-semibold  text-white md:text-2xl">
-                IDR 60K
-              </Text>
-            </Stack>
-
-            <Button
-              rightSection={
-                <MdOutlineArrowRightAlt className="text-xl md:text-2xl" />
-              }
-              onClick={handleNavigateBookingCarwashPage}
-              className=" absolute bottom-0 right-0 h-14  w-1/2  rounded-t-none rounded-bl-none rounded-tl-3xl bg-white px-7 text-sm font-medium text-black drop-shadow-2xl"
-            >
-              Book Now
-            </Button>
-          </Card>
-
-          <Card
-            shadow="lg"
-            classNames={{
-              root: `px-7 py-7  md:w-[350px] h-[350px] md:h-[400px] relative`,
-            }}
-            radius={"xl"}
+          <CardProduct
+            title="Service Car 2"
+            description="Booking carwash dan dapatkan tempat untuk mencuci mobil anda"
+            productPrice={60000}
+            btnControl={handleNavigateBookingCarservicePage}
             bg={"#9D9D9D"}
-          >
-            <Group justify="end">
-              <Box className="rounded-lg border border-solid border-gray-300 bg-gray-400  p-1.5">
-                <MdStar className="text-gray-500 " />
-              </Box>
-            </Group>
-
-            <Space h={16} />
-
-            <Image src={PorscheService} className=" w-full" />
-
-            {/* <Space h={16} /> */}
-
-            <Stack
-              gap={12}
-              align="start"
-              justify="center"
-              className="h-full  text-white"
-            >
-              <Text className="text-2xl font-semibold md:text-4xl">
-                Service Car
-              </Text>
-
-              <Text className=" text-justify text-sm tracking-tight  text-neutral-200  md:text-base ">
-                Booking service dan dapatkan tempat untuk service mobil anda
-              </Text>
-
-              <Text className="text-xl   font-semibold  text-white md:text-2xl">
-                IDR 150K
-              </Text>
-            </Stack>
-
-            <Button
-              rightSection={
-                <MdOutlineArrowRightAlt className="text-xl md:text-2xl" />
-              }
-              onClick={handleNavigateBookingCarservicePage}
-              className=" absolute bottom-0 right-0 h-14  w-1/2  rounded-t-none rounded-bl-none rounded-tl-3xl bg-white px-7 text-sm font-medium text-black drop-shadow-2xl"
-            >
-              Book Now
-            </Button>
-          </Card>
+            headerIcon={<MdStar className="text-gray-500 " />}
+            thumbnail={PorscheService}
+          />
         </Box>
 
         <Space h={"xl"} />
@@ -427,7 +350,7 @@ const HomePage = () => {
                   </Text>
                 </Stack>
 
-                <Button className=" bg-yellow h-12 w-fit rounded-full px-7 text-base font-medium text-neutral-700 drop-shadow-2xl">
+                <Button className=" h-12 w-fit rounded-full bg-yellow px-7 text-base font-medium text-neutral-700 drop-shadow-2xl">
                   Book Now
                 </Button>
               </Stack>

@@ -1,5 +1,5 @@
 import { Box, Group, Image, SimpleGrid, Stack, Text } from "@mantine/core";
-import { IBookingLayout } from "../interfaces/BookingLayout";
+import { IBookingLayout } from "../../booking/Interfaces/BookingLayout";
 import { useLocation } from "react-router-dom";
 import CustomBreadcrumbs from "shared/components/Breadcrumbs/CustomBreadcrumbs";
 
@@ -27,7 +27,7 @@ const BookingLayout = ({ children, thumbnail, title }: IBookingLayout) => {
       </Box>
 
       <SimpleGrid
-        cols={{ base: 1, md: 2 }}
+        cols={{ base: 1, md: 1 }}
         spacing={{ base: 30 }}
         className="w-full"
       >

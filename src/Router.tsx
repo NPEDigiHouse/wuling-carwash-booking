@@ -1,3 +1,4 @@
+import CustomerPage from "pages/Admin/Customer/CustomerPage";
 import DashboardPage from "pages/Admin/Dashboard/DashboardPage";
 import BookingCarservicePage from "pages/BookingCarservice/BookingCarservice";
 import BookingCarwashPage from "pages/BookingCarwash/BookingCarwash";
@@ -5,6 +6,7 @@ import HomePage from "pages/Home/Home";
 import Login from "pages/Login/Login";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
+  ADMIN_CUSTOMER,
   ADMIN_HOME,
   BOOKING_CARSERVICE,
   BOOKING_CARWASH,
@@ -22,6 +24,7 @@ const Router = () => {
         <Route path={BOOKING_CARSERVICE} element={<BookingCarservicePage />} />
         <Route path={ORDER} />
         <Route path={ADMIN_HOME} element={<DashboardPage />} />
+        <Route path={ADMIN_CUSTOMER} element={<CustomerPage />} />
       </Routes>
     </BrowserRouter>
   );

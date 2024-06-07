@@ -16,7 +16,7 @@ import {
 import CustomAdminCard from "features/Admin/components/Card/CustomAdminCard";
 import { IoCard, IoCart, IoPeople } from "react-icons/io5";
 import AdminLayout from "shared/layouts/AdminLayout";
-import CustomAreaChart from "../Chart/CustomAreaChart";
+import CustomAreaChart from "../../../features/Admin/components/Chart/CustomAreaChart";
 import { Porsche03 } from "shared/constant/Images";
 
 const DashboardPage = () => {
@@ -26,7 +26,7 @@ const DashboardPage = () => {
         <SimpleGrid cols={4} spacing={20}>
           <CustomAdminCard
             classNames={{
-              root: ` `,
+              root: ``,
             }}
           >
             <Group justify="space-between">

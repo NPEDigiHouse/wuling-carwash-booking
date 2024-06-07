@@ -1,8 +1,8 @@
 import { Group, Text } from "@mantine/core";
 import CustomMenu from "shared/components/Menu/CustomMenu";
-import ProfileBadge from "../Badge/ProfileBadge";
+import ProfileBadge from "../../features/Admin/components/Badge/ProfileBadge";
 
-const HeaderAdmin = () => {
+const HeaderAdminLayout = () => {
   return (
     <Group justify="space-between" ff={"poppins"} align="center">
       <Text>Admin Carwash</Text>
@@ -14,4 +14,4 @@ const HeaderAdmin = () => {
   );
 };
 
-export default HeaderAdmin;
+export default HeaderAdminLayout;

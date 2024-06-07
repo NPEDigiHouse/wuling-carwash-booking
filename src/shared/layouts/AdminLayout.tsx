@@ -1,39 +1,50 @@
-import { AppShell } from "@mantine/core";
-import HeaderAdmin from "features/Admin/components/Header/HeaderAdmin";
+import { AppShell, Space } from "@mantine/core";
 import NavbarAdmin from "features/Admin/components/Navbar/NavbarAdmin";
+import HeaderPageLayout from "features/Admin/layouts/Header/HeaderPageLayout";
 import { ReactNode } from "react";
+import { useLocation } from "react-router-dom";
 
 interface IAdminLayout {
   children: ReactNode;
 }
 
 const AdminLayout = ({ children }: IAdminLayout) => {
+  const { pathname } = useLocation();
+
+  const headerTitle = pathname.split("/")[pathname.split("/").length - 1];
+
+  const convertHeaderTitle = () => {
+    const getFirstWord = headerTitle.split("")[0].toUpperCase();
+    const getRestWord = headerTitle.slice(1, headerTitle.split("").length);
+    return `${getFirstWord}${getRestWord}`;
+  };
+
   return (
     <AppShell
       classNames={{
         main: `bg-neutral-100 `,
-        header: `px-8 flex flex-col justify-center align-items`,
+        header: `px-8 flex flex-col justify-center align-items -z-10`,
+        navbar: `bg-blue-800`,
       }}
-      header={{ height: 80 }}
+      //   header={{ height: 80 }}
       navbar={{
         width: 300,
         breakpoint: "sm",
       }}
-      padding={"lg"}
+      padding={"xl"}
     >
-      <AppShell.Header>
-        {/* <Burger
-          opened={opened}
-          onClick={toggle}
-          hiddenFrom="sm"
-          size="sm"
-        /> */}
-        <HeaderAdmin />
-      </AppShell.Header>
-      <AppShell.Navbar p={"lg"}>
+      {/* <AppShell.Header>
+        <HeaderAdminLayout />
+      </AppShell.Header> */}
+      <AppShell.Navbar p={"xl"} className="">
         <NavbarAdmin />
       </AppShell.Navbar>
-      <AppShell.Main>{children}</AppShell.Main>
+      <AppShell.Main>
+        {" "}
+        <HeaderPageLayout title={`${convertHeaderTitle()} Page`} />
+        <Space h={20} />
+        {children}
+      </AppShell.Main>
     </AppShell>
   );
 };

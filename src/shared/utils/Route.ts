@@ -7,3 +7,4 @@ export const ADMIN_HOME = "admin";
 export const ADMIN_ORDERS = "admin/orders";
 export const ADMIN_BOOKING = "admin/booking";
 export const ADMIN_REPORT = "admin/report";
+export const ADMIN_CUSTOMER = "admin/customers";

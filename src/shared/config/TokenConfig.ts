@@ -21,6 +21,12 @@ class TokenConfig {
 
     return tokenItem;
   }
+
+  removeToken() {
+    const tokenRemove = CookieLibs.deleteCookie(this.tokenName);
+
+    return tokenRemove;
+  }
 }
 
 export default new TokenConfig();

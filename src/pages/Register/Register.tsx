@@ -90,6 +90,7 @@ const RegisterPage = () => {
                   <CustomTextInput
                     label="No.telp / Whatsapp"
                     placeholder="Masukkan nomor aktif"
+                    type="number"
                     rightSection={<MdPhoneIphone />}
                     classNames={{
                       input: `bg-[#F2F2F2] h-14 rounded-xl font-poppins`,

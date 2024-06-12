@@ -7,20 +7,32 @@ export const http = axios.create({
 
 http.interceptors.request.use(
   (config) => {
-    console.log("config : ", config);
-
     const token = TokenConfig.getToken();
-
-    console.log("token : ", token);
 
     if (!config.headers.Authorization) {
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
+        console.log("token : ", token);
       }
     }
     return config;
   },
   (error) => {
+    console.log("error axios : ", error);
+
+    return Promise.reject(error);
+  },
+);
+
+http.interceptors.response.use(
+  (res) => {
+    console.log("res : ", res);
+
+    return res;
+  },
+  (error) => {
+    console.log("error : ", error);
+
     return Promise.reject(error);
   },
 );

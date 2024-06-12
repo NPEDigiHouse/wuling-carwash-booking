@@ -39,8 +39,9 @@ import {
 import { COLORS } from "shared/constant/Colors";
 import { useNavigate } from "react-router-dom";
 import CardProduct from "shared/components/Card/CardProduct";
-import { useContext } from "react";
-import { UserRoleContext } from "context/UserRoleContext";
+import { useQueryAllProducts } from "shared/hooks/api/Product/useQueryAllProducts";
+import { useEffect, useState } from "react";
+import { IProductResponseParams } from "services/Product/ProductServiceInterface";
 
 const bookingStepData = [
   {
@@ -85,7 +86,7 @@ const serviceData = [
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const userRole = useContext(UserRoleContext);
+  const [products, setProducts] = useState<IProductResponseParams[]>([]);
 
   const handleNavigateBookingCarwashPage = () => {
     navigate("/booking-carwash");
@@ -95,7 +96,17 @@ const HomePage = () => {
     navigate("/booking-carservice");
   };
 
-  console.log("user : ", userRole);
+  const { data: queryProducts } = useQueryAllProducts();
+
+  console.log("products : ", products);
+
+  useEffect(() => {
+    if (!queryProducts?.data) {
+      setProducts([]);
+    } else {
+      setProducts(queryProducts?.data);
+    }
+  }, [products, queryProducts?.data]);
 
   return (
     <Container fluid className="font-poppins" px={0}>
@@ -282,9 +293,9 @@ const HomePage = () => {
 
         <Box className="flex flex-col justify-center gap-20 md:w-full  md:flex-row">
           <CardProduct
-            title="Wash Car"
+            title={products[0].productName}
             description="Booking carwash dan dapatkan tempat untuk mencuci mobil anda"
-            productPrice={60000}
+            productPrice={products[0].price}
             btnControl={handleNavigateBookingCarwashPage}
             bg={"#0055FE"}
             headerIcon={<MdStar className="text-blue-700 " />}
@@ -292,9 +303,9 @@ const HomePage = () => {
           />
 
           <CardProduct
-            title="Service Car 2"
+            title={products[1].productName}
             description="Booking carwash dan dapatkan tempat untuk mencuci mobil anda"
-            productPrice={60000}
+            productPrice={products[1].price}
             btnControl={handleNavigateBookingCarservicePage}
             bg={"#9D9D9D"}
             headerIcon={<MdStar className="text-gray-500 " />}

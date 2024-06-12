@@ -1,6 +1,10 @@
-import { createStore } from "redux";
-import mainReducer from "redux/Reducers/Reducer";
+import { configureStore } from "@reduxjs/toolkit";
+import credentialReducer from "redux/Slice/CredentialSlice";
 
-const store = createStore(mainReducer);
+const store = configureStore({
+  reducer: {
+    credential: credentialReducer,
+  },
+});
 
 export default store;

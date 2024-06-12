@@ -20,21 +20,15 @@ import CustomTextInput from "shared/components/Input/CustomTextInput";
 import Navbar from "shared/components/Navbar/Navbar";
 import { HeroImage, Porsche03, PorscheWash } from "shared/constant/Images";
 import { useForm } from "@mantine/form";
-import { useDispatch } from "react-redux";
-import { selectServiceTypeAction } from "redux/actions/Action";
 
 const BookingCarwashPage = () => {
-  const dispacth = useDispatch();
-
   const carwashForm = useForm({
     initialValues: {
       fullname: "",
     },
   });
 
-  const handleSubmit = carwashForm.onSubmit((values) => {
-    dispacth(selectServiceTypeAction(values.fullname));
-  });
+  const handleSubmit = carwashForm.onSubmit(() => {});
 
   return (
     <Container fluid mx={0} px={0} className="font-poppins">

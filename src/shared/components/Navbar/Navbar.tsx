@@ -1,15 +1,17 @@
-import { Avatar, Button, Flex, Group, Stack, Text } from "@mantine/core";
+import { Button, Flex, Group } from "@mantine/core";
 import NavbarItem from "./NavbarItem";
 import { Link, useNavigate } from "react-router-dom";
 import NavLogo from "./NavLogo";
-import { useContext } from "react";
-import { UserRoleContext } from "context/UserRoleContext";
-import ProfileMenu from "../Menu/ProfileMenu";
+import { ReactNode } from "react";
+import TokenConfig from "shared/config/TokenConfig";
 
-const Navbar = () => {
+interface INavbarPropsType {
+  children?: ReactNode;
+}
+const Navbar = ({ children }: INavbarPropsType) => {
   const navigate = useNavigate();
 
-  const userRole = useContext(UserRoleContext);
+  const token = TokenConfig.getToken();
 
   const handleNavigateButtonRegister = () => {
     navigate("/register");
@@ -26,7 +28,7 @@ const Navbar = () => {
       >
         <NavLogo />
         <NavbarItem />
-        {!userRole ? (
+        {!token ? (
           <Group className="w-fit text-nowrap ">
             <Link to={"/login"} className="">
               Sign In
@@ -42,17 +44,22 @@ const Navbar = () => {
             </Button>
           </Group>
         ) : (
-          <ProfileMenu
-            profileBadge={
-              <Group>
-                <Avatar size={"md"} />
-                <Stack gap={5}>
-                  <Text className="text-sm">{userRole.customer.name}</Text>
-                  <Text className="text-xs text-gray-500">{userRole.role}</Text>
-                </Stack>
-              </Group>
-            }
-          />
+          // <ProfileMenu
+          //   profileBadge={
+          //     <Group>
+          //       <Avatar size={"md"} />
+          //       <Stack gap={5}>
+          //         <Text className="text-sm">
+          //           {userRole.userDetail?.customer.name}
+          //         </Text>
+          //         <Text className="text-xs text-gray-500">
+          //           {userRole.userDetail?.role}
+          //         </Text>
+          //       </Stack>
+          //     </Group>
+          //   }
+          // />
+          children
         )}
       </Flex>
     </nav>

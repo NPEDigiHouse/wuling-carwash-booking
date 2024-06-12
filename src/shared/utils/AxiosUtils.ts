@@ -18,21 +18,15 @@ http.interceptors.request.use(
     return config;
   },
   (error) => {
-    console.log("error axios : ", error);
-
     return Promise.reject(error);
   },
 );
 
 http.interceptors.response.use(
   (res) => {
-    console.log("res : ", res);
-
     return res;
   },
   (error) => {
-    console.log("error : ", error);
-
     return Promise.reject(error);
   },
 );

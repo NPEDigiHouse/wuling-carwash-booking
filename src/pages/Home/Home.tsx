@@ -39,6 +39,8 @@ import {
 import { COLORS } from "shared/constant/Colors";
 import { useNavigate } from "react-router-dom";
 import CardProduct from "shared/components/Card/CardProduct";
+import { useContext } from "react";
+import { UserRoleContext } from "context/UserRoleContext";
 
 const bookingStepData = [
   {
@@ -83,6 +85,7 @@ const serviceData = [
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const userRole = useContext(UserRoleContext);
 
   const handleNavigateBookingCarwashPage = () => {
     navigate("/booking-carwash");
@@ -91,6 +94,8 @@ const HomePage = () => {
   const handleNavigateBookingCarservicePage = () => {
     navigate("/booking-carservice");
   };
+
+  console.log("user : ", userRole);
 
   return (
     <Container fluid className="font-poppins" px={0}>

@@ -10,17 +10,37 @@ import {
   Text,
   TextInput,
 } from "@mantine/core";
+import { useForm } from "@mantine/form";
 import NavLogo from "shared/components/Navbar/NavLogo";
 import { COLORS } from "shared/constant/Colors";
 import { Porsche01 } from "shared/constant/Images";
+import { useLoginMutation } from "shared/hooks/api/Auth/useLoginMutation";
 
 const Login = () => {
+  const form = useForm({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const { mutate: login } = useLoginMutation();
+
+  const handleSubmitLogin = form.onSubmit((values) => {
+    const payload = {
+      email: values.email,
+      password: values.password,
+    };
+
+    login(payload);
+  });
+
   return (
     <Container className="font-poppins md:px-0" size={"100%"}>
-      <SimpleGrid cols={{ base: 1, lg: 2 }}>
+      <SimpleGrid cols={{ base: 1, md: 2 }}>
         <Stack className="h-screen " justify="center" align="center" gap={30}>
           <NavLogo />
-          <form className="lg:w-[400px]">
+          <form className="lg:w-[400px]" onSubmit={handleSubmitLogin}>
             <Flex
               direction={"column"}
               gap={{ base: 30, md: 50 }}
@@ -39,23 +59,26 @@ const Login = () => {
                   label="Email"
                   placeholder="example@gmail.com"
                   classNames={{
-                    input: `bg-[#F2F2F2] h-12 rounded-lg`,
+                    input: `bg-[#F2F2F2] h-12 rounded-lg font-poppins`,
                     label: `font-poppins mb-2.5 text-base`,
                   }}
+                  {...form.getInputProps("email")}
                 />
                 <PasswordInput
                   label="Password"
                   placeholder="********"
                   classNames={{
-                    input: `bg-[#F2F2F2] h-12 rounded-lg`,
+                    input: `bg-[#F2F2F2] h-12 rounded-lg font-poppins`,
                     label: `font-poppins mb-2.5 text-base`,
                   }}
+                  {...form.getInputProps("password")}
                 />
               </Stack>
 
               <Button
                 fullWidth
                 className="h-12   rounded-md bg-primary px-7 text-base font-medium drop-shadow-2xl"
+                type="submit"
               >
                 Login
               </Button>
@@ -70,10 +93,13 @@ const Login = () => {
 
         <Box
           bg={COLORS.primary}
-          className="relative hidden items-center md:flex"
+          className="relative hidden items-center  lg:flex"
         >
           {/* <div className=""> */}
-          <Image src={Porsche01} className="absolute right-20 h-fit w-fit" />
+          <Image
+            src={Porsche01}
+            className="absolute right-12 md:h-fit md:w-[450px] lg:h-fit lg:w-fit"
+          />
           {/* </div> */}
         </Box>
       </SimpleGrid>

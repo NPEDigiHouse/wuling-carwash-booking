@@ -1,4 +1,5 @@
 import {
+  Avatar,
   BackgroundImage,
   Box,
   Button,
@@ -40,8 +41,10 @@ import { COLORS } from "shared/constant/Colors";
 import { useNavigate } from "react-router-dom";
 import CardProduct from "shared/components/Card/CardProduct";
 import { useQueryAllProducts } from "shared/hooks/api/Product/useQueryAllProducts";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IProductResponseParams } from "services/Product/ProductServiceInterface";
+import { UserRoleContext } from "context/UserRoleContext";
+import ProfileMenu from "shared/components/Menu/ProfileMenu";
 
 const bookingStepData = [
   {
@@ -96,17 +99,18 @@ const HomePage = () => {
     navigate("/booking-carservice");
   };
 
-  const { data: queryProducts } = useQueryAllProducts();
+  const queryProducts = useQueryAllProducts();
 
-  console.log("products : ", products);
+  const userRole = useContext(UserRoleContext);
+
+  console.log("products : ", userRole);
 
   useEffect(() => {
-    if (!queryProducts?.data) {
+    if (queryProducts?.data) {
       setProducts([]);
-    } else {
-      setProducts(queryProducts?.data);
+      setProducts(queryProducts?.data?.data);
     }
-  }, [products, queryProducts?.data]);
+  }, [queryProducts.isSuccess, queryProducts.isFetching, queryProducts.data]);
 
   return (
     <Container fluid className="font-poppins" px={0}>
@@ -117,7 +121,23 @@ const HomePage = () => {
         className="absolute left-0 top-0 -z-20 h-[610px] w-screen "
       />
       <Container size={"xl"}>
-        <Navbar />
+        <Navbar>
+          <ProfileMenu
+            profileBadge={
+              <Group>
+                <Avatar size={"md"} />
+                <Stack gap={5}>
+                  <Text className="text-sm">
+                    {userRole?.userDetail?.customer.name}
+                  </Text>
+                  <Text className="text-xs text-gray-500">
+                    {userRole?.userDetail?.role}
+                  </Text>
+                </Stack>
+              </Group>
+            }
+          />
+        </Navbar>
       </Container>
 
       <Space h={"100"} />
@@ -183,9 +203,10 @@ const HomePage = () => {
           cols={{ base: 2, lg: 4 }}
           spacing={{ base: 10, md: 40, lg: 50 }}
         >
-          {bookingStepData.map((booking) => {
+          {bookingStepData.map((booking, index) => {
             return (
               <Card
+                key={index}
                 bg={"white"}
                 shadow="sm"
                 radius={"lg"}
@@ -239,13 +260,14 @@ const HomePage = () => {
                   root: `flex-col md:flex-row gap-5`,
                 }}
               >
-                {serviceData.map((service) => {
+                {serviceData.map((service, index) => {
                   return (
                     <Card
                       bg={"white"}
                       shadow="sm"
                       radius={"lg"}
                       withBorder
+                      key={index}
                       classNames={{
                         root: `py-10 px-5 w-fit`,
                       }}
@@ -293,9 +315,9 @@ const HomePage = () => {
 
         <Box className="flex flex-col justify-center gap-20 md:w-full  md:flex-row">
           <CardProduct
-            title={products[0].productName}
+            title={products[0]?.productName}
             description="Booking carwash dan dapatkan tempat untuk mencuci mobil anda"
-            productPrice={products[0].price}
+            productPrice={products[0]?.price}
             btnControl={handleNavigateBookingCarwashPage}
             bg={"#0055FE"}
             headerIcon={<MdStar className="text-blue-700 " />}
@@ -303,9 +325,9 @@ const HomePage = () => {
           />
 
           <CardProduct
-            title={products[1].productName}
+            title={products[1]?.productName}
             description="Booking carwash dan dapatkan tempat untuk mencuci mobil anda"
-            productPrice={products[1].price}
+            productPrice={products[1]?.price}
             btnControl={handleNavigateBookingCarservicePage}
             bg={"#9D9D9D"}
             headerIcon={<MdStar className="text-gray-500 " />}

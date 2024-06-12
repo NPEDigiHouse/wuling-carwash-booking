@@ -1,19 +1,28 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
+import { ICredentialUserResponsePrams } from "services/Auth/AuthServiceInterface";
 import { useCredentialQuery } from "shared/hooks/api/Auth/useCredentialQuery";
 
 interface IUserProviderPropsType {
   children: ReactNode;
 }
 
-export const UserRoleContext = createContext(null);
+export const UserRoleContext =
+  createContext<ICredentialUserResponsePrams | null>(null);
 
 const UserProvider = (params: IUserProviderPropsType) => {
-  const [userRoleDetail, setUserRoleDetail] = useState(null);
+  const [userRoleDetail, setUserRoleDetail] =
+    useState<ICredentialUserResponsePrams | null>(null);
 
   const { data: credential } = useCredentialQuery();
 
+  console.log("user data : ", credential?.data);
+
   useEffect(() => {
-    setUserRoleDetail(credential);
+    if (!credential?.data) {
+      setUserRoleDetail(null);
+    } else {
+      setUserRoleDetail(credential?.data);
+    }
   }, [userRoleDetail, credential]);
 
   return (

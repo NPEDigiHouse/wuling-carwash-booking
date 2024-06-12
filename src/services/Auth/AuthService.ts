@@ -1,5 +1,9 @@
 /* eslint-disable no-useless-catch */
-import { ILoginRequestParams } from "./AuthServiceInterface";
+import { ApiBaseResponse } from "shared/config/APIResponse";
+import {
+  ICredentialUserResponsePrams,
+  ILoginRequestParams,
+} from "./AuthServiceInterface";
 import { http } from "shared/utils/AxiosUtils";
 
 class AuthService {
@@ -25,18 +29,18 @@ class AuthService {
     }
   }
 
-  async credential() {
-    try {
-      const response = await http.get(
-        `${import.meta.env.VITE_API_URL}/auth/credential`,
-      );
+  async credential(
+    signal?: AbortSignal | undefined,
+  ): Promise<ApiBaseResponse<ICredentialUserResponsePrams>> {
+    const response = await http.get(
+      `${import.meta.env.VITE_API_URL}/auth/credential`,
+      { signal },
+    );
 
-      const data = await response.data;
+    const data: ApiBaseResponse<ICredentialUserResponsePrams> =
+      await response.data;
 
-      return data;
-    } catch (error) {
-      throw error;
-    }
+    return data;
   }
 }
 

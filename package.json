@@ -16,7 +16,11 @@
     "@mantine/form": "^7.8.1",
     "@mantine/hooks": "^7.8.1",
     "@mantine/modals": "^7.8.1",
+    "@reduxjs/toolkit": "^2.2.5",
+    "@tanstack/react-query": "^5.40.1",
+    "axios": "^1.7.2",
     "dayjs": "^1.11.11",
+    "js-cookie": "^3.0.5",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
     "react": "^18.2.0",
@@ -30,6 +34,7 @@
     "vite-tsconfig-paths": "^4.3.2"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",

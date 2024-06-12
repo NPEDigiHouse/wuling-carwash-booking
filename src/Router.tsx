@@ -6,6 +6,7 @@ import BookingCarservicePage from "pages/Customers/BookingCarservice/BookingCars
 import BookingCarwashPage from "pages/Customers/BookingCarwash/BookingCarwash";
 import HomePage from "pages/Home/Home";
 import Login from "pages/Login/Login";
+import RegisterPage from "pages/Register/Register";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
   ADMIN_CREATE_TIMESLOT,
@@ -16,6 +17,7 @@ import {
   BOOKING_CARWASH,
   LOGIN,
   ORDER,
+  REGISTER,
 } from "shared/utils/Route";
 
 const Router = () => {
@@ -31,6 +33,7 @@ const Router = () => {
         <Route path={ADMIN_CUSTOMER} element={<CustomerPage />} />
         <Route path={ADMIN_TIMESLOT} element={<TimeslotPage />} />
         <Route path={ADMIN_CREATE_TIMESLOT} element={<CreateTimeslotPage />} />
+        <Route path={REGISTER} element={<RegisterPage />} />
       </Routes>
     </BrowserRouter>
   );

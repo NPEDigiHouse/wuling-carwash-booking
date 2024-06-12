@@ -6,27 +6,33 @@ interface IUserProviderPropsType {
   children: ReactNode;
 }
 
-export const UserRoleContext =
-  createContext<ICredentialUserResponsePrams | null>(null);
+interface IUserContextValueType {
+  userDetail: ICredentialUserResponsePrams | null;
+  isSuccess: boolean;
+}
+
+export const UserRoleContext = createContext<IUserContextValueType | null>(
+  null,
+);
 
 const UserProvider = (params: IUserProviderPropsType) => {
   const [userRoleDetail, setUserRoleDetail] =
     useState<ICredentialUserResponsePrams | null>(null);
 
-  const { data: credential } = useCredentialQuery();
+  const credential = useCredentialQuery();
 
   console.log("user data : ", credential?.data);
 
   useEffect(() => {
-    if (!credential?.data) {
-      setUserRoleDetail(null);
-    } else {
-      setUserRoleDetail(credential?.data);
+    if (credential?.data) {
+      setUserRoleDetail(credential?.data?.data);
     }
-  }, [userRoleDetail, credential]);
+  }, [credential.isSuccess, credential.isFetching, credential.data]);
 
   return (
-    <UserRoleContext.Provider value={userRoleDetail}>
+    <UserRoleContext.Provider
+      value={{ userDetail: userRoleDetail, isSuccess: credential.isSuccess }}
+    >
       {params.children}
     </UserRoleContext.Provider>
   );

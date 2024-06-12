@@ -3,6 +3,7 @@ import { ApiBaseResponse } from "shared/config/APIResponse";
 import {
   ICredentialUserResponsePrams,
   ILoginRequestParams,
+  IRegisterRequestParams,
 } from "./AuthServiceInterface";
 import { http } from "shared/utils/AxiosUtils";
 
@@ -22,6 +23,21 @@ class AuthService {
       const data = await response.data;
 
       console.log("http : ", http);
+
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async register(payload: IRegisterRequestParams) {
+    try {
+      const response = await http.post(
+        `${import.meta.env.VITE_API_URL}/auth/register`,
+        payload,
+      );
+
+      const data = await response.data;
 
       return data;
     } catch (error) {

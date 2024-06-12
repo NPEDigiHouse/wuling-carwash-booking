@@ -3,6 +3,16 @@ export interface ILoginRequestParams {
   password: string;
 }
 
+export interface IRegisterRequestParams {
+  email: string;
+  password: string;
+  username: string;
+  customer: {
+    name: string;
+    phoneNumber: string;
+  };
+}
+
 export interface ICredentialUserResponsePrams {
   id: string;
   email: string;

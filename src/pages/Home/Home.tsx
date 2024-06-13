@@ -40,11 +40,11 @@ import {
 import { COLORS } from "shared/constant/Colors";
 import { useNavigate } from "react-router-dom";
 import CardProduct from "shared/components/Card/CardProduct";
-import { useQueryAllProducts } from "shared/hooks/api/Product/useQueryAllProducts";
 import { useContext, useEffect, useState } from "react";
 import { IProductResponseParams } from "services/Product/ProductServiceInterface";
 import { UserRoleContext } from "context/UserRoleContext";
 import ProfileMenu from "shared/components/Menu/ProfileMenu";
+import { useQueryProductsHomepage } from "shared/hooks/ui/Home/useQueryProductsHomepage";
 
 const bookingStepData = [
   {
@@ -99,7 +99,7 @@ const HomePage = () => {
     navigate("/booking-carservice");
   };
 
-  const queryProducts = useQueryAllProducts();
+  const queryProducts = useQueryProductsHomepage();
 
   const userRole = useContext(UserRoleContext);
 
@@ -108,7 +108,7 @@ const HomePage = () => {
   useEffect(() => {
     if (queryProducts?.data) {
       setProducts([]);
-      setProducts(queryProducts?.data?.data);
+      setProducts(queryProducts?.data.data);
     }
   }, [queryProducts.isSuccess, queryProducts.isFetching, queryProducts.data]);
 

@@ -1,9 +1,20 @@
 import { Text } from "@mantine/core";
 
-const NavLogo = () => {
+interface INavLogoProps {
+  variant?: "primary" | "secondary" | "third";
+}
+
+const NavLogo = ({ variant }: INavLogoProps) => {
   return (
-    <Text className="text-3xl font-bold text-white">
-      <span className="text-third">We</span>Wash
+    <Text
+      className={`text-3xl font-bold ${variant === "primary" || variant === "third" ? "text-white" : "text-black"}`}
+    >
+      <span
+        className={`${variant === "primary" ? "text-third" : variant === "secondary" ? "text-primary" : "text-blue-500"}`}
+      >
+        We
+      </span>
+      Wash
     </Text>
   );
 };

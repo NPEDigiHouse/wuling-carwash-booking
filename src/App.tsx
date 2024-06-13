@@ -1,4 +1,6 @@
 import { MantineProvider } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
+
 import Router from "Router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import UserProvider from "context/UserRoleContext";
@@ -12,6 +14,7 @@ function App() {
     // <Provider store={store}>
     <QueryClientProvider client={queryClient}>
       <MantineProvider>
+        <Notifications position="top-center" />
         <UserProvider>
           <Router />
         </UserProvider>

@@ -26,7 +26,7 @@ const Navbar = ({ children }: INavbarPropsType) => {
         className="w-full"
         wrap={"nowrap"}
       >
-        <NavLogo />
+        <NavLogo variant="primary" />
         <NavbarItem />
         {!token ? (
           <Group className="w-fit text-nowrap ">

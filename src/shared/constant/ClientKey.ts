@@ -16,6 +16,9 @@ export const CLIENT_KEY = {
   PRODUCT: {
     GET_ALL_PRODUCTS: "get-all-products-query-id-key",
   },
+  TIMESLOTS: {
+    GET_ALL_TIMESLOTS: "get-all-timeslots-query-id-key",
+  },
   PUBLIC: {
     GET_ALL_PRODUCTS_HOMEPAGE: "get-all-products-homepage-query-id-key",
   },

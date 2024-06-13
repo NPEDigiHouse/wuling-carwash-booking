@@ -11,6 +11,7 @@ import {
   TextInput,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import { useNavigate } from "react-router-dom";
 import NavLogo from "shared/components/Navbar/NavLogo";
 import { COLORS } from "shared/constant/Colors";
 import { Porsche01 } from "shared/constant/Images";
@@ -24,7 +25,9 @@ const Login = () => {
     },
   });
 
-  const { mutate: login } = useLoginMutation();
+  const navigate = useNavigate();
+
+  const login = useLoginMutation();
 
   const handleSubmitLogin = form.onSubmit((values) => {
     const payload = {
@@ -32,14 +35,18 @@ const Login = () => {
       password: values.password,
     };
 
-    login(payload);
+    login.mutate(payload);
   });
+
+  if (login.isSuccess && !login.isPending) {
+    navigate("/");
+  }
 
   return (
     <Container className="font-poppins md:px-0" size={"100%"}>
       <SimpleGrid cols={{ base: 1, md: 2 }}>
         <Stack className="h-screen " justify="center" align="center" gap={30}>
-          <NavLogo />
+          <NavLogo variant="secondary" />
           <form className="lg:w-[400px]" onSubmit={handleSubmitLogin}>
             <Flex
               direction={"column"}

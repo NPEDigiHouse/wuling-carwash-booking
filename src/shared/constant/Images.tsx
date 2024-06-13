@@ -7,7 +7,8 @@ import HeroImage from "../../assets/images/hero background.png";
 import AboutHeroImage from "../../assets/images/hero/emile-guillemot-ci7gkM_29wA-unsplash.jpg";
 import PorscheService from "../../assets/images/cars/Daco_4456396.png";
 import PorscheWash from "../../assets/images/cars/Daco_1608621.png";
-import PorscheRegister from "../../assets/images/cars/PngItem_721371.png";
+import PorscheRegister from "../../assets/images/cars/PngItem_2869076.png";
+import RegisterBG from "../../assets/images/hero/ivana-cajina-DuiPYwz3CBA-unsplash.jpg";
 
 export {
   Porsche01,
@@ -20,4 +21,5 @@ export {
   HeroImage,
   AboutHeroImage,
   PorscheRegister,
+  RegisterBG,
 };

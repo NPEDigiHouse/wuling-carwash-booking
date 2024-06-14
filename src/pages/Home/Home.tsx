@@ -128,7 +128,7 @@ const HomePage = () => {
                 <Avatar size={"md"} />
                 <Stack gap={5}>
                   <Text className="text-sm">
-                    {userRole?.userDetail?.customer.name}
+                    {userRole?.userDetail?.customer?.name}
                   </Text>
                   <Text className="text-xs text-gray-500">
                     {userRole?.userDetail?.role}

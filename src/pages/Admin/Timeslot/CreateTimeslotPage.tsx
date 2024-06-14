@@ -11,7 +11,9 @@ import AdminLayout from "shared/layouts/AdminLayout";
 import { DatePickerInput, TimeInput } from "@mantine/dates";
 import { useForm } from "@mantine/form";
 import { IoMdClock } from "react-icons/io";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import { UserRoleContext } from "context/UserRoleContext";
+import moment from "moment";
 
 // const daySelectOption = [{
 //     value: 'SENIN',
@@ -39,6 +41,8 @@ import { useRef } from "react";
 const CreateTimeslotPage = () => {
   const ref = useRef<HTMLInputElement>(null);
 
+  const userRole = useContext(UserRoleContext);
+
   const form = useForm({
     initialValues: {
       date: new Date(),
@@ -46,9 +50,15 @@ const CreateTimeslotPage = () => {
     },
   });
 
-  const handleSubmitForm = form.onSubmit((values) =>
-    console.log("values : ", values),
-  );
+  const handleSubmitForm = form.onSubmit((values) => {
+    const params = {
+      day: moment(values.date).format("dddd"),
+      time: values.time,
+      adminId: userRole?.userDetail?.id,
+    };
+
+    console.log("values : ", params);
+  });
 
   const pickerControl = (
     <ActionIcon

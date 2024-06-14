@@ -1,7 +1,6 @@
 export interface ITimeslotApiRequestParams {
-  day: string;
+  date: string;
   time: string;
-  adminId: string;
 }
 
 export interface ITimeslotApiResponseParams {

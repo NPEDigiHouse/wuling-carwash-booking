@@ -6,8 +6,7 @@ export interface ITimeslotApiRequestParams {
 
 export interface ITimeslotApiResponseParams {
   id: number;
-  day: string;
+  date: Date;
   time: string;
-  adminId: string;
   avaiableTime: boolean;
 }

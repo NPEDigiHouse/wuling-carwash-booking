@@ -1,6 +1,6 @@
-import { Select, SelectProps } from "@mantine/core";
+import { NumberInput, NumberInputProps } from "@mantine/core";
 
-interface ICustomSelectInputProps extends SelectProps {
+interface IBaseNumberInputProps extends NumberInputProps {
   gridSize?: {
     base?: number;
     sm?: number;
@@ -10,17 +10,16 @@ interface ICustomSelectInputProps extends SelectProps {
   };
 }
 
-const CustomSelectInput = ({ gridSize, ...props }: ICustomSelectInputProps) => {
+const BaseNumberInput = ({ ...props }: IBaseNumberInputProps) => {
   return (
-    <Select
+    <NumberInput
       classNames={{
         input: `bg-[#F2F2F2] h-12 placeholder:font-poppins `,
         label: `font-poppins mb-2.5 text-base font-medium`,
       }}
-      {...gridSize}
       {...props}
     />
   );
 };
 
-export default CustomSelectInput;
+export default BaseNumberInput;

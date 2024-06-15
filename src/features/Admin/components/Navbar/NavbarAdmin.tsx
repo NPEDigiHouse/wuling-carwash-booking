@@ -1,6 +1,7 @@
 import { NavLink, Stack } from "@mantine/core";
-import { IoCarSport, IoCart, IoPeople, IoTime } from "react-icons/io5";
-import { MdDashboard } from "react-icons/md";
+import { IoIosListBox } from "react-icons/io";
+import { IoCarSport, IoPeople, IoTime } from "react-icons/io5";
+import { MdDashboard, MdDiscount } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const NavbarAdmin = () => {
@@ -38,11 +39,33 @@ const NavbarAdmin = () => {
         }}
       />
 
-      <NavLink
+      {/* <NavLink
         label="Orders"
         component={Link}
         to={"/admin/orders"}
         leftSection={<IoCart className="text-2xl text-white" />}
+        classNames={{
+          label: `text-base text-white`,
+          root: `gap-1.5`,
+        }}
+      /> */}
+
+      <NavLink
+        label="Promo"
+        component={Link}
+        to={"/admin/promo"}
+        leftSection={<MdDiscount className="text-2xl text-white" />}
+        classNames={{
+          label: `text-base text-white`,
+          root: `gap-1.5`,
+        }}
+      />
+
+      <NavLink
+        label="Products"
+        component={Link}
+        to={"/admin/products"}
+        leftSection={<IoIosListBox className="text-2xl text-white" />}
         classNames={{
           label: `text-base text-white`,
           root: `gap-1.5`,

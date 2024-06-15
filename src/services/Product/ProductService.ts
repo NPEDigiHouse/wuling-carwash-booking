@@ -40,6 +40,21 @@ class ProductService {
       throw error;
     }
   }
+
+  async deleteProduct(
+    productId: number,
+  ): Promise<ApiBaseResponse<IProductResponseParams>> {
+    try {
+      const response = await http.delete(
+        `${import.meta.env.VITE_API_URL}/product/${productId}`,
+      );
+
+      const data: ApiBaseResponse<IProductResponseParams> = await response.data;
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default ProductService;

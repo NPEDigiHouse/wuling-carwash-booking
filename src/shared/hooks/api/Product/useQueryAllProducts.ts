@@ -8,6 +8,11 @@ export const useQueryAllProducts = () => {
   return useQuery({
     queryKey: [CLIENT_KEY.PRODUCT.GET_ALL_PRODUCTS],
     queryFn: ({ signal }) => ProductServiceApi.getAllProducts(signal),
+
     enabled: !!token,
+    // select(data) {
+    //   console.log("data : ", data);
+    //   return data?.data;
+    // },
   });
 };

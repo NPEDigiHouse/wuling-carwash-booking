@@ -5,6 +5,6 @@ export interface IProductResponseParams {
 }
 
 export interface IProductRequestParams {
-  productName: "SERVICE" | "WASH";
+  productName: "SERVICE" | "WASH" | string;
   price: number;
 }

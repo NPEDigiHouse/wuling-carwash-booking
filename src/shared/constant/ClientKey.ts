@@ -25,4 +25,8 @@ export const CLIENT_KEY = {
   PUBLIC: {
     GET_ALL_PRODUCTS_HOMEPAGE: "get-all-products-homepage-query-id-key",
   },
+  PROMO: {
+    CREATE_PROMO: "create-promo-query-id-key",
+    GET_ALL_PROMO: "get-all-promos-query-id-key",
+  },
 };

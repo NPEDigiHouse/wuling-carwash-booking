@@ -15,6 +15,7 @@ export const CLIENT_KEY = {
   },
   PRODUCT: {
     GET_ALL_PRODUCTS: "get-all-products-query-id-key",
+    CREATE_PRODUCTS: "create-product-mutation-id-key",
   },
   TIMESLOTS: {
     GET_ALL_TIMESLOTS: "get-all-timeslots-query-id-key",

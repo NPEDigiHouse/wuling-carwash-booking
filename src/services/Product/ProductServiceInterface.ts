@@ -3,3 +3,8 @@ export interface IProductResponseParams {
   productName: string;
   price: number;
 }
+
+export interface IProductRequestParams {
+  productName: "SERVICE" | "WASH";
+  price: number;
+}

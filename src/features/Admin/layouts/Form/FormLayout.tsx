@@ -3,16 +3,14 @@ import { ReactNode } from "react";
 
 interface IFormLayoutPropsType {
   title: string;
-  totalData: number;
   children: ReactNode;
 }
 
-const FormLayout = ({ title, totalData, children }: IFormLayoutPropsType) => {
+const FormLayout = ({ title, children }: IFormLayoutPropsType) => {
   return (
     <Box className="rounded-lg border bg-white px-7 py-7 shadow-sm ">
       <Group w={"100%"} gap={20} align="center" ff={"poppins"}>
         <Text className="text-lg font-medium">{title}</Text>
-        <Text>{totalData}</Text>
       </Group>
 
       <Stack h={20} />

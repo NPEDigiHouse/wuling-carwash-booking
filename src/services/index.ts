@@ -1,4 +1,5 @@
 import AuthService from "./Auth/AuthService";
+import BookingService from "./Booking/BookingService";
 import ProductService from "./Product/ProductService";
 import PromoService from "./Promo/PromoService";
 import PublicService from "./Public/PublicService";
@@ -9,11 +10,13 @@ const ProductServiceApi = new ProductService();
 const PublicServiceApi = new PublicService();
 const TimeslotServiceApi = new TimeslotService();
 const PromoServiceApi = new PromoService();
+const BookingServiceApi = new BookingService();
 
 export {
   AuthServiceApi,
   ProductServiceApi,
   PublicServiceApi,
   TimeslotServiceApi,
+  BookingServiceApi,
   PromoServiceApi,
 };

@@ -26,7 +26,11 @@ export const CLIENT_KEY = {
     GET_ALL_PRODUCTS_HOMEPAGE: "get-all-products-homepage-query-id-key",
   },
   PROMO: {
-    CREATE_PROMO: "create-promo-query-id-key",
+    CREATE_PROMO: "create-promo-mutation-id-key",
     GET_ALL_PROMO: "get-all-promos-query-id-key",
+  },
+  BOOKINGS: {
+    CREATE_BOOKING: "create-booking-mutation-id-key",
+    GET_ALL_BOOKING: "get-all-booking-query-id-key",
   },
 };

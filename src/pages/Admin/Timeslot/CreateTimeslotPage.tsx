@@ -80,7 +80,7 @@ const CreateTimeslotPage = () => {
 
   return (
     // <AdminLayout>
-    <FormLayout title="Tambah Timeslot" totalData={10}>
+    <FormLayout title="Tambah Timeslot">
       <form onSubmit={handleSubmitForm}>
         <SimpleGrid cols={{ base: 1, md: 2 }}>
           <DatePickerInput

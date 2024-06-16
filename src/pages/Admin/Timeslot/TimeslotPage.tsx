@@ -8,7 +8,7 @@ import { MdOutlineEdit } from "react-icons/md";
 import { ITimeslotApiResponseParams } from "services/Timeslot/TimeslotServiceInterface";
 import { useDeleteTimeslot } from "shared/hooks/api/Timeslots/useDeleteTimeslot";
 import { useQueryTimeslots } from "shared/hooks/api/Timeslots/useQueryTimeslots";
-import AdminLayout from "shared/layouts/AdminLayout";
+// import AdminLayout from "shared/layouts/AdminLayout";
 import moment from "moment";
 
 const TimeslotPage = () => {
@@ -82,7 +82,8 @@ const TimeslotPage = () => {
   }, [timeslots.isSuccess, timeslots.data]);
 
   return (
-    <AdminLayout>
+    // <AdminLayout>
+    <>
       <ModalActionDelete
         opened={opened}
         onClose={close}
@@ -134,7 +135,8 @@ const TimeslotPage = () => {
         </Table.Thead>
         <Table.Tbody>{rows}</Table.Tbody>
       </TableLayout>
-    </AdminLayout>
+    </>
+    // </AdminLayout>
   );
 };
 

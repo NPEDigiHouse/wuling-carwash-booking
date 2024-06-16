@@ -1,13 +1,10 @@
 import { Container } from "@mantine/core";
-import { ReactNode } from "react";
+import { Outlet } from "react-router-dom";
 
-interface IMainLayoutPropsType {
-  children: ReactNode;
-}
-const MainLayout = ({ children }: IMainLayoutPropsType) => {
+const MainLayout = () => {
   return (
     <Container fluid mx={0} px={0} className="font-poppins">
-      {children}
+      <Outlet />
     </Container>
   );
 };

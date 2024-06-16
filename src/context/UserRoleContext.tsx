@@ -21,10 +21,8 @@ const UserProvider = (params: IUserProviderPropsType) => {
 
   const credential = useCredentialQuery();
 
-  console.log("user data : ", credential?.data);
-
   useEffect(() => {
-    if (credential?.data) {
+    if (credential?.data !== undefined) {
       setUserRoleDetail(credential?.data?.data);
     }
   }, [credential.isSuccess, credential.isFetching, credential.data]);

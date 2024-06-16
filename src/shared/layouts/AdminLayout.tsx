@@ -1,14 +1,10 @@
 import { AppShell, Space } from "@mantine/core";
 import NavbarAdmin from "features/Admin/components/Navbar/NavbarAdmin";
 import HeaderPageLayout from "features/Admin/layouts/Header/HeaderPageLayout";
-import { ReactNode } from "react";
-import { useLocation } from "react-router-dom";
 
-interface IAdminLayout {
-  children: ReactNode;
-}
+import { Outlet, useLocation } from "react-router-dom";
 
-const AdminLayout = ({ children }: IAdminLayout) => {
+const AdminLayout = () => {
   const { pathname } = useLocation();
 
   const headerTitle = pathname.split("/")[pathname.split("/").length - 1];
@@ -40,10 +36,10 @@ const AdminLayout = ({ children }: IAdminLayout) => {
         <NavbarAdmin />
       </AppShell.Navbar>
       <AppShell.Main>
-        {" "}
         <HeaderPageLayout title={`${convertHeaderTitle()} Page`} />
         <Space h={20} />
-        {children}
+        {/* {children} */}
+        <Outlet />
       </AppShell.Main>
     </AppShell>
   );

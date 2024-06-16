@@ -12,3 +12,5 @@ export const ADMIN_TIMESLOT = "admin/timeslot";
 export const ADMIN_CREATE_TIMESLOT = "admin/timeslot/create";
 export const ADMIN_PRODUCT = "admin/products";
 export const ADMIN_CREATE_PRODUCT = "admin/products/create";
+export const ADMIN_PROMO = "admin/promo";
+export const ADMIN_CREATE_PROMO = "admin/promo/create";

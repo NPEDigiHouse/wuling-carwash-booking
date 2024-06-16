@@ -1,6 +1,6 @@
-import { TextInput, TextInputProps } from "@mantine/core";
+import { TimeInput, TimeInputProps } from "@mantine/dates";
 
-interface ICustomTextInputProps extends TextInputProps {
+interface ICustomTimeInputPropsType extends TimeInputProps {
   gridSize?: {
     base?: number;
     sm?: number;
@@ -8,20 +8,22 @@ interface ICustomTextInputProps extends TextInputProps {
     lg?: number;
     xl?: number;
   };
+  ref?: React.LegacyRef<HTMLInputElement>;
 }
 
-const CustomTextInput = ({ gridSize, ...props }: ICustomTextInputProps) => {
+const CustomTimeInput = (props: ICustomTimeInputPropsType) => {
   return (
-    <TextInput
+    <TimeInput
       classNames={{
         input: `bg-[#F2F2F2] h-12 placeholder:font-poppins  font-poppins`,
         label: `font-poppins mb-2.5 text-base font-medium`,
       }}
       radius={"md"}
-      {...gridSize}
+      ref={props.ref}
+      {...props?.gridSize}
       {...props}
     />
   );
 };
 
-export default CustomTextInput;
+export default CustomTimeInput;

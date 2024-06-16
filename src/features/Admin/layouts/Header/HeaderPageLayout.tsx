@@ -1,5 +1,7 @@
 import { Group, Text } from "@mantine/core";
+import { UserRoleContext } from "context/UserRoleContext";
 import ProfileBadge from "features/Admin/components/Badge/ProfileBadge";
+import { useContext } from "react";
 import CustomMenu from "shared/components/Menu/CustomMenu";
 
 interface IHeaderPageLayoutPropsType {
@@ -7,6 +9,10 @@ interface IHeaderPageLayoutPropsType {
 }
 
 const HeaderPageLayout = ({ title }: IHeaderPageLayoutPropsType) => {
+  const userAdmin = useContext(UserRoleContext);
+
+  console.log("user admin : ", userAdmin);
+
   return (
     <Group
       bg={"white"}

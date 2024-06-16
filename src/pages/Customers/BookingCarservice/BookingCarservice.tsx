@@ -12,14 +12,29 @@ import {
 } from "@mantine/core";
 import BookingLayout from "features/Booking/components/BookingLayout";
 import FormBookingLayout from "features/Booking/components/FormLayout";
+import { useEffect, useState } from "react";
 import { IoAlertCircle, IoTicketSharp } from "react-icons/io5";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import { IPromoServiceResponseParams } from "services/Promo/PromoServiceInterface";
 import CustomSelectInput from "shared/components/Input/CustomSelectInput";
 import CustomTextInput from "shared/components/Input/CustomTextInput";
 import Navbar from "shared/components/Navbar/Navbar";
 import { HeroImage, Porsche03, PorscheService } from "shared/constant/Images";
+import { useQueryAllPromo } from "shared/hooks/api/Promo/useQueryAllPromo";
 
 const BookingCarservicePage = () => {
+  const [promo, setPromo] = useState<IPromoServiceResponseParams[]>([]);
+
+  const queryPromo = useQueryAllPromo();
+
+  useEffect(() => {
+    if (queryPromo.isSuccess && !queryPromo.isFetching) {
+      setPromo(queryPromo.data.data);
+    }
+  }, [queryPromo.isSuccess, queryPromo.isFetching, queryPromo]);
+
+  console.log("promo : ", promo);
+
   return (
     <Container fluid mx={0} px={0} className="font-poppins">
       <Image

@@ -20,15 +20,103 @@ import CustomTextInput from "shared/components/Input/CustomTextInput";
 import Navbar from "shared/components/Navbar/Navbar";
 import { HeroImage, Porsche03, PorscheWash } from "shared/constant/Images";
 import { useForm } from "@mantine/form";
+import { useEffect, useState } from "react";
+import { useQueryAllPromo } from "shared/hooks/api/Promo/useQueryAllPromo";
+import { useDisclosure } from "@mantine/hooks";
+import ModalPromo from "features/Booking/components/ModalPromo";
+import { IPromoServiceResponseParams } from "services/Promo/PromoServiceInterface";
+import CustomDatePickerInput from "shared/components/Input/CustomDatePickerInput";
+import { useQueryTimeslots } from "shared/hooks/api/Timeslots/useQueryTimeslots";
+import moment from "moment";
 
 const BookingCarwashPage = () => {
+  const [promoOption, setPromoOption] = useState<
+    { label: string; value: string }[]
+  >([]);
+  const [timeslotOption, setTimeslotOption] = useState<
+    { label: string; value: string }[] | null
+  >([]);
+
+  const [promo, setPromo] = useState<IPromoServiceResponseParams[]>([]);
+
+  const queryPromo = useQueryAllPromo();
+  const queryTimeslot = useQueryTimeslots();
+
+  const [opened, { open, close }] = useDisclosure();
+
   const carwashForm = useForm({
     initialValues: {
-      fullname: "",
+      name: "",
+      carType: "",
+      licensePlat: "",
+      phoneNumber: "",
+      promo: 0,
+      date: new Date(),
+      timeslotId: "",
     },
   });
 
-  const handleSubmit = carwashForm.onSubmit(() => {});
+  const getDiscount = queryPromo.data?.data.find((discount) => {
+    return discount.id === Number(carwashForm.values.promo);
+  });
+
+  const handleSubmit = carwashForm.onSubmit((values) => {
+    const params = {
+      name: values.name,
+      carType: values.carType,
+      licensePlat: values.licensePlat,
+      promo: values.promo,
+      phoneNumber: values.phoneNumber,
+      date: moment(values.date).format(),
+      timeslotId: values.timeslotId,
+    };
+
+    console.log("params : ", params);
+  });
+
+  useEffect(() => {
+    if (queryPromo.isSuccess && !queryPromo.isFetching) {
+      // setPromoOption(queryPromo.data.data);
+      const promoOptionData = queryPromo.data.data.map((promo) => {
+        return {
+          label: promo.promoName,
+          value: promo.id.toString(),
+        };
+      });
+
+      setPromo(queryPromo.data.data);
+      setPromoOption(promoOptionData);
+    }
+  }, [queryPromo.isSuccess, queryPromo.isFetching, queryPromo.data?.data]);
+
+  useEffect(() => {
+    if (queryTimeslot.isSuccess && !queryTimeslot.isFetching) {
+      if (carwashForm.values.date) {
+        const getTime = queryTimeslot.data?.data.filter((timeslot) => {
+          return (
+            timeslot.date.toString() ===
+            moment(carwashForm.values.date).format("DD MMMM YYYY")
+          );
+        });
+
+        const timeslotOptionData = getTime?.map((timeslot) => {
+          return {
+            label: timeslot.time,
+            value: timeslot.id.toString(),
+          };
+        });
+
+        setTimeslotOption(timeslotOptionData);
+      } else {
+        setTimeslotOption(null);
+      }
+    }
+  }, [
+    queryTimeslot.isSuccess,
+    queryTimeslot.isFetching,
+    queryTimeslot.data?.data,
+    carwashForm.values.date,
+  ]);
 
   return (
     <Container fluid mx={0} px={0} className="font-poppins">
@@ -36,6 +124,8 @@ const BookingCarwashPage = () => {
         src={HeroImage}
         className="absolute left-0 top-0 -z-20 h-[610px] w-screen "
       />
+
+      <ModalPromo opened={opened} onClose={close} promoData={promo} />
 
       <Container size={"xl"} px={0}>
         <Navbar />
@@ -55,7 +145,7 @@ const BookingCarwashPage = () => {
                   label="Nama Lengkap"
                   placeholder="Masukkan Nama Lengkap"
                   withAsterisk
-                  {...carwashForm.getInputProps("fullname")}
+                  {...carwashForm.getInputProps("name")}
                 />
 
                 <CustomTextInput
@@ -63,6 +153,7 @@ const BookingCarwashPage = () => {
                   placeholder="Contoh : Avanza"
                   withAsterisk
                   gridSize={{ base: 12, sm: 6 }}
+                  {...carwashForm.getInputProps("carType")}
                 />
 
                 <CustomTextInput
@@ -70,49 +161,68 @@ const BookingCarwashPage = () => {
                   placeholder="Masukkan Plat Nomor"
                   withAsterisk
                   gridSize={{ base: 12, sm: 6 }}
+                  {...carwashForm.getInputProps("licensePlat")}
                 />
 
                 <CustomTextInput
                   label="No. Telp / Whatsapp"
                   placeholder="Masukkan Nomor Telepon"
                   withAsterisk
+                  {...carwashForm.getInputProps("phoneNumber")}
+                />
+
+                <CustomDatePickerInput
+                  dropdownType="modal"
+                  label="Tanggal Booking"
+                  placeholder="Pilih tanggal booking"
+                  gridSize={{ base: 12, sm: 6 }}
+                  valueFormat={"DD MMMM YY"}
+                  {...carwashForm.getInputProps("date")}
                 />
 
                 <CustomSelectInput
-                  label="Hari"
-                  data={["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]}
-                  placeholder="Pilih Hari"
-                  withAsterisk
+                  label="Pilih Waktu"
+                  placeholder="Pilih Waktu tersedia"
                   gridSize={{ base: 12, sm: 6 }}
-                />
-
-                <CustomSelectInput
-                  label="Waktu / Jam"
-                  data={["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]}
-                  placeholder="Pilih Waktu"
-                  withAsterisk
-                  gridSize={{ base: 12, sm: 6 }}
+                  data={timeslotOption!}
+                  {...carwashForm.getInputProps("time")}
                 />
               </FormBookingLayout>
 
               <Space h={30} />
 
               <FormBookingLayout headerTitle="Metode Pembayaran">
-                <CustomSelectInput
-                  classNames={{
-                    input: `bg-transparent h-14 placeholder:font-poppins placeholder:px-3  rounded-none border-t-transparent border-r-transparent  border-l-transparent border-b`,
-                  }}
-                  rightSection={<MdKeyboardArrowRight className="text-xl" />}
-                  data={["Promo hari senin"]}
-                  leftSection={
-                    <Group className="rounded-full bg-green-100 p-1.5">
-                      <IoTicketSharp className="text-xl text-green-500" />
-                    </Group>
-                  }
-                  placeholder="Bayar hemat pakai promo"
-                  label="Diskon"
-                  gridSize={{ base: 12 }}
-                />
+                <Stack>
+                  <CustomSelectInput
+                    classNames={{
+                      input: `bg-transparent h-14 placeholder:font-poppins placeholder:px-3 px-12 font-poppins placeholder:text-base text-lg rounded-none border-t-transparent border-r-transparent  border-l-transparent border-b`,
+                    }}
+                    rightSection={<MdKeyboardArrowRight className="text-xl" />}
+                    data={promoOption}
+                    leftSection={
+                      <Group className="rounded-full bg-green-100 p-1.5">
+                        <IoTicketSharp className="text-xl text-green-500" />
+                      </Group>
+                    }
+                    placeholder="Bayar hemat pakai promo"
+                    label="Diskon"
+                    gridSize={{ base: 12 }}
+                    {...carwashForm.getInputProps("discount")}
+                  />
+
+                  {!getDiscount ? null : (
+                    <Text className="text-orange-400">
+                      Potongan sebesar {getDiscount.discount}% di claim
+                    </Text>
+                  )}
+
+                  <Text
+                    className="text-sm font-medium text-teal-600"
+                    onClick={open}
+                  >
+                    Lihat Semua promo
+                  </Text>
+                </Stack>
 
                 <Stack gap={10} className="w-full">
                   <Text>Pilih metode pembayaran</Text>

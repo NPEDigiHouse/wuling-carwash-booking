@@ -11,7 +11,9 @@ import {
   TextInput,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { useNavigate } from "react-router-dom";
+import { UserRoleContext } from "context/UserRoleContext";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import NavLogo from "shared/components/Navbar/NavLogo";
 import { COLORS } from "shared/constant/Colors";
 import { Porsche01 } from "shared/constant/Images";
@@ -24,6 +26,8 @@ const Login = () => {
       password: "",
     },
   });
+
+  const userRole = useContext(UserRoleContext);
 
   const navigate = useNavigate();
 
@@ -39,7 +43,16 @@ const Login = () => {
   });
 
   if (login.isSuccess && !login.isPending) {
-    navigate("/");
+    console.log("is success : ", login.isSuccess);
+
+    if (userRole?.userDetail?.role === "CUSTOMER") {
+      navigate("/");
+    } else if (userRole?.userDetail?.role === "ADMIN") {
+      navigate("/admin");
+    }
+    // else {
+    //   return <LoadingOverlay />;
+    // }
   }
 
   return (
@@ -92,7 +105,9 @@ const Login = () => {
 
               <Text className="text-center text-sm text-gray-400">
                 Don’t have an account?{" "}
-                <span className="font-medium text-primary">Sign Up</span>
+                <Link to={"/register"} className="font-medium text-primary">
+                  Sign Up
+                </Link>
               </Text>
             </Flex>
           </form>

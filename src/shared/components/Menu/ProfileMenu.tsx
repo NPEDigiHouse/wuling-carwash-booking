@@ -1,11 +1,12 @@
 import { Avatar, Button, Flex, Menu } from "@mantine/core";
 import CustomMenu from "./CustomMenu";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { MdExitToApp, MdModeEditOutline } from "react-icons/md";
 import TokenConfig from "shared/config/TokenConfig";
 import { useDisclosure } from "@mantine/hooks";
 import LogoutModal from "../Modal/LogoutModal";
+import { useNavigate } from "react-router-dom";
 
 interface IProfileMenuPropsType {
   profileBadge: ReactNode;
@@ -14,6 +15,9 @@ interface IProfileMenuPropsType {
 
 const ProfileMenu = ({ profileBadge }: IProfileMenuPropsType) => {
   const [opened, { open, close }] = useDisclosure(false);
+  const navigate = useNavigate();
+
+  const token = TokenConfig.getToken();
 
   const handleOpenModalLogout = () => {
     open();
@@ -21,7 +25,14 @@ const ProfileMenu = ({ profileBadge }: IProfileMenuPropsType) => {
 
   const handleLogoutAction = () => {
     TokenConfig.removeToken();
+    navigate("/login");
   };
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, [token]);
 
   return (
     <CustomMenu>

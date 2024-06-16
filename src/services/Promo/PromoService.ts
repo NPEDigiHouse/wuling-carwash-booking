@@ -26,12 +26,13 @@ class PromoService {
 
   async getAllPromo(
     signal?: AbortSignal,
-  ): Promise<ApiBaseResponse<IPromoServiceResponseParams>> {
+  ): Promise<ApiBaseResponse<IPromoServiceResponseParams[]>> {
     try {
       const response = await http.get(`${import.meta.env.VITE_API_URL}/promo`, {
         signal,
       });
-      const promo: ApiBaseResponse<IPromoServiceResponseParams> = response.data;
+      const promo: ApiBaseResponse<IPromoServiceResponseParams[]> =
+        response.data;
       return promo;
     } catch (error) {
       throw error;

@@ -103,7 +103,7 @@ const HomePage = () => {
 
   const userRole = useContext(UserRoleContext);
 
-  console.log("products : ", userRole);
+  console.log("products : ", queryProducts.data);
 
   useEffect(() => {
     if (queryProducts?.data) {

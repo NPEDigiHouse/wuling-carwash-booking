@@ -124,7 +124,7 @@ const ProductPage = () => {
         </Flex>
       </ModalActionDelete>
       <TableLayout
-        title="Customer Table"
+        title="Tabel Produk"
         totalData={productsData.length}
         urlPage="/admin/products/create"
       >

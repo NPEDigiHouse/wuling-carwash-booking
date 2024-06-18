@@ -44,7 +44,7 @@ const CreatePromoPage = () => {
   }, [createPromo.isSuccess, createPromo.isPending, navigate]);
 
   return (
-    <FormLayout title="Tambah Product">
+    <FormLayout title="Tambah Promo">
       <form onSubmit={handleSubmitForm}>
         <SimpleGrid cols={{ base: 1, md: 2 }}>
           <CustomTextInput

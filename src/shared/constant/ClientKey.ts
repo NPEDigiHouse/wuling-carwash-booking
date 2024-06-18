@@ -33,4 +33,8 @@ export const CLIENT_KEY = {
     CREATE_BOOKING: "create-booking-mutation-id-key",
     GET_ALL_BOOKING: "get-all-booking-query-id-key",
   },
+  UI: {
+    GET_CONFIRMATION_MODAL_BOOKING_DATA:
+      "get-confirmation-modal-booking-query-id-key",
+  },
 };

@@ -43,13 +43,18 @@ const TableLayout = ({
       <Space h={15} />
 
       <Table
-        striped
-        withTableBorder
-        withColumnBorders
+        // striped
+        withTableBorder={false}
+        // withColumnBorders
+        withRowBorders={false}
         ff={"poppins"}
         classNames={{
-          thead: `bg-neutral-300 text-black `,
-          th: `font-medium text-base py-2.5`,
+          thead: ` text-black bg-neutral-200`,
+          tbody: ``,
+
+          th: `font-medium text-base py-3.5`,
+          tr: ``,
+          td: `py-7  text-sm`,
         }}
       >
         {children}

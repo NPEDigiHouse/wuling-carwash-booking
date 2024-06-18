@@ -1,3 +1,4 @@
+import BookingPage from "pages/Admin/Booking/BookingPage";
 import CustomerPage from "pages/Admin/Customer/CustomerPage";
 import DashboardPage from "pages/Admin/Dashboard/DashboardPage";
 import CreateProductPage from "pages/Admin/Product/CreateProductPage";
@@ -16,6 +17,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AdminLayout from "shared/layouts/AdminLayout";
 import MainLayout from "shared/layouts/MainLayout";
 import {
+  ADMIN_BOOKING,
   ADMIN_CREATE_PRODUCT,
   ADMIN_CREATE_PROMO,
   ADMIN_CREATE_TIMESLOT,
@@ -63,6 +65,7 @@ const Router = () => {
           <Route path={ADMIN_CREATE_PRODUCT} element={<CreateProductPage />} />
           <Route path={ADMIN_PROMO} element={<PromoPage />} />
           <Route path={ADMIN_CREATE_PROMO} element={<CreatePromoPage />} />
+          <Route path={ADMIN_BOOKING} element={<BookingPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

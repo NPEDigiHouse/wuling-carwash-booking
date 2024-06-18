@@ -1,16 +1,15 @@
 export interface IBookingResponseParams {
   id: string;
+  name: string;
+  phoneNumber: string;
   carType: string;
-  licensePlate: string;
-  bookingDate: string;
-  timeslotId: number;
-  amount: number;
-  receipt?: number;
-  customerId: string;
+  carPlate: string;
   status: string;
-  productId: number;
-  paymentStatus: string;
-  promoId: number;
+  amount: number;
+  bookingDate: string;
+  bookingTime: string;
+  service: string;
+  promo: string;
 }
 
 export interface IBookingRequestParams {

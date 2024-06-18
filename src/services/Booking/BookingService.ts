@@ -25,6 +25,24 @@ class BookingService {
     }
   }
 
+  async getBookingDetail(
+    bookingId?: string,
+    signal?: AbortSignal | undefined,
+  ): Promise<ApiBaseResponse<IBookingResponseParams>> {
+    try {
+      const response = await http.get(
+        `${import.meta.env.VITE_API_URL}/booking/${bookingId}`,
+        { signal },
+      );
+
+      const data: ApiBaseResponse<IBookingResponseParams> = await response.data;
+
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async createBookings(
     payload: IBookingRequestParams,
   ): Promise<ApiBaseResponse<IBookingResponseParams>> {

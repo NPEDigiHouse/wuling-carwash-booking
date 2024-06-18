@@ -120,7 +120,7 @@ const TimeslotPage = () => {
         </Flex>
       </ModalActionDelete>
       <TableLayout
-        title="Customer Table"
+        title="Tabel Timeslot"
         totalData={200}
         urlPage="/admin/timeslot/create"
       >

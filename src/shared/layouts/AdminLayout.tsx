@@ -24,7 +24,7 @@ const AdminLayout = () => {
       }}
       //   header={{ height: 80 }}
       navbar={{
-        width: 300,
+        width: 270,
         breakpoint: "sm",
       }}
       padding={"xl"}

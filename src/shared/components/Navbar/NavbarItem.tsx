@@ -10,7 +10,7 @@ const NavbarItem = () => {
           label="Home"
           component={Link}
           to={"/"}
-          className="hover:text-yellow w-fit  hover:bg-transparent hover:font-medium"
+          className="w-fit hover:bg-transparent  hover:font-medium hover:text-yellow"
           classNames={{
             label: `text-base`,
           }}
@@ -45,10 +45,20 @@ const NavbarItem = () => {
         </NavLink>
 
         <NavLink
+          label="My Booking"
+          component={Link}
+          to={"/my-booking"}
+          className="w-fit hover:bg-transparent hover:font-medium hover:text-yellow"
+          classNames={{
+            label: `text-base`,
+          }}
+        />
+
+        <NavLink
           label="Order"
           component={Link}
           to={"/order"}
-          className="hover:text-yellow w-fit hover:bg-transparent hover:font-medium"
+          className="w-fit hover:bg-transparent hover:font-medium hover:text-yellow"
           classNames={{
             label: `text-base`,
           }}

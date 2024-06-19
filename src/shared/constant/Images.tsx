@@ -8,7 +8,11 @@ import AboutHeroImage from "../../assets/images/hero/emile-guillemot-ci7gkM_29wA
 import PorscheService from "../../assets/images/cars/Daco_4456396.png";
 import PorscheWash from "../../assets/images/cars/Daco_1608621.png";
 import PorscheRegister from "../../assets/images/cars/PngItem_2869076.png";
-import RegisterBG from "../../assets/images/hero/ivana-cajina-DuiPYwz3CBA-unsplash.jpg";
+import MyBookingBG from "../../assets/images/hero/peter-plashkin-_2nY5g22D5g-unsplash.png";
+import MyBookingBGFirst from "../../assets/images/hero/Group 162570.png";
+import MyBookingBGSecond from "../../assets/images/hero/dhiva-krishna-YApS6TjKJ9c-unsplash 1.png";
+import MyBookingBGThird from "../../assets/images/hero/jeff-tumale-AWjAGG-u_eE-unsplash 1.png";
+import BMW from "../../assets/images/cars/PngItem_721371.png";
 
 export {
   Porsche01,
@@ -21,5 +25,9 @@ export {
   HeroImage,
   AboutHeroImage,
   PorscheRegister,
-  RegisterBG,
+  MyBookingBG,
+  MyBookingBGFirst,
+  MyBookingBGSecond,
+  MyBookingBGThird,
+  BMW,
 };

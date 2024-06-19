@@ -7,10 +7,10 @@ export default {
         poppins: ["Poppins"],
       },
       colors: {
-        primary: "#0047D0",
+        primary: "#3867D6",
         secondary: "#3BAF5B",
-        third: "#FEF403",
-        black: "#000000",
+        third: "#0FBCF9",
+        black: "#2d3436",
         light_gray: "#FAFAFA",
         text_gray: "#808080",
         white: "#FFFFFF",

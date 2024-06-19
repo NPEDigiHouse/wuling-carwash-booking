@@ -18,7 +18,7 @@ interface ICardProductPropsType extends CardProps {
   thumbnail: string;
   productPrice: number;
   headerIcon: ReactNode;
-  btnControl: () => void;
+  btnControl?: () => void;
 }
 
 const CardProduct = ({

@@ -3,6 +3,7 @@ export const REGISTER = "register";
 export const BOOKING_CARWASH = "booking-carwash";
 export const BOOKING_CARSERVICE = "booking-carservice";
 export const ORDER = "order";
+export const MY_BOOKING = "my-booking";
 export const ADMIN_HOME = "admin";
 export const ADMIN_ORDERS = "admin/orders";
 export const ADMIN_BOOKING = "admin/booking";

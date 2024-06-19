@@ -4,6 +4,7 @@ import { http } from "shared/utils/AxiosUtils";
 import {
   IBookingRequestParams,
   IBookingResponseParams,
+  ICustomerBookingResponseParams,
 } from "./BookingServiceInterface";
 
 class BookingService {
@@ -36,6 +37,25 @@ class BookingService {
       );
 
       const data: ApiBaseResponse<IBookingResponseParams> = await response.data;
+
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async getCustomerBooking(
+    customerId?: string,
+    signal?: AbortSignal | undefined,
+  ): Promise<ApiBaseResponse<ICustomerBookingResponseParams[]>> {
+    try {
+      const response = await http.get(
+        `${import.meta.env.VITE_API_URL}/booking/customer/${customerId}`,
+        { signal },
+      );
+
+      const data: ApiBaseResponse<ICustomerBookingResponseParams[]> =
+        await response.data;
 
       return data;
     } catch (error) {

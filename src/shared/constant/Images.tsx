@@ -13,6 +13,7 @@ import MyBookingBGFirst from "../../assets/images/hero/Group 162570.png";
 import MyBookingBGSecond from "../../assets/images/hero/dhiva-krishna-YApS6TjKJ9c-unsplash 1.png";
 import MyBookingBGThird from "../../assets/images/hero/jeff-tumale-AWjAGG-u_eE-unsplash 1.png";
 import BMW from "../../assets/images/cars/PngItem_721371.png";
+import CustomerBookingCar from "../../assets/images/cars/pngwing.com.png";
 
 export {
   Porsche01,
@@ -30,4 +31,5 @@ export {
   MyBookingBGSecond,
   MyBookingBGThird,
   BMW,
+  CustomerBookingCar,
 };

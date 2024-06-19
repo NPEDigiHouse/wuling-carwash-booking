@@ -1,7 +1,7 @@
 import { Box, Group, Image, SimpleGrid, Stack, Text } from "@mantine/core";
-import { IBookingLayout } from "../../booking/Interfaces/BookingLayout";
 import { useLocation } from "react-router-dom";
 import CustomBreadcrumbs from "shared/components/Breadcrumbs/CustomBreadcrumbs";
+import { IBookingLayout } from "../interfaces/BookingLayout";
 
 const BookingLayout = ({ children, thumbnail, title }: IBookingLayout) => {
   const { pathname } = useLocation();

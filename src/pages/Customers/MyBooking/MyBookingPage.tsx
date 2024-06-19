@@ -3,11 +3,13 @@ import {
   Container,
   Flex,
   Image,
+  SimpleGrid,
   Space,
   Stack,
   Text,
 } from "@mantine/core";
 import { UserRoleContext } from "context/UserRoleContext";
+import CustomerBookingCard from "features/Booking/components/CustomerBookingCard";
 import { useContext } from "react";
 import { MdOutlineArrowDownward } from "react-icons/md";
 import Navbar from "shared/components/Navbar/Navbar";
@@ -20,15 +22,18 @@ import {
   //   MyBookingBGThird,
 } from "shared/constant/Images";
 import { useQueryCustomerBookings } from "shared/hooks/api/Booking/useQueryCustomerBookings";
+import { useQueryCustomerDetail } from "shared/hooks/api/Customer/useQueryCustomerDetail";
 
 const MyBookingPage = () => {
   const userDetail = useContext(UserRoleContext);
-  const { customerBooking } = useQueryCustomerBookings(
-    userDetail?.userDetail?.id,
-  );
 
-  console.log("user detail : ", userDetail?.userDetail);
-  console.log("customer detail : ", customerBooking);
+  const { customerDetail } = useQueryCustomerDetail(userDetail?.userDetail?.id);
+
+  const { customerBooking, loading: loadingCustBookings } =
+    useQueryCustomerBookings(customerDetail?.id);
+
+  console.log("user detail : ", userDetail?.userDetail?.id);
+  console.log("customer detail : ", loadingCustBookings);
 
   return (
     <Container fluid mx={0} px={0}>
@@ -100,6 +105,32 @@ const MyBookingPage = () => {
         <Text className="text-lg font-semibold uppercase text-black  md:text-xl lg:text-2xl">
           Daftar Booking
         </Text>
+
+        <Space h={30} />
+
+        <SimpleGrid cols={{ base: 1, md: 1 }}>
+          {loadingCustBookings ? (
+            <Text>Loading...</Text>
+          ) : (
+            customerBooking?.map((booking, index) => {
+              return (
+                <CustomerBookingCard
+                  key={index}
+                  id={booking.id}
+                  name={booking.name}
+                  amount={booking.amount}
+                  carPlate={booking.carPlate}
+                  carType={booking.carType}
+                  service={booking.service}
+                  status={booking.status}
+                  bookingDate={booking.bookingDate}
+                  bookingTime={booking.bookingTime}
+                  promo={booking.promo}
+                />
+              );
+            })
+          )}
+        </SimpleGrid>
       </Container>
     </Container>
   );

@@ -12,6 +12,7 @@ export const CLIENT_KEY = {
   },
   CUSTOMER: {
     GET_CUSTOMER_BOOKINGS: "get-all-customers-booking-query-id-key",
+    GET_CUSTOMER_DETAIL: "get-customer-detail-query-id-key",
   },
   PRODUCT: {
     GET_ALL_PRODUCTS: "get-all-products-query-id-key",

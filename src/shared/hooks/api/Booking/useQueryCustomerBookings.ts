@@ -17,14 +17,16 @@ export const useQueryCustomerBookings = (customerId?: string) => {
 
   useEffect(() => {
     if (!isLoading) {
-      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+      }, 5000);
       if (isSuccess) {
         setCustomerBooking(data.data);
       } else {
         setCustomerBooking(null);
       }
     } else {
-      setLoading(false);
+      setLoading(true);
     }
   }, [isSuccess, isLoading, data]);
 

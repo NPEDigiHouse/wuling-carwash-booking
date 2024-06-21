@@ -10,16 +10,30 @@ export interface IBookingResponseParams {
   bookingTime: string;
   service: string;
   promo: string;
+  productPrice: number;
+  discount: number;
 }
 
 export interface IBookingRequestParams {
   carType: string;
-  licencePlate: string;
-  customerId: string;
+  licensePlate: string;
   timeslotId: number;
   amount: number;
   productId: number;
   promoId?: number;
+  customerId: string;
+  phoneNumber: string;
+}
+
+export interface ICustomerBookingRequestParams {
+  carType: string;
+  licensePlate: string;
+  timeslotId: number;
+  amount: number;
+  productId?: number;
+  promoId?: number;
+  customerId?: string;
+  phoneNumber: string;
 }
 
 export interface ICustomerBookingResponseParams {

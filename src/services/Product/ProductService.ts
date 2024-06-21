@@ -25,6 +25,24 @@ class ProductService {
     }
   }
 
+  async getProductDetail(
+    productId?: string,
+    signal?: AbortSignal | undefined,
+  ): Promise<ApiBaseResponse<IProductResponseParams>> {
+    try {
+      const response = await http.get(
+        `${import.meta.env.VITE_API_URL}/product/${productId}`,
+        { signal },
+      );
+
+      const data: ApiBaseResponse<IProductResponseParams> = await response.data;
+
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async createProducts(
     payload: IProductRequestParams,
   ): Promise<ApiBaseResponse<IProductResponseParams>> {

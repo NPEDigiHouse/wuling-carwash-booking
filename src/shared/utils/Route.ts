@@ -1,9 +1,11 @@
 export const LOGIN = "login";
 export const REGISTER = "register";
-export const BOOKING_CARWASH = "booking-carwash";
-export const BOOKING_CARSERVICE = "booking-carservice";
+// export const BOOKING_CARWASH = "booking-carwash";
+// export const BOOKING_CARSERVICE = "booking-carservice";
+export const BOOKING_PRODUCT = "booking-product/:id";
 export const ORDER = "order";
 export const MY_BOOKING = "my-booking";
+export const BOOKING_DETAIL = "my-booking/detail/:id";
 export const ADMIN_HOME = "admin";
 export const ADMIN_ORDERS = "admin/orders";
 export const ADMIN_BOOKING = "admin/booking";

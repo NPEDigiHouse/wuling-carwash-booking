@@ -19,6 +19,7 @@ export interface ICredentialUserResponsePrams {
   username: string;
   role: string;
   customer: {
+    id: string;
     name: string;
   };
 }

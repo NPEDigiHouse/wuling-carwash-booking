@@ -65,10 +65,7 @@ const RegisterPage = () => {
     >
       <Box className="md:px-10 md:pt-7">
         <Link to={"/"}>
-          <Group gap={5}>
-            <NavLogo variant="third" />
-            <Text className="text-4xl text-blue-400">.</Text>
-          </Group>
+          <NavLogo />
         </Link>
       </Box>
 

@@ -8,7 +8,7 @@ const BookingLayout = ({ children, thumbnail, title }: IBookingLayout) => {
 
   return (
     <Stack align="center" justify="center" gap={50}>
-      <Group className="w-full">
+      <Group className="w-full" justify="space-between">
         <CustomBreadcrumbs
           items={[
             { title: "Home", href: "/" },
@@ -28,9 +28,12 @@ const BookingLayout = ({ children, thumbnail, title }: IBookingLayout) => {
 
       <SimpleGrid
         cols={{ base: 1, md: 1 }}
-        spacing={{ base: 30 }}
+        spacing={{ base: 50 }}
         className="w-full"
       >
+        <Text className="text-center text-4xl font-semibold text-white underline underline-offset-8 ">
+          {title} BOOKING
+        </Text>
         {children}
       </SimpleGrid>
     </Stack>

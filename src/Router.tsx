@@ -7,9 +7,9 @@ import CreatePromoPage from "pages/Admin/Promo/CreatePromoPage";
 import PromoPage from "pages/Admin/Promo/PromoPage";
 import CreateTimeslotPage from "pages/Admin/Timeslot/CreateTimeslotPage";
 import TimeslotPage from "pages/Admin/Timeslot/TimeslotPage";
-import BookingCarservicePage from "pages/Customers/BookingCarservice/BookingCarservice";
-import BookingCarwashPage from "pages/Customers/BookingCarwash/BookingCarwash";
-import MyBookingPage from "pages/Customers/MyBooking/MyBookingPage";
+import BookingProductPage from "pages/Customers/Booking/BookingProduct";
+import DetailBookingPage from "pages/Customers/Booking/Detail";
+import MyBookingPage from "pages/Customers/Booking/MyBookingPage";
 import HomePage from "pages/Home/Home";
 import Login from "pages/Login/Login";
 import RegisterPage from "pages/Register/Register";
@@ -27,8 +27,8 @@ import {
   ADMIN_PRODUCT,
   ADMIN_PROMO,
   ADMIN_TIMESLOT,
-  BOOKING_CARSERVICE,
-  BOOKING_CARWASH,
+  BOOKING_PRODUCT,
+  BOOKING_DETAIL,
   LOGIN,
   MY_BOOKING,
   ORDER,
@@ -48,12 +48,10 @@ const Router = () => {
         <Route path={REGISTER} element={<RegisterPage />} />
 
         <Route element={<MainLayout />}>
-          <Route path={BOOKING_CARWASH} element={<BookingCarwashPage />} />
-          <Route
-            path={BOOKING_CARSERVICE}
-            element={<BookingCarservicePage />}
-          />
+          <Route path={BOOKING_PRODUCT} element={<BookingProductPage />} />
+
           <Route path={MY_BOOKING} element={<MyBookingPage />} />
+          <Route path={BOOKING_DETAIL} element={<DetailBookingPage />} />
         </Route>
 
         <Route element={<AdminLayout />}>

@@ -33,6 +33,7 @@ export const CLIENT_KEY = {
   },
   BOOKINGS: {
     CREATE_BOOKING: "create-booking-mutation-id-key",
+    CREATE_CUSTOMER_BOOKING: "create-customer-booking-mutation-id-key",
     GET_ALL_BOOKING: "get-all-booking-query-id-key",
     GET_BOOKING_DETAIL: "get-booking-detail-query-id-key",
     DELETE_BOOKING: "delete-booking-customer-mutation-id-key",

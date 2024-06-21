@@ -9,6 +9,7 @@ interface IUserProviderPropsType {
 interface IUserContextValueType {
   userDetail: ICredentialUserResponsePrams | null;
   isSuccess?: boolean;
+  isLoading?: boolean;
 }
 
 export const UserRoleContext = createContext<IUserContextValueType | null>(
@@ -28,7 +29,13 @@ const UserProvider = (params: IUserProviderPropsType) => {
   // }, [credential.isSuccess, credential.isFetching, credential.data]);
 
   return (
-    <UserRoleContext.Provider value={{ userDetail: credential.userRoleDetail }}>
+    <UserRoleContext.Provider
+      value={{
+        userDetail: credential.userRoleDetail,
+        isLoading: credential.isLoading,
+        isSuccess: credential.isSuccess,
+      }}
+    >
       {params.children}
     </UserRoleContext.Provider>
   );

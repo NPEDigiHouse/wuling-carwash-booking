@@ -75,7 +75,7 @@ const ProfileMenu = ({ profileBadge }: IProfileMenuPropsType) => {
         <Avatar
           color={"white"}
           c={"white"}
-          classNames={{ root: `bg-zinc-600` }}
+          classNames={{ root: `bg-gray-300` }}
         />
       </Menu.Target>
 

@@ -38,7 +38,6 @@ import {
   MdStar,
 } from "react-icons/md";
 import { COLORS } from "shared/constant/Colors";
-import { useNavigate } from "react-router-dom";
 import CardProduct from "shared/components/Card/CardProduct";
 import { useContext, useEffect, useState } from "react";
 import { IProductResponseParams } from "services/Product/ProductServiceInterface";
@@ -88,16 +87,7 @@ const serviceData = [
 ];
 
 const HomePage = () => {
-  const navigate = useNavigate();
   const [products, setProducts] = useState<IProductResponseParams[]>([]);
-
-  const handleNavigateBookingCarwashPage = () => {
-    navigate("/booking-carwash");
-  };
-
-  const handleNavigateBookingCarservicePage = () => {
-    navigate("/booking-carservice");
-  };
 
   const queryProducts = useQueryProductsHomepage();
 
@@ -182,7 +172,6 @@ const HomePage = () => {
             rightSection={
               <MdOutlineArrowRightAlt className="text-xl md:text-2xl" />
             }
-            onClick={handleNavigateBookingCarwashPage}
             className=" h-12 w-fit rounded-full bg-primary px-7 text-base font-medium drop-shadow-2xl"
           >
             Book Now
@@ -315,20 +304,20 @@ const HomePage = () => {
 
         <Box className="flex flex-col justify-center gap-20 md:w-full  md:flex-row">
           <CardProduct
+            id={products[0]?.id}
             title={products[0]?.productName}
             description="Booking carwash dan dapatkan tempat untuk mencuci mobil anda"
             productPrice={products[0]?.price}
-            btnControl={handleNavigateBookingCarwashPage}
             bg={"#0055FE"}
             headerIcon={<MdStar className="text-blue-700 " />}
             thumbnail={PorscheWash}
           />
 
           <CardProduct
+            id={products[1]?.id}
             title={products[1]?.productName}
             description="Booking carwash dan dapatkan tempat untuk mencuci mobil anda"
             productPrice={products[1]?.price}
-            btnControl={handleNavigateBookingCarservicePage}
             bg={"#9D9D9D"}
             headerIcon={<MdStar className="text-gray-500 " />}
             thumbnail={PorscheService}

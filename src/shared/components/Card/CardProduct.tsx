@@ -13,21 +13,21 @@ import { ReactNode } from "react";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 
 interface ICardProductPropsType extends CardProps {
+  id: number;
   title: string;
   description: string;
   thumbnail: string;
   productPrice: number;
   headerIcon: ReactNode;
-  btnControl?: () => void;
 }
 
 const CardProduct = ({
+  id,
   title,
   description,
   thumbnail,
   productPrice,
 
-  btnControl,
   headerIcon,
   ...props
 }: ICardProductPropsType) => {
@@ -72,7 +72,8 @@ const CardProduct = ({
         rightSection={
           <MdOutlineArrowRightAlt className="text-xl md:text-2xl" />
         }
-        onClick={btnControl}
+        component="a"
+        href={`/booking-product/${id}`}
         className=" absolute bottom-0 right-0 h-14  w-1/2  rounded-t-none rounded-bl-none rounded-tl-3xl bg-white px-7 text-sm font-medium text-black drop-shadow-2xl"
       >
         Book Now

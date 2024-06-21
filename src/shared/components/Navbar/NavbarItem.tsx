@@ -2,7 +2,11 @@ import { Divider, Group, NavLink } from "@mantine/core";
 import { IoIosCar, IoIosWater } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-const NavbarItem = () => {
+interface INavbarItemProps {
+  variant?: "light" | "dark";
+}
+
+const NavbarItem = ({ variant }: INavbarItemProps) => {
   return (
     <>
       <Group className=" w-fit text-nowrap" align="start" justify="center">
@@ -12,7 +16,7 @@ const NavbarItem = () => {
           to={"/"}
           className="w-fit hover:bg-transparent  hover:font-medium hover:text-yellow"
           classNames={{
-            label: `text-base`,
+            label: `text-base ${variant === "dark" ? "text-black" : "text-white"}`,
           }}
         />
 
@@ -21,7 +25,7 @@ const NavbarItem = () => {
           classNames={{
             children: `bg-white absolute  rounded-lg text-black `,
             root: ` h-full  hover:bg-transparent hover:text-yellow hover:font-medium w-fit`,
-            label: `text-base`,
+            label: `text-base ${variant === "dark" ? "text-black" : "text-white"}`,
           }}
           childrenOffset={0}
         >
@@ -50,7 +54,7 @@ const NavbarItem = () => {
           to={"/my-booking"}
           className="w-fit hover:bg-transparent hover:font-medium hover:text-yellow"
           classNames={{
-            label: `text-base`,
+            label: `text-base ${variant === "dark" ? "text-black" : "text-white"}`,
           }}
         />
 
@@ -60,7 +64,7 @@ const NavbarItem = () => {
           to={"/order"}
           className="w-fit hover:bg-transparent hover:font-medium hover:text-yellow"
           classNames={{
-            label: `text-base`,
+            label: `text-base ${variant === "dark" ? "text-black" : "text-white"}`,
           }}
         />
       </Group>

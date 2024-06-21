@@ -18,7 +18,7 @@ export const useCredentialQuery = () => {
   const [userRoleDetail, setUserRoleDetail] =
     useState<ICredentialUserResponsePrams | null>(null);
 
-  const { data, isSuccess } = useQuery({
+  const { data, isSuccess, isLoading } = useQuery({
     queryKey: [CLIENT_KEY.AUTH.GET_USER_CREDENTIAL, token],
     queryFn: ({ signal }) => AuthServiceApi.credential(signal),
     enabled: !!token,
@@ -26,15 +26,15 @@ export const useCredentialQuery = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      if (!!data.data) {
-        setUserRoleDetail(data.data);
-      } else {
-        setUserRoleDetail(null);
-      }
+      setUserRoleDetail(data.data);
+      // if (!!data.data) {
+      // } else {
+      //   setUserRoleDetail(null);
+      // }
     }
   }, [isSuccess, data]);
 
-  return { userRoleDetail };
+  return { userRoleDetail, isLoading, isSuccess };
 
   // return useQuery({
   //   queryKey: [CLIENT_KEY.AUTH.GET_USER_CREDENTIAL, token],

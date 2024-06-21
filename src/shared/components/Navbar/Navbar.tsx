@@ -7,8 +7,10 @@ import TokenConfig from "shared/config/TokenConfig";
 
 interface INavbarPropsType {
   children?: ReactNode;
+  variant?: "light" | "dark";
 }
-const Navbar = ({ children }: INavbarPropsType) => {
+
+const Navbar = ({ variant, children }: INavbarPropsType) => {
   const navigate = useNavigate();
 
   const token = TokenConfig.getToken();
@@ -26,8 +28,8 @@ const Navbar = ({ children }: INavbarPropsType) => {
         className="w-full"
         wrap={"nowrap"}
       >
-        <NavLogo variant="primary" />
-        <NavbarItem />
+        <NavLogo variant={variant} />
+        <NavbarItem variant={variant} />
         {!token ? (
           <Group className="w-fit text-nowrap ">
             <Link to={"/login"} className="">

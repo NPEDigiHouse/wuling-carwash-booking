@@ -12,7 +12,7 @@ const CustomerBookingCard = (props: ICustomerBookingCardProps) => {
       my={10}
       classNames={{ root: `cursor-pointer hover:bg-stone-100` }}
       component="a"
-      href="/my-booking/detail"
+      href={`/my-booking/detail/${props.id}`}
     >
       <Group align="center" justify="space-between" className="px-7">
         <Group gap={30}>

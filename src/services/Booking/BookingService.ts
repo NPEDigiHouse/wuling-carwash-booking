@@ -112,12 +112,16 @@ class BookingService {
   }
 
   async confirmationBooking(
-    bookingId?: string,
+    payload: {
+      status: string;
+      bookingId?: string;
+    },
     signal?: AbortSignal | undefined,
   ): Promise<ApiBaseResponse<ICustomerBookingResponseParams>> {
     try {
       const response = await http.put(
-        `${import.meta.env.VITE_API_URL}/booking/${bookingId}/confirm`,
+        `${import.meta.env.VITE_API_URL}/booking/${payload.bookingId}/confirmation`,
+        { status: payload.status },
         { signal },
       );
 

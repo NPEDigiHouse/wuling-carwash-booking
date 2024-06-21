@@ -22,11 +22,13 @@ export const useConfirmationCustomerBooking = () => {
           status: "SUCCESS",
           title: "Booking melakukan konfirmasi",
         });
-
-        queryClient.invalidateQueries({
-          queryKey: [CLIENT_KEY.BOOKINGS.GET_ALL_BOOKING],
-        });
       }
+      queryClient.invalidateQueries({
+        queryKey: [CLIENT_KEY.BOOKINGS.GET_ALL_BOOKING],
+      });
+      queryClient.invalidateQueries({
+        queryKey: [CLIENT_KEY.UI.GET_CONFIRMATION_MODAL_BOOKING_DATA],
+      });
     },
   });
 };

@@ -34,12 +34,24 @@ const ModalConfirmationBooking = ({
   bookingData,
   ...props
 }: IModalConfirmationBookingProps) => {
-  console.log("status : ", bookingData?.id);
-
   const updateStatus = useConfirmationCustomerBooking();
 
   const handleConfirmationModalBooking = () => {
-    updateStatus.mutate(bookingData?.id);
+    if (bookingData?.status && bookingData?.id) {
+      if (bookingData.status === "CONFIRMATION") {
+        updateStatus.mutate({
+          status: "UNCONFIRMATION",
+          bookingId: bookingData.id,
+        });
+      } else {
+        updateStatus.mutate({
+          status: "CONFIRMATION",
+          bookingId: bookingData.id,
+        });
+      }
+    }
+
+    onClose();
   };
 
   return (

@@ -17,6 +17,7 @@ import { IoMdArrowDropright } from "react-icons/io";
 import { IoTrashOutline } from "react-icons/io5";
 import { MdOutlineEdit } from "react-icons/md";
 import { IBookingResponseParams } from "services/Booking/BookingServiceInterface";
+import { useDeleteBooking } from "shared/hooks/api/Booking/useDeleteBooking";
 import { useQueryAllBooking } from "shared/hooks/api/Booking/useQueryAllBookings";
 import { useGetBookingConfirmData } from "shared/hooks/ui/Booking/useGetBookingConfirmData";
 
@@ -33,6 +34,7 @@ const BookingPage = () => {
 
   const queryBooking = useQueryAllBooking();
   const queryBookingDetail = useGetBookingConfirmData(bookingId);
+  const deleteBooking = useDeleteBooking();
 
   const elements = bookingsData.map((booking, index) => {
     return {
@@ -117,9 +119,10 @@ const BookingPage = () => {
     openConfirm();
   };
 
-  const handleDeleteTimeslot = () => {
-    // if (bookingId) {
-    // }
+  const handleDeleteBooking = () => {
+    if (bookingId) {
+      deleteBooking.mutate(bookingId);
+    }
   };
 
   //   useEffect(() => {
@@ -155,7 +158,7 @@ const BookingPage = () => {
       >
         <Flex gap={20} className="w-full">
           <Button
-            onClick={handleDeleteTimeslot}
+            onClick={handleDeleteBooking}
             fullWidth
             variant="filled"
             bg={"red"}

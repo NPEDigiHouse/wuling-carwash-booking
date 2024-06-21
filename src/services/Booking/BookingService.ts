@@ -80,7 +80,7 @@ class BookingService {
   }
 
   async deleteBooking(
-    bookingId: number,
+    bookingId: string,
   ): Promise<ApiBaseResponse<IBookingResponseParams>> {
     try {
       const response = await http.delete(

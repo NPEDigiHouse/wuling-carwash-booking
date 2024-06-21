@@ -12,12 +12,14 @@ import {
   Text,
 } from "@mantine/core";
 import { Porsche03 } from "shared/constant/Images";
+import { useConfirmationCustomerBooking } from "shared/hooks/api/Booking/useConfirmationCustomerBooking";
 
 interface IModalConfirmationBookingProps extends ModalProps {
   opened: boolean;
   onClose: () => void;
   isFetchingData: boolean;
   bookingData?: {
+    id?: string;
     name?: string;
     carType?: string;
     carPlate?: string;
@@ -32,7 +34,13 @@ const ModalConfirmationBooking = ({
   bookingData,
   ...props
 }: IModalConfirmationBookingProps) => {
-  console.log("status : ", bookingData?.status);
+  console.log("status : ", bookingData?.id);
+
+  const updateStatus = useConfirmationCustomerBooking();
+
+  const handleConfirmationModalBooking = () => {
+    updateStatus.mutate(bookingData?.id);
+  };
 
   return (
     <Modal
@@ -81,6 +89,7 @@ const ModalConfirmationBooking = ({
             bg={bookingData?.status === "UNCONFIRMATION" ? "green" : "red"}
             radius={"md"}
             fullWidth
+            onClick={handleConfirmationModalBooking}
           >
             {bookingData?.status === "UNCONFIRMATION"
               ? "Konfirmasi"

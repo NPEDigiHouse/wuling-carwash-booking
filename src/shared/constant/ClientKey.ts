@@ -37,6 +37,8 @@ export const CLIENT_KEY = {
     GET_ALL_BOOKING: "get-all-booking-query-id-key",
     GET_BOOKING_DETAIL: "get-booking-detail-query-id-key",
     DELETE_BOOKING: "delete-booking-customer-mutation-id-key",
+    CONFIRMATION_CUSTOMER_BOOKING:
+      "confirmation-customer-booking-mutation-id-key",
   },
   UI: {
     GET_CONFIRMATION_MODAL_BOOKING_DATA:

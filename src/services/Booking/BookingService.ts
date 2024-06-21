@@ -110,6 +110,25 @@ class BookingService {
       throw error;
     }
   }
+
+  async confirmationBooking(
+    bookingId?: string,
+    signal?: AbortSignal | undefined,
+  ): Promise<ApiBaseResponse<ICustomerBookingResponseParams>> {
+    try {
+      const response = await http.put(
+        `${import.meta.env.VITE_API_URL}/booking/${bookingId}/confirm`,
+        { signal },
+      );
+
+      const data: ApiBaseResponse<ICustomerBookingResponseParams> =
+        await response.data;
+
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default BookingService;

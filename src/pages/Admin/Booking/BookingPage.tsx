@@ -189,6 +189,7 @@ const BookingPage = () => {
       <ModalConfirmationBooking
         isFetchingData={queryBookingDetail.bookingModalDetail === null}
         bookingData={{
+          id: bookingId,
           carPlate: queryBookingDetail.bookingModalDetail?.carPlate,
           carType: queryBookingDetail.bookingModalDetail?.carType,
           name: queryBookingDetail.bookingModalDetail?.name,

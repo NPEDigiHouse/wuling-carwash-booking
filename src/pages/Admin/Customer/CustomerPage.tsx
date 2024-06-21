@@ -1,7 +1,6 @@
 import { Table } from "@mantine/core";
 
 import TableLayout from "features/Admin/layouts/Table/TableLayout";
-import AdminLayout from "shared/layouts/AdminLayout";
 
 const CustomerPage = () => {
   const elements = [
@@ -22,19 +21,17 @@ const CustomerPage = () => {
   ));
 
   return (
-    <AdminLayout>
-      <TableLayout title="Customer Table" totalData={200}>
-        <Table.Thead>
-          <Table.Tr>
-            <Table.Th>Element position</Table.Th>
-            <Table.Th>Element name</Table.Th>
-            <Table.Th>Symbol</Table.Th>
-            <Table.Th>Atomic mass</Table.Th>
-          </Table.Tr>
-        </Table.Thead>
-        <Table.Tbody>{rows}</Table.Tbody>
-      </TableLayout>
-    </AdminLayout>
+    <TableLayout title="Customer Table" totalData={200}>
+      <Table.Thead>
+        <Table.Tr>
+          <Table.Th>Element position</Table.Th>
+          <Table.Th>Element name</Table.Th>
+          <Table.Th>Symbol</Table.Th>
+          <Table.Th>Atomic mass</Table.Th>
+        </Table.Tr>
+      </Table.Thead>
+      <Table.Tbody>{rows}</Table.Tbody>
+    </TableLayout>
   );
 };
 

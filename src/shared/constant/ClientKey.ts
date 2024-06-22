@@ -44,5 +44,8 @@ export const CLIENT_KEY = {
     GET_CONFIRMATION_MODAL_BOOKING_DATA:
       "get-confirmation-modal-booking-query-id-key",
     GET_PROMO_DISCOUNT_FROM_OPTION: "get-promo-discount-option-query-id-key",
+    GET_TOTAL_BOOKING: "get-total-bookings-query-id-key",
+    GET_TOTAL_CUSTOMER: "get-total-customers-query-id-key",
+    GET_TOTAL_PROMO: "get-total-promos-query-id-key",
   },
 };

@@ -10,7 +10,7 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import ModalConfirmationBooking from "features/Admin/components/Modal/ModalConfirmationBooking";
-import ModalActionDelete from "features/Admin/components/ModalActionDelete";
+import ModalActionDelete from "features/Admin/components/Modal/ModalActionDelete";
 import TableLayout from "features/Admin/layouts/Table/TableLayout";
 import { useEffect, useState } from "react";
 import { IoMdArrowDropright } from "react-icons/io";
@@ -26,11 +26,10 @@ const BookingPage = () => {
   const [openedConfirm, { open: openConfirm, close: closeConfirm }] =
     useDisclosure();
 
+  const [bookingId, setBookingId] = useState<string | undefined>(undefined);
   const [bookingsData, setBookingsData] = useState<IBookingResponseParams[]>(
     [],
   );
-
-  const [bookingId, setBookingId] = useState<string | undefined>(undefined);
 
   const queryBooking = useQueryAllBooking();
   const queryBookingDetail = useGetBookingConfirmData(bookingId);

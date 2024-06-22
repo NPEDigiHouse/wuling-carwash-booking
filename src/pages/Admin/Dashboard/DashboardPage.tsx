@@ -4,6 +4,7 @@ import {
   Card,
   Container,
   Divider,
+  Flex,
   Grid,
   Group,
   Image,
@@ -14,15 +15,80 @@ import {
   Text,
 } from "@mantine/core";
 import CustomAdminCard from "features/Admin/components/Card/CustomAdminCard";
-import { IoCard, IoCart, IoPeople } from "react-icons/io5";
+import { IoCard, IoPeople } from "react-icons/io5";
 // import AdminLayout from "shared/layouts/AdminLayout";
 import CustomAreaChart from "../../../features/Admin/components/Chart/CustomAreaChart";
 import { Porsche03 } from "shared/constant/Images";
+import { useGetTotalBooking } from "shared/hooks/ui/Dashboard/useGetTotalBooking";
+import { MdDiscount } from "react-icons/md";
+import { useState } from "react";
+import ModalActionConfirm from "features/Admin/components/Modal/ModalConfirm";
+import { useDisclosure } from "@mantine/hooks";
+import { useFilterUnconfirmationBooking } from "shared/hooks/ui/Dashboard/useFilterUnconfirmationBook";
+import { useConfirmationCustomerBooking } from "shared/hooks/api/Booking/useConfirmationCustomerBooking";
 
 const DashboardPage = () => {
+  const amount = useGetTotalBooking();
+
+  const [bookingId, setBookingId] = useState<string | null>(null);
+  const [openedConfirm, { open: openConfirm, close: closeConfirm }] =
+    useDisclosure();
+
+  const queryUnconfirmBook = useFilterUnconfirmationBooking();
+  const queryConfirmBook = useConfirmationCustomerBooking();
+
+  const handleOpenConfirmationBooking = (bookingId?: string) => {
+    if (bookingId) {
+      setBookingId(bookingId);
+    }
+
+    openConfirm();
+  };
+
+  const handleChangeConfirmationStatus = () => {
+    if (bookingId) {
+      queryConfirmBook.mutate({ status: "CONFIRMATION", bookingId });
+    }
+  };
+
   return (
     // <AdminLayout>
     <Container size={"xl"}>
+      <ModalActionConfirm
+        title="Ingin konfirmasi booking"
+        description="Apakah anda ingin konfirmasi booking customer ini?"
+        opened={openedConfirm}
+        onClose={closeConfirm}
+      >
+        <Flex gap={20} className="w-full">
+          <Button
+            onClick={handleChangeConfirmationStatus}
+            fullWidth
+            variant="filled"
+            bg={"red"}
+            radius={"md"}
+            fw={400}
+            classNames={{
+              root: ` h-[40px]`,
+            }}
+          >
+            Konfirmasi
+          </Button>
+          <Button
+            variant="outline"
+            color="red"
+            fullWidth
+            radius={"md"}
+            fw={400}
+            classNames={{
+              root: ` h-[40px]`,
+            }}
+            onClick={() => close()}
+          >
+            Batal
+          </Button>
+        </Flex>
+      </ModalActionConfirm>
       <SimpleGrid cols={4} spacing={20}>
         <CustomAdminCard
           classNames={{
@@ -32,7 +98,7 @@ const DashboardPage = () => {
           <Group justify="space-between">
             <Stack gap={10}>
               <Text className="text-xl font-medium">Booking</Text>
-              <Text className="text-lg">20</Text>
+              <Text className="text-lg">{amount.totalData?.amountBooking}</Text>
             </Stack>
 
             <Box>
@@ -48,12 +114,12 @@ const DashboardPage = () => {
         >
           <Group justify="space-between">
             <Stack gap={10}>
-              <Text className="text-xl font-medium">Orders</Text>
-              <Text className="text-lg">7</Text>
+              <Text className="text-xl font-medium">Promo</Text>
+              <Text className="text-lg">{amount.totalData?.amountPromo}</Text>
             </Stack>
 
             <Box>
-              <IoCart className="text-3xl text-teal-500" />
+              <MdDiscount className="text-3xl text-teal-500" />
             </Box>
           </Group>
         </CustomAdminCard>
@@ -66,7 +132,9 @@ const DashboardPage = () => {
           <Group justify="space-between">
             <Stack gap={10}>
               <Text className="text-xl font-medium">Customers</Text>
-              <Text className="text-lg">7</Text>
+              <Text className="text-lg">
+                {amount.totalData?.amountCustomer}
+              </Text>
             </Stack>
 
             <Box>
@@ -140,7 +208,7 @@ const DashboardPage = () => {
 
             <Space h={10} />
 
-            <Text className="text-xl font-medium">Confirmation Booking</Text>
+            <Text className="text-xl font-medium"> Need Confirmation</Text>
 
             <Space h={20} />
 
@@ -149,49 +217,40 @@ const DashboardPage = () => {
             <Space h={20} />
 
             <Stack>
-              <Paper shadow="none">
-                <Group justify="space-between">
-                  <Stack gap={10}>
-                    <Text className="text-base">Bayu Ajid</Text>
-                    <Text className="text-sm font-medium text-gray-400">
-                      DD 1782 BY
-                    </Text>
-                  </Stack>
+              {queryUnconfirmBook.unconfirmBook.map((book) => {
+                return (
+                  <Paper shadow="none">
+                    <Group justify="space-between">
+                      <Stack gap={10}>
+                        <Text className="text-base">{book.name}</Text>
+                        <Text className="text-sm font-medium text-gray-400">
+                          {book.carPlate}
+                        </Text>
+                      </Stack>
 
-                  <Stack gap={10}>
-                    <Text className="text-sm font-medium text-cyan-500">
-                      Car Service
-                    </Text>
-                    <Button bg={"green"}>Confirm</Button>
-                  </Stack>
-                </Group>
+                      <Stack gap={10}>
+                        <Text className="text-sm font-medium text-cyan-500">
+                          {book.service}
+                        </Text>
+                        <Button
+                          bg={"red"}
+                          fw={400}
+                          onClick={() => handleOpenConfirmationBooking(book.id)}
+                        >
+                          {book.status.toUpperCase().slice(0, 1)}
+                          {book.status
+                            .toLowerCase()
+                            .slice(1, book.status.length)}
+                        </Button>
+                      </Stack>
+                    </Group>
 
-                <Space h={10} />
+                    <Space h={10} />
 
-                <Divider />
-              </Paper>
-
-              <Paper shadow="none">
-                <Group justify="space-between">
-                  <Stack gap={10}>
-                    <Text className="text-base">Muh Ikhsan</Text>
-                    <Text className="text-sm   font-medium text-gray-400">
-                      DD 1475 TW
-                    </Text>
-                  </Stack>
-
-                  <Stack gap={10}>
-                    <Text className="text-sm font-medium text-cyan-500">
-                      Car Wash
-                    </Text>
-                    <Button bg={"green"}>Confirm</Button>
-                  </Stack>
-                </Group>
-
-                <Space h={10} />
-
-                <Divider />
-              </Paper>
+                    <Divider />
+                  </Paper>
+                );
+              })}
             </Stack>
           </Card>
         </Grid.Col>

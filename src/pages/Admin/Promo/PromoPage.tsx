@@ -1,6 +1,6 @@
 import { Button, Flex, Group, LoadingOverlay, Table } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import ModalActionDelete from "features/Admin/components/ModalActionDelete";
+import ModalActionDelete from "features/Admin/components/Modal/ModalActionDelete";
 import TableLayout from "features/Admin/layouts/Table/TableLayout";
 import { useEffect, useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";

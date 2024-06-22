@@ -1,16 +1,10 @@
 import { Container, Group, Text } from "@mantine/core";
-import { UserRoleContext } from "context/UserRoleContext";
-import { useContext } from "react";
 
 interface IHeaderPageLayoutPropsType {
   title: string;
 }
 
 const HeaderPageLayout = ({ title }: IHeaderPageLayoutPropsType) => {
-  const userAdmin = useContext(UserRoleContext);
-
-  console.log("user admin : ", userAdmin);
-
   return (
     <Container size={"xl"}>
       <Group

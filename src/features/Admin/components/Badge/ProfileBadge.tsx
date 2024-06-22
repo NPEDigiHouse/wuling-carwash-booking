@@ -4,8 +4,8 @@ import { MdChevronRight } from "react-icons/md";
 
 interface ProfileBadgeProps extends React.ComponentPropsWithoutRef<"button"> {
   image?: string;
-  name: string;
-  role: string;
+  name?: string;
+  role?: string;
   icon?: React.ReactNode;
 }
 

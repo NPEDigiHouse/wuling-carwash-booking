@@ -6,20 +6,20 @@ import { CLIENT_KEY } from "shared/constant/ClientKey";
 export const useUpdateTimeslot = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationKey: [CLIENT_KEY.TIMESLOTS.CREATE_TIMESLOT],
-    mutationFn: TimeslotServiceApi.createTimeslot,
+    mutationKey: [CLIENT_KEY.TIMESLOTS.UPDATE_TIMESLOT],
+    mutationFn: TimeslotServiceApi.updateTimeslot,
     onSuccess(data) {
       if (!data.data) {
         NotificationAuth({
-          message: "Data Timeslot Gagal Ditambah",
+          message: "Data Timeslot Gagal Diubah",
           status: "FAILED",
-          title: "Timeslot Gagal Ditambah",
+          title: "Timeslot Gagal Diubah",
         });
       } else {
         NotificationAuth({
-          message: "Data Timeslot Berhasil Terhapus",
+          message: "Data Timeslot Berhasil Diubah",
           status: "SUCCESS",
-          title: "Timeslot Berhasil Ditambah",
+          title: "Timeslot Berhasil Diubah",
         });
 
         queryClient.invalidateQueries({

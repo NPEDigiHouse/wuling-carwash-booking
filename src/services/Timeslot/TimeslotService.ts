@@ -45,6 +45,25 @@ class TimeslotService {
     }
   }
 
+  async getTimeslotDetail(
+    timeslotId?: string,
+    signal?: AbortSignal | undefined,
+  ): Promise<ApiBaseResponse<ITimeslotApiResponseParams>> {
+    try {
+      const response = await http.get(
+        `${import.meta.env.VITE_API_URL}/timeslot/${timeslotId}`,
+        { signal },
+      );
+
+      const data: ApiBaseResponse<ITimeslotApiResponseParams> =
+        await response.data;
+
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async deleteTimeslot(timeslotId: string) {
     console.log("timeslot id = ", timeslotId);
 

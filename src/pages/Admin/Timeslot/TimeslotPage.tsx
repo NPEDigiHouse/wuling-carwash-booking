@@ -10,6 +10,7 @@ import { useDeleteTimeslot } from "shared/hooks/api/Timeslots/useDeleteTimeslot"
 import { useQueryTimeslots } from "shared/hooks/api/Timeslots/useQueryTimeslots";
 // import AdminLayout from "shared/layouts/AdminLayout";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 const TimeslotPage = () => {
   const [timeslotsRows, setTimeslotsRows] = useState<
@@ -59,7 +60,9 @@ const TimeslotPage = () => {
       <Table.Td>{element.time}</Table.Td>
       <Table.Td>
         <Group>
-          <MdOutlineEdit className="text-xl text-blue-500" />
+          <Link to={`/admin/timeslot/edit/${element.id}`} reloadDocument>
+            <MdOutlineEdit className="text-xl text-blue-500" />
+          </Link>
           <IoTrashOutline
             className="text-xl text-red-500"
             onClick={() => handleOpenModalDelete(element.id)}

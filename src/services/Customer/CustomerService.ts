@@ -35,6 +35,19 @@ class CustomerService {
       throw error;
     }
   }
+
+  async deleteCustomer(id: string): Promise<ApiBaseResponse<null>> {
+    try {
+      const response = await http.delete(
+        `${import.meta.env.VITE_API_URL}/customer/${id}`,
+      );
+      const data: ApiBaseResponse<null> = await response.data;
+
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default CustomerService;

@@ -13,4 +13,8 @@ export interface ICustomerDetailResponseParams {
     service: string;
     promo: string;
   }[];
+  user: {
+    email: string;
+    username: string;
+  };
 }

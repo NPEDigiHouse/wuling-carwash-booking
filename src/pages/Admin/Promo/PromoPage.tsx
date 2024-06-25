@@ -9,9 +9,11 @@ import { IPromoServiceResponseParams } from "services/Promo/PromoServiceInterfac
 import { useDeletePromo } from "shared/hooks/api/Promo/useDeletePromo";
 import { useQueryAllPromo } from "shared/hooks/api/Promo/useQueryAllPromo";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 const PromoPage = () => {
   const [opened, { open, close }] = useDisclosure();
+  // const navigate = useNavigate();
 
   const [promoData, setPromosData] = useState<IPromoServiceResponseParams[]>(
     [],
@@ -43,7 +45,12 @@ const PromoPage = () => {
       <Table.Td>{moment(element.endDate).format("DD MMMM YYYY")}</Table.Td>
       <Table.Td>
         <Group>
-          <MdOutlineEdit className="text-xl text-blue-500" />
+          <Link to={`/admin/promo/edit/${element.id}`} reloadDocument>
+            <MdOutlineEdit
+              className="text-xl text-blue-500"
+              // onClick={() => handleNavigateEditPage(element.id)}
+            />
+          </Link>
           <IoTrashOutline
             className="text-xl text-red-500"
             onClick={() => handleOpenModalDelete(element.id)}
@@ -60,6 +67,14 @@ const PromoPage = () => {
       open();
     }
   };
+
+  // const handleNavigateEditPage = (promoId?: number) => {
+  //   if (promoId) {
+  //     setPromoId(promoId);
+
+  //     navigate(`/admin/promo/edit/${promoId}`);
+  //   }
+  // };
 
   const handleDeleteTimeslot = () => {
     if (promoId) {

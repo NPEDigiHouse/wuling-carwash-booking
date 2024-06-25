@@ -4,6 +4,7 @@ import DashboardPage from "pages/Admin/Dashboard/DashboardPage";
 import CreateProductPage from "pages/Admin/Product/CreateProductPage";
 import ProductPage from "pages/Admin/Product/ProductPage";
 import CreatePromoPage from "pages/Admin/Promo/CreatePromoPage";
+import EditPromoPage from "pages/Admin/Promo/EditPromoPage";
 import PromoPage from "pages/Admin/Promo/PromoPage";
 import CreateTimeslotPage from "pages/Admin/Timeslot/CreateTimeslotPage";
 import TimeslotPage from "pages/Admin/Timeslot/TimeslotPage";
@@ -33,6 +34,7 @@ import {
   MY_BOOKING,
   ORDER,
   REGISTER,
+  ADMIN_EDIT_PROMO,
 } from "shared/utils/Route";
 
 const Router = () => {
@@ -66,6 +68,7 @@ const Router = () => {
           <Route path={ADMIN_CREATE_PRODUCT} element={<CreateProductPage />} />
           <Route path={ADMIN_PROMO} element={<PromoPage />} />
           <Route path={ADMIN_CREATE_PROMO} element={<CreatePromoPage />} />
+          <Route path={ADMIN_EDIT_PROMO} element={<EditPromoPage />} />
           <Route path={ADMIN_BOOKING} element={<BookingPage />} />
         </Route>
       </Routes>

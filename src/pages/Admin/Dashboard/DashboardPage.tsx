@@ -208,7 +208,7 @@ const DashboardPage = () => {
 
             <Space h={10} />
 
-            <Text className="text-xl font-medium"> Need Confirmation</Text>
+            <Text className="text-xl font-medium">Need Confirmation</Text>
 
             <Space h={20} />
 

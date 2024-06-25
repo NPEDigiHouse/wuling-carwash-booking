@@ -1,37 +1,111 @@
-import { Table } from "@mantine/core";
+import { Button, Flex, Group, Table } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
+import ModalActionDelete from "features/Admin/components/Modal/ModalActionDelete";
 
 import TableLayout from "features/Admin/layouts/Table/TableLayout";
+import { useState } from "react";
+import { IoTrashOutline } from "react-icons/io5";
+import { MdOutlineEdit } from "react-icons/md";
+import { useDeleteCustomer } from "shared/hooks/api/Customer/useDeleteCustomer";
+import { useQueryAllCustomers } from "shared/hooks/api/Customer/useQueryAllCustomers";
 
 const CustomerPage = () => {
-  const elements = [
-    { position: 6, mass: 12.011, symbol: "C", name: "Carbon" },
-    { position: 7, mass: 14.007, symbol: "N", name: "Nitrogen" },
-    { position: 39, mass: 88.906, symbol: "Y", name: "Yttrium" },
-    { position: 56, mass: 137.33, symbol: "Ba", name: "Barium" },
-    { position: 58, mass: 140.12, symbol: "Ce", name: "Cerium" },
-  ];
+  const [customerId, setCustomerId] = useState<string | undefined>(undefined);
 
-  const rows = elements.map((element) => (
-    <Table.Tr key={element.name}>
-      <Table.Td>{element.position}</Table.Td>
+  const [opened, { open, close }] = useDisclosure();
+
+  const queryAllCustomers = useQueryAllCustomers();
+  const deleteCustomer = useDeleteCustomer(customerId);
+
+  console.log("customers : ", queryAllCustomers.customersData);
+
+  const handleOpenModalDelete = (customerId?: string) => {
+    if (customerId) {
+      setCustomerId(customerId);
+
+      open();
+    }
+  };
+
+  const handleDeleteCustomer = () => {
+    if (customerId) {
+      console.log("customer id : ", customerId);
+
+      deleteCustomer.mutate(customerId);
+    }
+  };
+
+  const rows = queryAllCustomers.customersData?.map((element, index) => (
+    <Table.Tr key={index}>
+      <Table.Td>{index + 1}</Table.Td>
       <Table.Td>{element.name}</Table.Td>
-      <Table.Td>{element.symbol}</Table.Td>
-      <Table.Td>{element.mass}</Table.Td>
+      <Table.Td>{element.user.username}</Table.Td>
+      <Table.Td>{element.phoneNumber}</Table.Td>
+      <Table.Td>{element.user.email}</Table.Td>
+      <Table.Td className="rounded-br-xl rounded-tr-xl">
+        <Group>
+          <MdOutlineEdit className="text-xl text-blue-500" />
+          <IoTrashOutline
+            className="text-xl text-red-500"
+            onClick={() => handleOpenModalDelete(element.id)}
+          />
+        </Group>
+      </Table.Td>
     </Table.Tr>
   ));
 
   return (
-    <TableLayout title="Customer Table" totalData={200}>
-      <Table.Thead>
-        <Table.Tr>
-          <Table.Th>Element position</Table.Th>
-          <Table.Th>Element name</Table.Th>
-          <Table.Th>Symbol</Table.Th>
-          <Table.Th>Atomic mass</Table.Th>
-        </Table.Tr>
-      </Table.Thead>
-      <Table.Tbody>{rows}</Table.Tbody>
-    </TableLayout>
+    <>
+      <ModalActionDelete
+        opened={opened}
+        onClose={close}
+        title="Hapus Product"
+        description="Apakah anda yakin ingin menghapus product"
+      >
+        <Flex gap={20} className="w-full">
+          <Button
+            onClick={handleDeleteCustomer}
+            fullWidth
+            variant="filled"
+            bg={"red"}
+            radius={"md"}
+            fw={400}
+            classNames={{
+              root: ` h-[40px]`,
+            }}
+          >
+            Konfirmasi
+          </Button>
+          <Button
+            variant="outline"
+            color="red"
+            fullWidth
+            radius={"md"}
+            fw={400}
+            classNames={{
+              root: ` h-[40px]`,
+            }}
+            onClick={() => close()}
+          >
+            Batal
+          </Button>
+        </Flex>
+      </ModalActionDelete>
+
+      <TableLayout title="Customer Table" totalData={200}>
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th>No</Table.Th>
+            <Table.Th>Name</Table.Th>
+            <Table.Th>Username</Table.Th>
+            <Table.Th>No. Telp</Table.Th>
+            <Table.Th>Email</Table.Th>
+            <Table.Th>Action</Table.Th>
+          </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>{rows}</Table.Tbody>
+      </TableLayout>
+    </>
   );
 };
 

@@ -13,6 +13,8 @@ export const CLIENT_KEY = {
   CUSTOMER: {
     GET_CUSTOMER_BOOKINGS: "get-all-customers-booking-query-id-key",
     GET_CUSTOMER_DETAIL: "get-customer-detail-query-id-key",
+    GET_ALL_CUSTOMERS: "get-all-customers-query-id-key",
+    DELETE_CUSTOMER: "delete-customer-mutation-id-key",
   },
   PRODUCT: {
     GET_ALL_PRODUCTS: "get-all-products-query-id-key",
@@ -29,7 +31,9 @@ export const CLIENT_KEY = {
   },
   PROMO: {
     CREATE_PROMO: "create-promo-mutation-id-key",
+    EDIT_PROMO: "edit-promo-mutation-id-key",
     GET_ALL_PROMO: "get-all-promos-query-id-key",
+    GET_DETAIL_PROMO: "get-detail-promo-query-id-key",
   },
   BOOKINGS: {
     CREATE_BOOKING: "create-booking-mutation-id-key",

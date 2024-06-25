@@ -3,6 +3,11 @@ export interface ITimeslotApiRequestParams {
   time: string;
 }
 
+export interface ITimeslotApiOptionalRequestParams {
+  date: string;
+  time: string;
+}
+
 export interface ITimeslotApiResponseParams {
   id: number;
   date: Date;

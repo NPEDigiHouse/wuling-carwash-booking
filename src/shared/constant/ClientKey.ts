@@ -23,8 +23,9 @@ export const CLIENT_KEY = {
   },
   TIMESLOTS: {
     GET_ALL_TIMESLOTS: "get-all-timeslots-query-id-key",
-    DELETE_TIMESLOT: "delete-timeslot-mutation-id-key",
     CREATE_TIMESLOT: "create-timeslot-mutation-id-key",
+    UPDATE_TIMESLOT: "edit-timeslot-mutation-id-key",
+    DELETE_TIMESLOT: "delete-timeslot-mutation-id-key",
   },
   PUBLIC: {
     GET_ALL_PRODUCTS_HOMEPAGE: "get-all-products-homepage-query-id-key",

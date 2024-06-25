@@ -3,6 +3,7 @@ import { ApiBaseResponse } from "shared/config/APIResponse";
 
 import { http } from "shared/utils/AxiosUtils";
 import {
+  ITimeslotApiOptionalRequestParams,
   ITimeslotApiRequestParams,
   ITimeslotApiResponseParams,
 } from "./TimeslotServiceInterface";
@@ -50,6 +51,24 @@ class TimeslotService {
     try {
       const response = await http.delete(
         `${import.meta.env.VITE_API_URL}/timeslot/${timeslotId}`,
+      );
+
+      const data = await response.data;
+
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async updateTimeslot(payload: {
+    data: ITimeslotApiOptionalRequestParams;
+    timeslotId: string;
+  }) {
+    try {
+      const response = await http.put(
+        `${import.meta.env.VITE_API_URL}/timeslot/${payload.timeslotId}`,
+        payload.data,
       );
 
       const data = await response.data;

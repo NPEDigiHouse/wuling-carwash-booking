@@ -2,9 +2,15 @@ import FormLayout from "features/Admin/layouts/Form/FormLayout";
 import moment from "moment";
 import { ITimeslotFormPropsType } from "features/Admin/interfaces/TimeslotFormInterface";
 import BaseTimeslotForm from "features/Admin/components/Form/BaseTimeslotForm";
+import { useQueryTimeslotDetail } from "shared/hooks/api/Timeslots/useQueryTimeslotDetail";
+import { useParams } from "react-router-dom";
 
 const EditTimeslotPage = () => {
   // const navigate = useNavigate();
+  const params = useParams();
+  const timeslotDetail = useQueryTimeslotDetail(params.id);
+
+  console.log("timeslot detail : ", timeslotDetail);
 
   const handleSubmitForm = (values: ITimeslotFormPropsType) => {
     const params = {

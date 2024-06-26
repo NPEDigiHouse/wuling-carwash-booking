@@ -1,6 +1,6 @@
 import FormLayout from "features/Admin/layouts/Form/FormLayout";
 import { useNavigate, useParams } from "react-router-dom";
-import { useGetPromoInitialData } from "shared/hooks/ui/Promo/useGetPromoInitialData";
+import { useGetPromoInitialData } from "shared/hooks/ui/Form/useGetPromoInitialData";
 import BasePromoForm from "features/Admin/components/Form/BasePromoForm";
 import { IPromoFormPropsType } from "features/Admin/interfaces/PromoFormInterface";
 import { LoadingOverlay } from "@mantine/core";

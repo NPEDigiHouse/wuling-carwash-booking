@@ -24,6 +24,8 @@ const BasePromoForm = ({ initialValues, onSubmit }: IPromoInitialValues) => {
     validate: zodResolver(PromoFormSchema),
   });
 
+  console.log("initial values : ", initialValues);
+
   return (
     <form onSubmit={form.onSubmit((values) => onSubmit(values))}>
       <SimpleGrid cols={{ base: 1, md: 2 }}>

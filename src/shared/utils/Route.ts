@@ -13,6 +13,7 @@ export const ADMIN_REPORT = "admin/report";
 export const ADMIN_CUSTOMER = "admin/customers";
 export const ADMIN_TIMESLOT = "admin/timeslot";
 export const ADMIN_CREATE_TIMESLOT = "admin/timeslot/create";
+export const ADMIN_EDIT_TIMESLOT = "admin/timeslot/edit/:id";
 export const ADMIN_PRODUCT = "admin/products";
 export const ADMIN_CREATE_PRODUCT = "admin/products/create";
 export const ADMIN_PROMO = "admin/promo";

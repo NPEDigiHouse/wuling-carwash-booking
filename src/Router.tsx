@@ -7,6 +7,7 @@ import CreatePromoPage from "pages/Admin/Promo/CreatePromoPage";
 import EditPromoPage from "pages/Admin/Promo/EditPromoPage";
 import PromoPage from "pages/Admin/Promo/PromoPage";
 import CreateTimeslotPage from "pages/Admin/Timeslot/CreateTimeslotPage";
+import EditTimeslotPage from "pages/Admin/Timeslot/EditTimeslotPage";
 import TimeslotPage from "pages/Admin/Timeslot/TimeslotPage";
 import BookingProductPage from "pages/Customers/Booking/BookingProduct";
 import DetailBookingPage from "pages/Customers/Booking/Detail";
@@ -35,6 +36,7 @@ import {
   ORDER,
   REGISTER,
   ADMIN_EDIT_PROMO,
+  ADMIN_EDIT_TIMESLOT,
 } from "shared/utils/Route";
 
 const Router = () => {
@@ -64,6 +66,7 @@ const Router = () => {
             path={ADMIN_CREATE_TIMESLOT}
             element={<CreateTimeslotPage />}
           />
+          <Route path={ADMIN_EDIT_TIMESLOT} element={<EditTimeslotPage />} />
           <Route path={ADMIN_PRODUCT} element={<ProductPage />} />
           <Route path={ADMIN_CREATE_PRODUCT} element={<CreateProductPage />} />
           <Route path={ADMIN_PROMO} element={<PromoPage />} />

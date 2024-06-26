@@ -55,6 +55,8 @@ class TimeslotService {
         { signal },
       );
 
+      // console.log("response : ", response);
+
       const data: ApiBaseResponse<ITimeslotApiResponseParams> =
         await response.data;
 

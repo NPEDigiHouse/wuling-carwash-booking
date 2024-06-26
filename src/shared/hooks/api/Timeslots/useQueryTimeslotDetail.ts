@@ -6,7 +6,7 @@ import { CLIENT_KEY } from "shared/constant/ClientKey";
 export const useQueryTimeslotDetail = (timeslotId?: string) => {
   const token = TokenConfig.getToken();
   return useQuery({
-    queryKey: [CLIENT_KEY.TIMESLOTS.GET_DETAIL_TIMESLOT],
+    queryKey: [CLIENT_KEY.TIMESLOTS.GET_DETAIL_TIMESLOT, timeslotId],
     queryFn: ({ signal }) =>
       TimeslotServiceApi.getTimeslotDetail(timeslotId, signal),
     enabled: !!token,

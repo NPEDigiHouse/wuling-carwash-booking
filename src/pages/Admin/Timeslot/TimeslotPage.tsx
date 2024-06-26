@@ -60,7 +60,7 @@ const TimeslotPage = () => {
       <Table.Td>{element.time}</Table.Td>
       <Table.Td>
         <Group>
-          <Link to={`/admin/timeslot/edit/${element.id}`} reloadDocument>
+          <Link to={`/admin/timeslot/edit/${element.id}`}>
             <MdOutlineEdit className="text-xl text-blue-500" />
           </Link>
           <IoTrashOutline

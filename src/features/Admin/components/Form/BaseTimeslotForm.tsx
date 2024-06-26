@@ -13,13 +13,16 @@ import { IoMdClock } from "react-icons/io";
 import { useRef } from "react";
 import { ITimeslotFormPropsType } from "features/Admin/interfaces/TimeslotFormInterface";
 
-interface IPromoInitialValues {
+interface ITimeslotInitialValues {
   initialValues?: ITimeslotFormPropsType;
   isLoading?: boolean;
   onSubmit: (values: ITimeslotFormPropsType) => void;
 }
 
-const BaseTimeslotForm = ({ initialValues, onSubmit }: IPromoInitialValues) => {
+const BaseTimeslotForm = ({
+  initialValues,
+  onSubmit,
+}: ITimeslotInitialValues) => {
   const ref = useRef<HTMLInputElement>(null);
 
   const form = useForm({
@@ -38,6 +41,8 @@ const BaseTimeslotForm = ({ initialValues, onSubmit }: IPromoInitialValues) => {
       <IoMdClock style={{ width: rem(16), height: rem(16) }} />
     </ActionIcon>
   );
+
+  console.log("initial values : ", initialValues);
 
   return (
     <form onSubmit={form.onSubmit((values) => onSubmit(values))}>

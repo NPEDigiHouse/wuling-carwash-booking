@@ -2,15 +2,13 @@ import FormLayout from "features/Admin/layouts/Form/FormLayout";
 import moment from "moment";
 import { ITimeslotFormPropsType } from "features/Admin/interfaces/TimeslotFormInterface";
 import BaseTimeslotForm from "features/Admin/components/Form/BaseTimeslotForm";
-import { useQueryTimeslotDetail } from "shared/hooks/api/Timeslots/useQueryTimeslotDetail";
 import { useParams } from "react-router-dom";
+import { useGetTimeslotInitialData } from "shared/hooks/ui/Form/useGetTimeslotInitialData";
 
 const EditTimeslotPage = () => {
   // const navigate = useNavigate();
   const params = useParams();
-  const timeslotDetail = useQueryTimeslotDetail(params.id);
-
-  console.log("timeslot detail : ", timeslotDetail);
+  const timeslotDetail = useGetTimeslotInitialData(params.id);
 
   const handleSubmitForm = (values: ITimeslotFormPropsType) => {
     const params = {
@@ -21,6 +19,8 @@ const EditTimeslotPage = () => {
     console.log("values : ", params);
   };
 
+  console.log("timeslot detail : ", timeslotDetail.timeslotInitialValues);
+
   // useEffect(() => {
   //   if (postTimeslot.isSuccess && !postTimeslot.isPending) {
   //     navigate("/admin/timeslot");
@@ -29,7 +29,13 @@ const EditTimeslotPage = () => {
 
   return (
     <FormLayout title="Tambah Timeslot">
-      <BaseTimeslotForm onSubmit={handleSubmitForm} />
+      <BaseTimeslotForm
+        initialValues={{
+          date: timeslotDetail.timeslotInitialValues?.date,
+          time: timeslotDetail.timeslotInitialValues?.time,
+        }}
+        onSubmit={handleSubmitForm}
+      />
     </FormLayout>
   );
 };

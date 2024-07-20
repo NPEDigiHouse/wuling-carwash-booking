@@ -16,9 +16,6 @@ export const useQueryCustomerDetail = (id?: string) => {
 
   useEffect(() => {
     if (!isLoading) {
-      setTimeout(() => {
-        setLoading(false);
-      }, 5000);
       if (isSuccess) {
         setCustomerDetail(data.data);
       } else {

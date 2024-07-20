@@ -133,6 +133,28 @@ class BookingService {
       throw error;
     }
   }
+
+  async uploadReceiptBooking(
+    payload: {
+      receipt: FormData;
+      bookingId?: string;
+    },
+    signal?: AbortSignal | undefined,
+  ) {
+    try {
+      const response = await http.put(
+        `${import.meta.env.VITE_API_URL}/booking/${payload.bookingId}/upload-receipt`,
+        payload.receipt,
+        { signal },
+      );
+
+      const data = response.data;
+
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default BookingService;

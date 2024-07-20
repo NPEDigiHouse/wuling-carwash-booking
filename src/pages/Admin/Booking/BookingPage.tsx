@@ -14,12 +14,13 @@ import ModalActionDelete from "features/Admin/components/Modal/ModalActionDelete
 import TableLayout from "features/Admin/layouts/Table/TableLayout";
 import { useEffect, useState } from "react";
 import { IoMdArrowDropright } from "react-icons/io";
-import { IoTrashOutline } from "react-icons/io5";
+import { IoImageOutline, IoTrashOutline } from "react-icons/io5";
 import { MdOutlineEdit } from "react-icons/md";
 import { IBookingResponseParams } from "services/Booking/BookingServiceInterface";
 import { useDeleteBooking } from "shared/hooks/api/Booking/useDeleteBooking";
 import { useQueryAllBooking } from "shared/hooks/api/Booking/useQueryAllBookings";
 import { useGetBookingConfirmData } from "shared/hooks/ui/Booking/useGetBookingConfirmData";
+import { Link } from "react-router-dom";
 
 const BookingPage = () => {
   const [opened, { open, close }] = useDisclosure();
@@ -48,6 +49,7 @@ const BookingPage = () => {
       bookingDate: booking.bookingDate,
       bookingTime: booking.bookingTime,
       service: booking.service,
+      receipt: booking.receipt,
       promo: booking.promo,
     };
   });
@@ -66,6 +68,20 @@ const BookingPage = () => {
       <Table.Td>Rp. {element.amount}</Table.Td>
       <Table.Td>
         {element.bookingDate} : {element.bookingTime}
+      </Table.Td>
+      <Table.Td>
+        <Link
+          to={`${import.meta.env.VITE_LOCALHOST_URL}/uploads/booking/${element.receipt}`}
+          target="_blank"
+        >
+          <Button
+            variant="outline"
+            className="border-primary font-normal text-primary"
+            rightSection={<IoImageOutline className="text-2xl text-primary" />}
+          >
+            Lihat Gambar
+          </Button>
+        </Link>
       </Table.Td>
       <Table.Td>
         <Badge
@@ -211,6 +227,7 @@ const BookingPage = () => {
             <Table.Th>No.Telp</Table.Th>
             <Table.Th>Harga</Table.Th>
             <Table.Th>Tanggal & Waktu</Table.Th>
+            <Table.Th>Bukti Pembayaran</Table.Th>
             <Table.Th>Konfirmasi</Table.Th>
             <Table.Th className="rounded-br-xl rounded-tr-xl">Action</Table.Th>
           </Table.Tr>

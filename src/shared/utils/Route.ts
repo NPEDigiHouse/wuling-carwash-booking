@@ -11,6 +11,7 @@ export const ADMIN_ORDERS = "admin/orders";
 export const ADMIN_BOOKING = "admin/booking";
 export const ADMIN_REPORT = "admin/report";
 export const ADMIN_CUSTOMER = "admin/customers";
+export const ADMIN_EDIT_CUSTOMER = "admin/customers/edit/:id";
 export const ADMIN_TIMESLOT = "admin/timeslot";
 export const ADMIN_CREATE_TIMESLOT = "admin/timeslot/create";
 export const ADMIN_EDIT_TIMESLOT = "admin/timeslot/edit/:id";

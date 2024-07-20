@@ -1,5 +1,6 @@
 import BookingPage from "pages/Admin/Booking/BookingPage";
 import CustomerPage from "pages/Admin/Customer/CustomerPage";
+import EditCustomerPage from "pages/Admin/Customer/EditCustomerPage";
 import DashboardPage from "pages/Admin/Dashboard/DashboardPage";
 import CreateProductPage from "pages/Admin/Product/CreateProductPage";
 import ProductPage from "pages/Admin/Product/ProductPage";
@@ -37,6 +38,7 @@ import {
   REGISTER,
   ADMIN_EDIT_PROMO,
   ADMIN_EDIT_TIMESLOT,
+  ADMIN_EDIT_CUSTOMER,
 } from "shared/utils/Route";
 
 const Router = () => {
@@ -61,6 +63,7 @@ const Router = () => {
         <Route element={<AdminLayout />}>
           <Route path={ADMIN_HOME} element={<DashboardPage />} />
           <Route path={ADMIN_CUSTOMER} element={<CustomerPage />} />
+          <Route path={ADMIN_EDIT_CUSTOMER} element={<EditCustomerPage />} />
           <Route path={ADMIN_TIMESLOT} element={<TimeslotPage />} />
           <Route
             path={ADMIN_CREATE_TIMESLOT}

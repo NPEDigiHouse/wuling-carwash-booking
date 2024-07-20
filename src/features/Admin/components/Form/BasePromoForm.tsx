@@ -3,9 +3,9 @@ import { useForm, zodResolver } from "@mantine/form";
 import BaseNumberInput from "features/Admin/components/Inpu/BaseNumberInput";
 import { PromoFormSchema } from "features/Admin/schema/PromoFormSchema";
 import CustomTextInput from "shared/components/Input/CustomTextInput";
-import { IPromoFormPropsType } from "features/Admin/interfaces/PromoFormInterface";
 import { DatePickerInput } from "@mantine/dates";
 import dayjs from "dayjs";
+import { IPromoFormPropsType } from "features/Admin/interfaces/PromoFormInterface";
 
 interface IPromoInitialValues {
   initialValues?: IPromoFormPropsType;

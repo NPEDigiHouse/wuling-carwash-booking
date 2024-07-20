@@ -10,6 +10,7 @@ export interface IBookingResponseParams {
   bookingTime: string;
   service: string;
   promo: string;
+  receipt?: string;
   productPrice: number;
   discount: number;
 }

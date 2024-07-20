@@ -6,6 +6,7 @@ import TableLayout from "features/Admin/layouts/Table/TableLayout";
 import { useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
 import { MdOutlineEdit } from "react-icons/md";
+import { Link } from "react-router-dom";
 import { useDeleteCustomer } from "shared/hooks/api/Customer/useDeleteCustomer";
 import { useQueryAllCustomers } from "shared/hooks/api/Customer/useQueryAllCustomers";
 
@@ -44,7 +45,9 @@ const CustomerPage = () => {
       <Table.Td>{element.user.email}</Table.Td>
       <Table.Td className="rounded-br-xl rounded-tr-xl">
         <Group>
-          <MdOutlineEdit className="text-xl text-blue-500" />
+          <Link to={`/admin/customers/edit/${element.id}`} reloadDocument>
+            <MdOutlineEdit className="text-xl text-blue-500" />
+          </Link>
           <IoTrashOutline
             className="text-xl text-red-500"
             onClick={() => handleOpenModalDelete(element.id)}

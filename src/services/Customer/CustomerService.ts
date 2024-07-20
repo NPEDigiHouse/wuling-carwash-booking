@@ -30,6 +30,8 @@ class CustomerService {
       const data: ApiBaseResponse<ICustomerDetailResponseParams> =
         await response.data;
 
+      console.log("customer data : ", data.data);
+
       return data;
     } catch (error) {
       throw error;

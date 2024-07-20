@@ -15,6 +15,8 @@ export const useQueryAllCustomers = (id?: string) => {
     queryFn: ({ signal }) => CustomerServiceApi.getAllCustomers(signal),
   });
 
+  console.log("data customer : ", data);
+
   useEffect(() => {
     if (!isLoading) {
       setTimeout(() => {

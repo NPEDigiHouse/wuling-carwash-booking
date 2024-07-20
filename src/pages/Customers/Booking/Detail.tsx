@@ -4,6 +4,7 @@ import {
   Button,
   Container,
   Divider,
+  FileButton,
   Flex,
   Grid,
   Group,
@@ -16,7 +17,8 @@ import {
 } from "@mantine/core";
 import { UserRoleContext } from "context/UserRoleContext";
 import BaseDetail from "features/Booking/components/BaseDetail";
-import { useContext } from "react";
+import ImageDialog from "features/Booking/components/ImageDialog";
+import { useContext, useState } from "react";
 import {
   IoCalendarOutline,
   IoCarSport,
@@ -42,19 +44,24 @@ const DetailBookingPage = () => {
   const booking = useQueryBookingDetail(params.id);
   const userRole = useContext(UserRoleContext);
 
-  const getDiscountPrice = () => {
-    if (booking.bookingDetail) {
-      const countDiscountPrice =
-        booking.bookingDetail?.productPrice *
-        (booking.bookingDetail?.discount / 100);
-      const priceDiscount =
-        booking.bookingDetail?.productPrice - countDiscountPrice;
+  const [file, setFile] = useState<File | null>(null);
 
-      return priceDiscount;
-    }
-  };
+  // const getDiscountPrice = () => {
+  //   if (booking.bookingDetail) {
+  //     const countDiscountPrice =
+  //       booking.bookingDetail?.productPrice *
+  //       (booking.bookingDetail?.discount / 100);
+  //     const priceDiscount =
+  //       booking.bookingDetail?.productPrice - countDiscountPrice;
 
-  console.log("params id : ", getDiscountPrice());
+  //     return priceDiscount;
+  //   }
+  // };
+
+  console.log(
+    "params id : ",
+    `${import.meta.env.VITE_LOCALHOST_URL}/uploads/booking/${booking.bookingDetail?.receipt}`,
+  );
   return (
     <Container fluid mx={0} px={0} className="font-poppins">
       <Container size={"xl"} px={0} className="my-10">
@@ -154,18 +161,61 @@ const DetailBookingPage = () => {
                   </Stack>
                 </Group>
 
-                <Stack gap={5}>
-                  <Text className="font-medium text-gray-400">
-                    Tanggal & Waktu
-                  </Text>
-                  <Group>
-                    <IoCalendarOutline className="text-xl text-primary " />
-                    <Text className="text-base font-medium">
-                      {booking.bookingDetail?.bookingDate},{" "}
-                      {booking.bookingDetail?.bookingTime}
+                <Group
+                  align="start"
+                  className="gap-x-32 gap-y-7 sm:gap-y-10 md:gap-y-40"
+                >
+                  <Stack gap={5}>
+                    <Text className="font-medium text-gray-400">
+                      Tanggal & Waktu
                     </Text>
-                  </Group>
-                </Stack>
+                    <Group>
+                      <IoCalendarOutline className="text-xl text-primary " />
+                      <Text className="text-base font-medium">
+                        {booking.bookingDetail?.bookingDate},{" "}
+                        {booking.bookingDetail?.bookingTime}
+                      </Text>
+                    </Group>
+                  </Stack>
+
+                  {!booking.bookingDetail?.receipt ? (
+                    <Stack gap={5}>
+                      <Text className="font-medium text-gray-400">
+                        Upload bukti pembayaran
+                      </Text>
+                      <Flex direction={"row"} gap={10}>
+                        <FileButton
+                          onChange={setFile}
+                          accept="image/png,image/jpeg"
+                        >
+                          {(props) => <Button {...props}>Upload image</Button>}
+                        </FileButton>
+
+                        {file && (
+                          <Text size="sm" ta="center" mt="sm">
+                            {file.name}
+                          </Text>
+                        )}
+                      </Flex>
+                    </Stack>
+                  ) : (
+                    <Stack gap={5}>
+                      <Text className="font-medium text-gray-400">
+                        Gambar bukti pembayaran
+                      </Text>
+                      <Flex direction={"row"} gap={10}>
+                        <ImageDialog imgName={booking.bookingDetail?.receipt} />
+                        <Stack gap={0}>
+                          <Text className="text-xs">
+                            Klik gambar icon di sebelah kiri, untuk melihat
+                            bukti pembayaran
+                          </Text>
+                          <Text>{booking.bookingDetail?.receipt}</Text>
+                        </Stack>
+                      </Flex>
+                    </Stack>
+                  )}
+                </Group>
               </Stack>
             </BaseDetail>
           </Grid.Col>
@@ -260,10 +310,10 @@ const DetailBookingPage = () => {
                 <MdWhatsapp className="text-5xl text-green-500" />
 
                 <Stack gap={10}>
-                  <Text className="text-nowrap text-lg font-medium">
+                  <Text className=" text-base font-medium md:text-lg">
                     Kami bisa membantu
                   </Text>
-                  <Text className="text-nowrap text-gray-500">
+                  <Text className=" text-sm text-gray-500 md:text-base">
                     Silahkan hubungi kami jika mengalami masalah
                   </Text>
                   <Button

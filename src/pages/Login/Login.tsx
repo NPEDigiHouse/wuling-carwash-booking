@@ -14,7 +14,7 @@ import { useForm } from "@mantine/form";
 import { Link } from "react-router-dom";
 import NavLogo from "shared/components/Navbar/NavLogo";
 import { Porsche01 } from "shared/constant/Images";
-import { useCredentialQuery } from "shared/hooks/api/Auth/useCredentialQuery";
+// import { useCredentialQuery } from "shared/hooks/api/Auth/useCredentialQuery";
 import { useLoginMutation } from "shared/hooks/api/Auth/useLoginMutation";
 import { useCompareRole } from "shared/hooks/ui/Login/useCompareRole";
 
@@ -26,7 +26,7 @@ const Login = () => {
     },
   });
 
-  const credential = useCredentialQuery();
+  // const credential = useCredentialQuery();
 
   // const navigate = useNavigate();
 
@@ -41,8 +41,6 @@ const Login = () => {
 
     login.mutate(payload);
   });
-
-  console.log("credential : ", credential);
 
   // if (login.isSuccess && !login.isPending) {
   //   if (credential?.isSuccess) {

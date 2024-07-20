@@ -95,7 +95,14 @@ const CustomerPage = () => {
         </Flex>
       </ModalActionDelete>
 
-      <TableLayout title="Customer Table" totalData={200}>
+      <TableLayout
+        title="Customer Table"
+        totalData={
+          !queryAllCustomers.customersData
+            ? 0
+            : queryAllCustomers.customersData.length
+        }
+      >
         <Table.Thead>
           <Table.Tr>
             <Table.Th>No</Table.Th>

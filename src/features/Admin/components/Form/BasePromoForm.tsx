@@ -39,6 +39,7 @@ const BasePromoForm = ({ initialValues, onSubmit }: IPromoInitialValues) => {
           label="Potongan Harga (Diskon)"
           placeholder="Masukkan Potongan Harga"
           radius={"md"}
+          max={100}
           {...form.getInputProps("discount")}
         />
 

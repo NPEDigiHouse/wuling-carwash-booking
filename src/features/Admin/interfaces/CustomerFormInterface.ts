@@ -4,6 +4,7 @@ export interface ICustomerFormPropsType {
   password?: string;
   name?: string;
   phoneNumber?: string;
+  userId?: string;
 }
 
 export interface ICreateCustomerFormPropsType {

@@ -15,6 +15,7 @@ export const CLIENT_KEY = {
     GET_CUSTOMER_DETAIL: "get-customer-detail-query-id-key",
     GET_ALL_CUSTOMERS: "get-all-customers-query-id-key",
     DELETE_CUSTOMER: "delete-customer-mutation-id-key",
+    UPDATE_CUSTOMER: "update-customer-mutation-id-key",
   },
   PRODUCT: {
     GET_ALL_PRODUCTS: "get-all-products-query-id-key",

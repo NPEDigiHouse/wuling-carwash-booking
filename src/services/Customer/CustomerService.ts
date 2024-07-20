@@ -1,7 +1,11 @@
 /* eslint-disable no-useless-catch */
 import { ApiBaseResponse } from "shared/config/APIResponse";
 import { http } from "shared/utils/AxiosUtils";
-import { ICustomerDetailResponseParams } from "./CustomerServiceInterface";
+import {
+  ICustomerDetailResponseParams,
+  // ICustomerRequestParams,
+  ICustomerUpdateRequestParams,
+} from "./CustomerServiceInterface";
 
 class CustomerService {
   async getAllCustomers(signal?: AbortSignal) {
@@ -34,6 +38,26 @@ class CustomerService {
 
       return data;
     } catch (error) {
+      throw error;
+    }
+  }
+
+  async updateCustomer(params: {
+    id: string;
+    payload: ICustomerUpdateRequestParams;
+  }): Promise<ApiBaseResponse<ICustomerDetailResponseParams>> {
+    try {
+      const response = await http.put(
+        `${import.meta.env.VITE_API_URL}/customer/${params.id}`,
+        params.payload,
+      );
+      const data: ApiBaseResponse<ICustomerDetailResponseParams> =
+        await response.data;
+
+      return data;
+    } catch (error) {
+      console.log("error : ", error);
+
       throw error;
     }
   }

@@ -14,7 +14,22 @@ export interface ICustomerDetailResponseParams {
     promo: string;
   }[];
   user: {
+    id: string;
     email: string;
     username: string;
   };
+}
+
+export interface ICustomerRequestParams {
+  name: string;
+  phoneNumber: string;
+  email: string;
+  username: string;
+}
+
+export interface ICustomerUpdateRequestParams {
+  name?: string;
+  phoneNumber?: string;
+  email?: string;
+  username?: string;
 }

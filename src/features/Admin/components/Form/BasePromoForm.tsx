@@ -17,7 +17,7 @@ const BasePromoForm = ({ initialValues, onSubmit }: IPromoInitialValues) => {
   const form = useForm({
     initialValues: {
       promoName: initialValues?.promoName || "",
-      discount: initialValues?.discount || 0,
+      discount: initialValues?.discount || 1,
       startedDate: dayjs(initialValues?.startedDate).toDate() || new Date(),
       endDate: dayjs(initialValues?.endDate).toDate() || new Date(),
     },
@@ -40,6 +40,7 @@ const BasePromoForm = ({ initialValues, onSubmit }: IPromoInitialValues) => {
           placeholder="Masukkan Potongan Harga"
           radius={"md"}
           max={100}
+          min={1}
           {...form.getInputProps("discount")}
         />
 

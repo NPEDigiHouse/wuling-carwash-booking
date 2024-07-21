@@ -6,6 +6,7 @@ export const BOOKING_PRODUCT = "booking-product/:id";
 export const ORDER = "order";
 export const MY_BOOKING = "my-booking";
 export const BOOKING_DETAIL = "my-booking/detail/:id";
+export const ADMIN_LOGIN = "admin/auth/login";
 export const ADMIN_HOME = "admin";
 export const ADMIN_ORDERS = "admin/orders";
 export const ADMIN_BOOKING = "admin/booking";

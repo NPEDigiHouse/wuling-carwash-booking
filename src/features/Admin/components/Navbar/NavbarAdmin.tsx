@@ -17,7 +17,7 @@ const NavbarAdmin = () => {
 
   const handleLogoutAction = () => {
     TokenConfig.removeToken();
-    navigate("/login");
+    navigate("/admin/auth/login");
   };
 
   return (

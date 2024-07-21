@@ -14,10 +14,10 @@ import BookingProductPage from "pages/Customers/Booking/BookingProduct";
 import DetailBookingPage from "pages/Customers/Booking/Detail";
 import MyBookingPage from "pages/Customers/Booking/MyBookingPage";
 import HomePage from "pages/Home/Home";
+import AdminLogin from "pages/Login/AdminLogin";
 import Login from "pages/Login/Login";
 import RegisterPage from "pages/Register/Register";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-// import { useCredentialQuery } from "shared/hooks/api/Auth/useCredentialQuery";
 import AdminLayout from "shared/layouts/AdminLayout";
 import MainLayout from "shared/layouts/MainLayout";
 import {
@@ -39,16 +39,16 @@ import {
   ADMIN_EDIT_PROMO,
   ADMIN_EDIT_TIMESLOT,
   ADMIN_EDIT_CUSTOMER,
+  ADMIN_LOGIN,
 } from "shared/utils/Route";
 
 const Router = () => {
-  // const credential = useCredentialQuery()
-
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path={LOGIN} element={<Login />} />
+        <Route path={ADMIN_LOGIN} element={<AdminLogin />} />
 
         <Route path={ORDER} />
         <Route path={REGISTER} element={<RegisterPage />} />

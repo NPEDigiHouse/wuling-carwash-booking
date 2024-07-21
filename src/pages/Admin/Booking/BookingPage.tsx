@@ -21,6 +21,7 @@ import { useDeleteBooking } from "shared/hooks/api/Booking/useDeleteBooking";
 import { useQueryAllBooking } from "shared/hooks/api/Booking/useQueryAllBookings";
 import { useGetBookingConfirmData } from "shared/hooks/ui/Booking/useGetBookingConfirmData";
 import { Link } from "react-router-dom";
+import { ADMIN_CHOOSE_BOOKING_CUSTOMER } from "shared/utils/Route";
 
 const BookingPage = () => {
   const [opened, { open, close }] = useDisclosure();
@@ -216,9 +217,9 @@ const BookingPage = () => {
       />
 
       <TableLayout
-        title="Customer Table"
+        title="Customer Booking Table"
         totalData={bookingsData.length}
-        urlPage="/admin/bookings/create"
+        urlPage={"/admin/create/booking/customers"}
       >
         <Table.Thead>
           <Table.Tr>

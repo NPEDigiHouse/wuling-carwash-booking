@@ -1,7 +1,7 @@
-import { Group, Table } from "@mantine/core";
+import { Button, Group, Table } from "@mantine/core";
 
 import TableLayout from "features/Admin/layouts/Table/TableLayout";
-import { MdOutlineEdit } from "react-icons/md";
+import { FaPlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { useQueryAllCustomers } from "shared/hooks/api/Customer/useQueryAllCustomers";
 
@@ -17,8 +17,14 @@ const BookingCustomerDataPage = () => {
       <Table.Td>{element.user.email}</Table.Td>
       <Table.Td className="rounded-br-xl rounded-tr-xl">
         <Group>
-          <Link to={`/admin/customers/edit/${element.id}`} reloadDocument>
-            <MdOutlineEdit className="text-xl text-blue-500" />
+          <Link to={`/admin/create/booking/${element.id}`} reloadDocument>
+            <Button
+              color="indigo"
+              radius={"lg"}
+              leftSection={<FaPlus className="text-white" />}
+            >
+              Booking
+            </Button>
           </Link>
         </Group>
       </Table.Td>
@@ -27,7 +33,7 @@ const BookingCustomerDataPage = () => {
 
   return (
     <TableLayout
-      title="Customer Table"
+      title="Customer Data untuk Tambah Booking"
       totalData={
         !queryAllCustomers.customersData
           ? 0

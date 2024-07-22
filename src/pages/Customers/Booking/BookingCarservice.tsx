@@ -10,8 +10,8 @@ import {
   Stack,
   Text,
 } from "@mantine/core";
-import BookingLayout from "features/Booking/components/BookingLayout";
-import FormBookingLayout from "features/Booking/components/FormLayout";
+import BookingLayout from "features/Bioking/components/BookingLayout";
+import FormBookingLayout from "features/Bioking/components/FormLayout";
 import { useEffect, useState } from "react";
 import { IoAlertCircle, IoTicketSharp } from "react-icons/io5";
 import { MdKeyboardArrowRight } from "react-icons/md";

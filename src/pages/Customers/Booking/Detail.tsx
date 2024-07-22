@@ -15,8 +15,8 @@ import {
   rem,
 } from "@mantine/core";
 import { UserRoleContext } from "context/UserRoleContext";
-import BaseDetail from "features/Booking/components/BaseDetail";
-import ImageDialog from "features/Booking/components/ImageDialog";
+import BaseDetail from "features/Bioking/components/BaseDetail";
+import ImageDialog from "features/Bioking/components/ImageDialog";
 import { useContext } from "react";
 import {
   IoCalendarOutline,

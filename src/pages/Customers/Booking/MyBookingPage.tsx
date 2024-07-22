@@ -9,7 +9,7 @@ import {
   Text,
 } from "@mantine/core";
 import { UserRoleContext } from "context/UserRoleContext";
-import CustomerBookingCard from "features/Booking/components/CustomerBookingCard";
+import CustomerBookingCard from "features/Bioking/components/CustomerBookingCard";
 import { useContext } from "react";
 import { MdOutlineArrowDownward } from "react-icons/md";
 import Navbar from "shared/components/Navbar/Navbar";

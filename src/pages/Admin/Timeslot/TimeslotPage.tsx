@@ -124,7 +124,7 @@ const TimeslotPage = () => {
       </ModalActionDelete>
       <TableLayout
         title="Tabel Timeslot"
-        totalData={200}
+        totalData={!timeslots.data ? 0 : timeslots.data.data.length}
         urlPage="/admin/timeslot/create"
       >
         <Table.Thead>

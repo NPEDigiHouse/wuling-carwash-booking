@@ -126,7 +126,7 @@ const ProductPage = () => {
       <TableLayout
         title="Tabel Produk"
         totalData={productsData.length}
-        // urlPage="/admin/products/create"
+        urlPage="/admin/products/create"
       >
         <Table.Thead>
           <Table.Tr>

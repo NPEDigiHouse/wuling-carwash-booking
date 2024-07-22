@@ -2,7 +2,7 @@ export interface ICustomerDetailResponseParams {
   id: string;
   name: string;
   phoneNumber: string;
-  booking: {
+  bookings: {
     id: string;
     carType: string;
     carPlate: string;

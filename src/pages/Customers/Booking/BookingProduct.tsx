@@ -58,8 +58,6 @@ const BookingProductPage = () => {
 
   const userCredential = useContext(UserRoleContext);
 
-  console.log("user : ", userCredential);
-
   const [promoOption, setPromoOption] = useState<
     { label: string; value: string; discount?: number }[]
   >([]);
@@ -83,10 +81,6 @@ const BookingProductPage = () => {
   );
 
   const [opened, { open, close }] = useDisclosure();
-
-  // const getDiscount = queryPromo.data?.data.find((discount) => {
-  //   return discount.id === Number(carwashForm.values.promo);
-  // });
 
   const handleSubmit = carwashForm.onSubmit((values) => {
     const params = {

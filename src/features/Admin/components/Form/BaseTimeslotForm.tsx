@@ -42,7 +42,9 @@ const BaseTimeslotForm = ({
     </ActionIcon>
   );
 
-  console.log("initial values : ", initialValues);
+  console.log("initial values date : ", dayjs(initialValues?.date).toDate());
+  console.log("date value : ", form.values.date);
+  console.log("time value : ", typeof form.values.time);
 
   return (
     <form onSubmit={form.onSubmit((values) => onSubmit(values))}>

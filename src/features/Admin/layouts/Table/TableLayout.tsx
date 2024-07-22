@@ -26,18 +26,20 @@ const TableLayout = ({
           <Text className="text-base">Total Data : {totalData}</Text>
         </Stack>
 
-        <Button
-          component={"a"}
-          leftSection={<IoMdAdd className="h-5 w-5" />}
-          classNames={{
-            root: `bg-blue-900`,
-            label: `text-sm font-poppins font-normal`,
-          }}
-          radius={"md"}
-          href={urlPage}
-        >
-          Tambah
-        </Button>
+        {!urlPage ? null : (
+          <Button
+            component={"a"}
+            leftSection={<IoMdAdd className="h-5 w-5" />}
+            classNames={{
+              root: `bg-blue-900`,
+              label: `text-sm font-poppins font-normal`,
+            }}
+            radius={"md"}
+            href={urlPage}
+          >
+            Tambah
+          </Button>
+        )}
       </Group>
 
       <Space h={15} />

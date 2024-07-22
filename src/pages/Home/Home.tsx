@@ -44,6 +44,10 @@ import { IProductResponseParams } from "services/Product/ProductServiceInterface
 import { UserRoleContext } from "context/UserRoleContext";
 import ProfileMenu from "shared/components/Menu/ProfileMenu";
 import { useQueryProductsHomepage } from "shared/hooks/ui/Home/useQueryProductsHomepage";
+import { useQueryCustomerDetail } from "shared/hooks/api/Customer/useQueryCustomerDetail";
+import { GiCityCar } from "react-icons/gi";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const bookingStepData = [
   {
@@ -88,12 +92,14 @@ const serviceData = [
 
 const HomePage = () => {
   const [products, setProducts] = useState<IProductResponseParams[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [unconfirmationBookData, setUnconfirmationBookData] = useState<any>([]);
 
   const queryProducts = useQueryProductsHomepage();
 
   const userRole = useContext(UserRoleContext);
 
-  console.log("products : ", queryProducts.data);
+  const queryCustomerDetail = useQueryCustomerDetail(userRole?.userDetail?.id);
 
   useEffect(() => {
     if (queryProducts?.data) {
@@ -101,6 +107,20 @@ const HomePage = () => {
       setProducts(queryProducts?.data.data);
     }
   }, [queryProducts.isSuccess, queryProducts.isFetching, queryProducts.data]);
+
+  useEffect(() => {
+    if (!queryCustomerDetail.customerDetail?.bookings) {
+      setUnconfirmationBookData([]);
+    } else {
+      const getUnconfirmationBooking =
+        queryCustomerDetail.customerDetail?.bookings.filter((book) => {
+          return book.status === "UNCONFIRMATION";
+        });
+      setUnconfirmationBookData(getUnconfirmationBooking);
+    }
+  }, [queryCustomerDetail.customerDetail?.bookings]);
+
+  console.log("customer detail : ", unconfirmationBookData);
 
   return (
     <Container fluid className="font-poppins" px={0}>
@@ -180,6 +200,40 @@ const HomePage = () => {
       </Container>
 
       <Space h={"120"} />
+
+      {unconfirmationBookData.length <= 0 ? null : (
+        <>
+          <Container className="">
+            <Link to={"/my-booking"}>
+              <Card
+                px={30}
+                radius={"lg"}
+                withBorder
+                className="bg-indigo-600 text-white duration-300 hover:border hover:border-indigo-600 hover:bg-white hover:text-indigo-600"
+              >
+                <Group justify="space-between">
+                  <Group gap={20}>
+                    <GiCityCar className="text-6xl " />
+                    <Stack gap={0}>
+                      <Text className="text-lg font-medium">
+                        Ayo selesaikan pembayaran
+                      </Text>
+                      <Text className="">
+                        Anda punya {unconfirmationBookData.length} Booking yang
+                        belum dibayar, mohon selesaikan pembayaran
+                      </Text>
+                    </Stack>
+                  </Group>
+
+                  <FaArrowRightLong className="text-3xl" />
+                </Group>
+              </Card>
+            </Link>
+          </Container>
+
+          <Space h={"120"} />
+        </>
+      )}
 
       <Container size={"xl"}>
         <Text className="text-center text-xl font-medium text-secondary">

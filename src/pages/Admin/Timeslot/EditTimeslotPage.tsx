@@ -4,6 +4,7 @@ import { ITimeslotFormPropsType } from "features/Admin/interfaces/TimeslotFormIn
 import BaseTimeslotForm from "features/Admin/components/Form/BaseTimeslotForm";
 import { useParams } from "react-router-dom";
 import { useGetTimeslotInitialData } from "shared/hooks/ui/Form/useGetTimeslotInitialData";
+import { LoadingOverlay } from "@mantine/core";
 
 const EditTimeslotPage = () => {
   // const navigate = useNavigate();
@@ -26,6 +27,10 @@ const EditTimeslotPage = () => {
   //     navigate("/admin/timeslot");
   //   }
   // }, [postTimeslot.isSuccess, postTimeslot.isPending, navigate]);
+
+  if (timeslotDetail.loading) {
+    return <LoadingOverlay />;
+  }
 
   return (
     <FormLayout title="Tambah Timeslot">

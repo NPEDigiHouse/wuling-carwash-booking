@@ -4,7 +4,6 @@ import {
   Button,
   Container,
   Divider,
-  FileButton,
   Flex,
   Grid,
   Group,
@@ -18,7 +17,7 @@ import {
 import { UserRoleContext } from "context/UserRoleContext";
 import BaseDetail from "features/Booking/components/BaseDetail";
 import ImageDialog from "features/Booking/components/ImageDialog";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import {
   IoCalendarOutline,
   IoCarSport,
@@ -37,14 +36,13 @@ import ProfileMenu from "shared/components/Menu/ProfileMenu";
 import Navbar from "shared/components/Navbar/Navbar";
 // import { CustomerBookingCar } from "shared/constant/Images";
 import { useQueryBookingDetail } from "shared/hooks/api/Booking/useQueryBookingDetail";
+import ReceiptForm from "./ReceiptForm";
 
 const DetailBookingPage = () => {
   const params = useParams();
 
   const booking = useQueryBookingDetail(params.id);
   const userRole = useContext(UserRoleContext);
-
-  const [file, setFile] = useState<File | null>(null);
 
   // const getDiscountPrice = () => {
   //   if (booking.bookingDetail) {
@@ -58,10 +56,7 @@ const DetailBookingPage = () => {
   //   }
   // };
 
-  console.log(
-    "params id : ",
-    `${import.meta.env.VITE_LOCALHOST_URL}/uploads/booking/${booking.bookingDetail?.receipt}`,
-  );
+  console.log("booking detail : ", booking.bookingDetail);
   return (
     <Container fluid mx={0} px={0} className="font-poppins">
       <Container size={"xl"} px={0} className="my-10">
@@ -177,44 +172,6 @@ const DetailBookingPage = () => {
                       </Text>
                     </Group>
                   </Stack>
-
-                  {!booking.bookingDetail?.receipt ? (
-                    <Stack gap={5}>
-                      <Text className="font-medium text-gray-400">
-                        Upload bukti pembayaran
-                      </Text>
-                      <Flex direction={"row"} gap={10}>
-                        <FileButton
-                          onChange={setFile}
-                          accept="image/png,image/jpeg"
-                        >
-                          {(props) => <Button {...props}>Upload image</Button>}
-                        </FileButton>
-
-                        {file && (
-                          <Text size="sm" ta="center" mt="sm">
-                            {file.name}
-                          </Text>
-                        )}
-                      </Flex>
-                    </Stack>
-                  ) : (
-                    <Stack gap={5}>
-                      <Text className="font-medium text-gray-400">
-                        Gambar bukti pembayaran
-                      </Text>
-                      <Flex direction={"row"} gap={10}>
-                        <ImageDialog imgName={booking.bookingDetail?.receipt} />
-                        <Stack gap={0}>
-                          <Text className="text-xs">
-                            Klik gambar icon di sebelah kiri, untuk melihat
-                            bukti pembayaran
-                          </Text>
-                          <Text>{booking.bookingDetail?.receipt}</Text>
-                        </Stack>
-                      </Flex>
-                    </Stack>
-                  )}
                 </Group>
               </Stack>
             </BaseDetail>
@@ -302,6 +259,28 @@ const DetailBookingPage = () => {
                 </List>
               </Flex>
             </BaseDetail>
+          </Grid.Col>
+
+          <Grid.Col span={{ base: 12, md: 5 }}>
+            {!booking.bookingDetail?.receipt ? (
+              <ReceiptForm />
+            ) : (
+              <Stack gap={5}>
+                <Text className="font-medium text-gray-400">
+                  Gambar bukti pembayaran
+                </Text>
+                <Flex direction={"row"} gap={10}>
+                  <ImageDialog imgName={booking.bookingDetail?.receipt} />
+                  <Stack gap={0}>
+                    <Text className="text-xs">
+                      Klik gambar icon di sebelah kiri, untuk melihat bukti
+                      pembayaran
+                    </Text>
+                    <Text>{booking.bookingDetail?.receipt}</Text>
+                  </Stack>
+                </Flex>
+              </Stack>
+            )}
           </Grid.Col>
 
           <Grid.Col span={{ base: 12, md: 5 }}>

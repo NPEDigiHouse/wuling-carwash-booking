@@ -6,7 +6,7 @@ export const bookingFormSchema = z.object({
   licensePlat: z
     .string()
     .min(1, { message: "Plat nomor mobil harus dimasukkan" }),
-  promo: z.string().optional(),
+  // promo: z.string().optional(),
   phoneNumber: z.string().min(1, { message: "Nomor telepon harus dimasukkan" }),
   timeslotId: z.string().min(1, { message: "Tanggal harus dipilih" }),
   date: z.coerce.date({ message: "Jam / Waktu harus dipilih" }),

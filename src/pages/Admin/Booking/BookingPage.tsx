@@ -21,7 +21,6 @@ import { useDeleteBooking } from "shared/hooks/api/Booking/useDeleteBooking";
 import { useQueryAllBooking } from "shared/hooks/api/Booking/useQueryAllBookings";
 import { useGetBookingConfirmData } from "shared/hooks/ui/Booking/useGetBookingConfirmData";
 import { Link } from "react-router-dom";
-import { ADMIN_CHOOSE_BOOKING_CUSTOMER } from "shared/utils/Route";
 
 const BookingPage = () => {
   const [opened, { open, close }] = useDisclosure();
@@ -77,8 +76,13 @@ const BookingPage = () => {
         >
           <Button
             variant="outline"
-            className="border-primary font-normal text-primary"
-            rightSection={<IoImageOutline className="text-2xl text-primary" />}
+            className={`${!element.receipt ? "bg-gray-4000 cursor-not-allowed border-transparent text-gray-500" : "border-primary text-primary"} font-normal `}
+            rightSection={
+              <IoImageOutline
+                className={`text-2xl ${!element.receipt ? "text-gray-500" : "text-primary"}`}
+              />
+            }
+            disabled={!element.receipt}
           >
             Lihat Gambar
           </Button>
@@ -219,7 +223,7 @@ const BookingPage = () => {
       <TableLayout
         title="Customer Booking Table"
         totalData={bookingsData.length}
-        urlPage={"/admin/create/booking/customers"}
+        // urlPage={"/admin/create/booking/customers"}
       >
         <Table.Thead>
           <Table.Tr>

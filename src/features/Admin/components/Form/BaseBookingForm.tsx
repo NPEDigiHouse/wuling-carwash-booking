@@ -3,7 +3,7 @@ import { useForm, zodResolver } from "@mantine/form";
 import { useDisclosure } from "@mantine/hooks";
 import { IAdminBookingFormPropsType } from "features/Admin/interfaces/BookingFormInterface";
 import { bookingFormSchema } from "features/Admin/schema/BookingFormSchema";
-import ModalPromo from "features/Bioking/components/ModalPromo";
+import ModalPromo from "features/Booking/components/ModalPromo";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa6";

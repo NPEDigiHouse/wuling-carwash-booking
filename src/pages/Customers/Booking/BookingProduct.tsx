@@ -14,8 +14,8 @@ import {
   ThemeIcon,
   rem,
 } from "@mantine/core";
-import BookingLayout from "features/Bioking/components/BookingLayout";
-import FormBookingLayout from "features/Bioking/components/FormLayout";
+import BookingLayout from "features/Booking/components/BookingLayout";
+import FormBookingLayout from "features/Booking/components/FormLayout";
 import { IoAlertCircle, IoCheckmark, IoTicketSharp } from "react-icons/io5";
 import { MdKeyboardArrowRight } from "react-icons/md";
 // import StepperMode from "features/booking/components/StepperMode";
@@ -27,7 +27,7 @@ import { useForm, zodResolver } from "@mantine/form";
 import { useContext, useEffect, useState } from "react";
 import { useQueryAllPromo } from "shared/hooks/api/Promo/useQueryAllPromo";
 import { useDisclosure } from "@mantine/hooks";
-import ModalPromo from "features/Bioking/components/ModalPromo";
+import ModalPromo from "features/Booking/components/ModalPromo";
 import { IPromoServiceResponseParams } from "services/Promo/PromoServiceInterface";
 import CustomDatePickerInput from "shared/components/Input/CustomDatePickerInput";
 import { useQueryTimeslots } from "shared/hooks/api/Timeslots/useQueryTimeslots";
